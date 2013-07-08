@@ -1,0 +1,11 @@
+---
+layout: default
+title: akoskm.github.io
+---
+<div class="row-fluid">
+    <div class="span12">
+        {% assign post = site.posts.first %}
+        {% assign content = post.content %}
+        {% include post_detail.html %}
+    </div>
+</div>

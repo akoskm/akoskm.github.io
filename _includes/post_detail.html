@@ -1,0 +1,8 @@
+<h3>
+    <span class="post-title">
+        {% if post.title %}
+            <a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a>
+        {% endif %}
+    </span>
+</h3>
+{{ content }}

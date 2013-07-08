@@ -1,0 +1,221 @@
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+.main-container {
+    padding: 0px 20px 20px 20px;
+}
+
+.profile-image {
+    margin-right: 20px;
+}
+
+/** text under "a developer" **/
+div.brand-sub {
+    position: absolute;
+    font-size: 0.45em;
+}
+
+div.brand {
+    padding-top: 0;
+}
+
+a, a:hover {
+    text-decoration: none !important;
+}
+
+/** POST TITLE HOVER **/
+a {
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    border-bottom: 1px solid white;
+    color: #007fff;
+}
+
+a:hover {
+    -webkit-transition: 0.5s ease;
+    -moz-transition: 0.5s ease;
+    -ms-transition: 0.5s ease;
+    -o-transition: 0.5s ease;
+    border-bottom: 1px solid black;
+    color: #000000;
+}
+
+/** HEADER LINKS **/
+div.navbar-inner > div.container > a,
+div.collapse > ul.nav > li a {
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    border: 0;
+    color: #fff;
+}
+div.navbar-inner > div.container > a:hover,
+div.collapse > ul.nav > li a:hover {
+    -webkit-transition: 0.5s ease;
+    -moz-transition: 0.5s ease;
+    -ms-transition: 0.5s ease;
+    -o-transition: 0.5s ease;
+    border: 0;
+    color: #000;
+}
+
+/** TECH LOGO ANIMATIONS **/
+.tech-container {
+   position: relative;
+   -webkit-perspective: 1000;
+   -moz-perspective: 1000;
+   -ms-perspective: 1000;
+   -o-perspective: 1000;
+   margin: 0 0 20px 0;
+   width: 100px;
+}
+
+.card {
+    font-size: 10px;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: 0.5s;
+    -moz-transform-style: preserve-3d;
+    -moz-transition: 0.5s;
+    -ms-transform-style: preserve-3d;
+    -ms-transition: 0.5s;
+    -o-transform-style: preserve-3d;
+    -o-transition: 0.5s;
+}
+
+.tech-container:hover .card {
+   -webkit-transform: rotateY(180deg);
+   -moz-transform: rotateY(180deg);
+   -ms-transform: rotateY(180deg);
+   -o-transform: rotateY(180deg);
+}
+
+.tech-container:hover .front {
+   z-index: -10;
+}
+
+.front {
+   background: #fff;
+   z-index: 10;
+}
+
+/** CONTACT ANIMATIONS **/
+.contact-card {
+    width: 150px;
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+    color: white;
+}
+
+.contact-card:hover .contact-icon {
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    left: 0;
+    top: 0;
+    z-index: 0;
+}
+
+.contact-text {
+    cursor: pointer;
+    z-index: -1;
+    padding-left: 15px;
+    width: 58px;
+    height: 50px;
+    line-height: 3.5;
+}
+
+.contact-icon {
+    font-size: 20px;
+    background-color: #007fff;
+    padding-left: 15px;
+    position: absolute;
+    top: 0;
+    left: -165;
+    width: 150px;
+    height: 50px;
+    line-height: 2.6;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+}
+
+.contact-icon > a,
+.contact-icon > a:visited,
+.contact-icon > a:hover {
+    color: #FFF;
+}
+
+/** GENERAL PROPERTIES **/
+.face {
+   position: absolute;
+   -webkit-backface-visibility: hidden;
+   -moz-backface-visibility: hidden;
+   -ms-backface-visibility: hidden;
+   -o-backface-visibility: hidden;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   color: white;
+   text-align: center;
+}
+
+.no-hide .face {
+   -webkit-backface-visibility: visible;
+   -moz-backface-visibility: visible;
+   -ms-backface-visibility: visible;
+   -o-backface-visibility: visible;
+}
+
+.back {
+   -webkit-transform: rotateY(180deg);
+   -moz-transform: rotateY(180deg);
+   -ms-transform: rotateY(180deg);
+   -o-transform: rotateY(180deg);
+   background: #007fff;
+}
+
+/** FRONT+BACK SETTINGS **/
+
+.java.front {
+    background-image: url('../images/java_50x50_blue.png');
+}
+
+.java.back {
+    line-height: 5;
+}
+
+.js.front {
+    background-image: url('../images/js_logo_50x50_blue.png');
+}
+
+.js.back {
+    line-height: 5;
+}
+
+.git.front {
+    background-image: url('../images/git-logo-50x50_blue.png');
+}
+
+.git.back {
+    line-height: 5;
+}
+
+.backbone.front {
+    background-image: url('../images/backbone-logo_50x50.png');
+}
+
+.backbone.back {
+    line-height: 5;
+}

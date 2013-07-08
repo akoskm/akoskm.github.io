@@ -1,0 +1,62 @@
+<div class="navbar navbar-fixed-top navbar-inverse">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="/index.html">
+                a developer <sup>*</sup>
+                <div class="brand-sub">
+                    <sup>*</sup> with deadlines
+                </div>
+            </a>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li
+                    {% if page.url == "/index.html" %}class="active"{% endif %}
+                    >
+                        <a href="/index.html">Blog</a>
+                    </li>
+                    <li
+                    {% if page.url == "/posts.html" %}class="active"{% endif %}
+                    >
+                        <a href="/posts.html">Posts</a>
+                    </li>
+                    <li
+                    {% if page.url == "/about.html" %}class="active"{% endif %}
+                    >
+                        <a href="/about.html">About</a>
+                    </li>
+                    <li class="contact">
+                        <div class="contact-container">
+                            <div class="contact-card">
+                                <div class="contact-text">
+                                    Contact
+                                </div>
+                                <div class="contact-icon">
+                                    <a href="https://github.com/akoskm">
+                                        <i class="icon-github"></i>
+                                    </a>
+                                    <a href="https://plus.google.com/u/0/111400973113366576489/posts">
+                                        <i class="icon-google-plus-sign"></i>
+                                    </a>
+                                    <a href="http://rs.linkedin.com/pub/akos-kemives/46/77a/918/">
+                                        <i class="icon-linkedin-sign"></i>
+                                    </a>
+                                    <a href="http://stackoverflow.com/users/407466/akoskm">
+                                        <i class="icon-stackexchange"></i>
+                                    </a>
+                                    <a href="https://twitter.com/akoskm">
+                                        <i class="icon-twitter-sign"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+---
+layout: default
+---
+<h3>
+    <span class="post-title">
+        {% if page.title %}
+            <a href="{{ root_url }}{{ post.url }}">{{ page.title }}</a>
+        {% endif %}
+    </span>
+</h3>
+{{ content }}
