@@ -45,7 +45,7 @@ a:hover {
 }
 
 /** HEADER LINKS **/
-div.navbar-inner > div.container > a,
+div.navbar-inner > div.container-fluid > a,
 div.collapse > ul.nav > li a {
     -webkit-transition: 0.5s;
     -moz-transition: 0.5s;
@@ -54,7 +54,7 @@ div.collapse > ul.nav > li a {
     border: 0;
     color: #fff;
 }
-div.navbar-inner > div.container > a:hover,
+div.navbar-inner > div.container-fluid > a:hover,
 div.collapse > ul.nav > li a:hover {
     -webkit-transition: 0.5s ease;
     -moz-transition: 0.5s ease;
