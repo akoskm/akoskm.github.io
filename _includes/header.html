@@ -20,7 +20,7 @@
                         <a href="/index.html">Blog</a><div class="arr"></div>
                     </li>
                     <li
-                    {% if page.url == "/posts.html" %}class="active"{% endif %}
+                    {% if page.url == "/posts.html" or page.type == "post" %}class="active"{% endif %}
                     >
                         <a href="/posts.html">Posts</a><div class="arr"></div>
                     </li>

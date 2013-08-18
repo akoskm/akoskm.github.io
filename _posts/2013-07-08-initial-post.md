@@ -1,6 +1,7 @@
 ---
 title: HELLO CAPS
 layout: post
+type: post
 ---
 
 Some resources that helped me to create these sniffy animations:
