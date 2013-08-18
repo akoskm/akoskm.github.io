@@ -52,6 +52,11 @@ a:hover {
     color: #000000;
 }
 
+div.navbar-inner {
+  border: 0px none !important;
+  box-shadow: 0px 3px 3px !important
+}
+
 /** HEADER LINKS **/
 div.navbar-inner > div.container-fluid > a,
 div.collapse > ul.nav > li a {
@@ -230,8 +235,8 @@ div.collapse > ul.nav > li a:hover {
 
 div.nav-collapse:not(.in) > ul.nav > li {
     position: relative;
-    max-height: 51px !important;
-    min-height: 51px !important;
+    max-height: 50px !important;
+    min-height: 50px !important;
     margin-bottom: -1px;
 }
 
@@ -240,7 +245,9 @@ div.nav-collapse:not(.in) > ul.nav > li.active {
     background-color: #9957BB;
 }
 
-div.nav-collapse:not(.in) > ul.nav > li.active > div.arr {
+/* G+ chat like arrows*/
+
+/*div.nav-collapse:not(.in) > ul.nav > li.active > div.arr {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -249,4 +256,15 @@ div.nav-collapse:not(.in) > ul.nav > li.active > div.arr {
     border-left: 15px solid transparent;
     border-right: 0px solid transparent;
     border-bottom: 12px solid white;
-}
+}*/
+
+/*div.nav-collapse:not(.in) > ul.nav > li.active > div.arr {
+    position: absolute;
+    right: 34%;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid white;
+}*/
