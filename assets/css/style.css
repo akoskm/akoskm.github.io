@@ -11,14 +11,22 @@ body {
     margin-right: 20px;
 }
 
-/** text under "a developer" **/
-div.brand-sub {
-    position: absolute;
-    font-size: 0.45em;
+/** custom line-height to bring the titles closer **/
+a.brand {
+    line-height: 0.7em !important;
+    padding-top: 0;
+    cursor: pointer;
 }
 
-div.brand {
-    padding-top: 0;
+a.brand:hover {
+    color: #007FFF;
+    color: #FFF !important;
+}
+
+/** text under "a developer" **/
+a.brand > div.brand-sub {
+    position: absolute;
+    font-size: 0.45em;
 }
 
 a, a:hover {
@@ -40,7 +48,7 @@ a:hover {
     -moz-transition: 0.5s ease;
     -ms-transition: 0.5s ease;
     -o-transition: 0.5s ease;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #007FFF;
     color: #000000;
 }
 
@@ -218,4 +226,27 @@ div.collapse > ul.nav > li a:hover {
 
 .backbone.back {
     line-height: 5;
+}
+
+div.nav-collapse:not(.in) > ul.nav > li {
+    position: relative;
+    max-height: 51px !important;
+    min-height: 51px !important;
+    margin-bottom: -1px;
+}
+
+div.nav-collapse:not(.in) > ul.nav > li.active {
+    color: white;
+    background-color: #9957BB;
+}
+
+div.nav-collapse:not(.in) > ul.nav > li.active > div.arr {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 0px solid transparent;
+    border-bottom: 12px solid white;
 }
