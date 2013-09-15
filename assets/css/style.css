@@ -268,3 +268,19 @@ div.nav-collapse:not(.in) > ul.nav > li.active {
     border-right: 10px solid transparent;
     border-bottom: 10px solid white;
 }*/
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table tr, table th {
+    padding: 4px 4px 4px 4px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-weight: normal;
+}
+
+table td {
+    border: 1px solid #ddd;
+}
