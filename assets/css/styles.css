@@ -29,18 +29,18 @@ div.main-container {
 
 div.main-container span.post-title,
 div.main-container span.post-title > a {
-  font-size: 1.8rem;
+  font-size: 1.2em;
   font-weight: 700;
   color: #333;
 }
 
 div.main-container h2 {
-  font-size: 1.4rem;
+  font-size: 1.2em;
 }
 
 div.main-container ul.posts span.post-title > a {
   font-weight: normal;
-  font-size: 1.2rem;
+  font-size: 18px;
 }
 
 span.post-date {
@@ -57,13 +57,13 @@ div.navigation-container {
 }
 
 div.navigation-container span.separator {
-  font-size: 1.7rem;
+  font-size: 1.5em;
 }
 
 div.navigation-container a {
   font-weight: 700;
   padding: 20px;
-  font-size: 1.7rem;
+  font-size: 1.5em;
   color: #333;
 }
 
@@ -73,7 +73,7 @@ footer {
   padding: 20px 0px 20px 0px;
   width: 100%;
   text-align: center;
-  font-size: 1rem;
+  font-size: 0.9em;
   font-weight: 300;
 }
 
