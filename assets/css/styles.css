@@ -1,0 +1,78 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  color: #333;
+  background-color: #fdfdfd;
+  margin: 0;
+  padding: 0;
+}
+
+body a {
+  text-decoration: none;
+  color: inherit;
+  color: #3792FF;
+}
+
+pre {
+  background-color: #3D3D3D;
+  color: #E6DB74;
+  padding: 10px;
+  border-radius: 4px;
+  overflow: auto;
+}
+
+/*main-container and posts*/
+div.main-container {
+  padding: 8px;
+  background-color: #FEFEFE;
+}
+
+div.main-container span.post-title,
+div.main-container span.post-title > a {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+}
+
+div.main-container h2 {
+  font-size: 1.4rem;
+}
+
+div.main-container ul.posts span.post-title > a {
+  font-weight: normal;
+  font-size: 1.2rem;
+}
+
+span.post-date {
+  font-weight: 300;
+  display: block;
+}
+
+/*navigation*/
+div.navigation-container {
+  width: 100%;
+  text-align: center;
+  padding: 20px 0px 20px 0px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+div.navigation-container span.separator {
+  font-size: 1.7rem;
+}
+
+div.navigation-container a {
+  font-weight: 700;
+  padding: 20px;
+  font-size: 1.7rem;
+  color: #333;
+}
+
+/*footer*/
+footer {
+  border-top: 1px solid #eaeaea;
+  padding: 20px 0px 20px 0px;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 300;
+}

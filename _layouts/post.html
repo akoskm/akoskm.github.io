@@ -1,13 +1,14 @@
 ---
 layout: default
 ---
-<h3>
+<p>
+    <span class="post-date">{{ page.date | date_to_string }}</span>
     <span class="post-title">
         {% if page.title %}
             <a href="{{ root_url }}{{ post.url }}">{{ page.title }}</a>
         {% endif %}
     </span>
-</h3>
+</p>
 <span>
     <a href="{{ root_url }}{{ post.url }}#disqus_thread"></a>
 </span>
