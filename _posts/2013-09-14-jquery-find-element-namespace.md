@@ -41,19 +41,25 @@ I also created a little comparsion table to show, how `$.find` works in differen
 
 **Firefox**
 
+<div class="table-wrapper" markdown="block">
+
 |               | `prefix:tag` | `prefix\\:tag`   | `tag` | `prefix:tag[color="green"]`     |
 | ------------- |:------------:|:----------------:|:-----:|:-------------------------------:|
 | $.find        |0             |6                 |0      |0                                |
 | $.nodeFilter  |6             |0                 |0      |1                                |
 
-<br>
+</div>
 
 **Chrome**
+
+<div class="table-wrapper" markdown="block">
 
 |               | `prefix:tag` | `prefix\\:tag`   | `tag` | `prefix:tag[color="green"]`     |
 | ------------- |:------------:|:----------------:|:-----:|:-------------------------------:|
 | $.find        |0             |0                 |6      |0                                |
 | $.nodeFilter  |6             |0                 |0      |1                                |
+
+</div>
 
 Source
 ------
