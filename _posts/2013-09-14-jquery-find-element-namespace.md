@@ -8,9 +8,9 @@ Querying XML documents
 ----------------------
 It's fine until you face though times and you have to find this:
 
-<pre>
+<pre><code class="xml">
 &lt;fancynamespace:tag color="green" size="huge"&gt;Kiwi&lt;/fancynamespace:tag&gt;
-</pre>
+</code></pre>
 
 or a normal-sized Kiwi, that's even harder!
 
@@ -23,13 +23,13 @@ nodeFilter
 ----------
 [nodeFilter](https://github.com/akoskm/nodeFilter) is a tiny little jQuery plugin which helps you to write selectors for XML elements, even for those with namespaces. It was ispired by these few lines of code:
 
-<pre>
+<pre><code class="js">
 $.fn.filterNode = function(name) {
     return this.find('*').filter(function() {
        return this.nodeName === name;
     });
 };
-</pre>
+</code></pre>
 
 [Source](http://stackoverflow.com/questions/853740/jquery-xml-parsing-with-namespaces)
 
@@ -41,7 +41,7 @@ I also created a little comparsion table to show, how `$.find` works in differen
 
 **Firefox**
 
-|               | `prefix:tag` | `prefix\\:tag` | `tag` | `prefix:tag[color="green"]` |
+|               | `prefix:tag` | `prefix\\:tag`   | `tag` | `prefix:tag[color="green"]`     |
 | ------------- |:------------:|:----------------:|:-----:|:-------------------------------:|
 | $.find        |0             |6                 |0      |0                                |
 | $.nodeFilter  |6             |0                 |0      |1                                |
@@ -50,12 +50,12 @@ I also created a little comparsion table to show, how `$.find` works in differen
 
 **Chrome**
 
-|               | `prefix:tag` | `prefix\\:tag` | `tag` | `prefix:tag[color="green"]` |
+|               | `prefix:tag` | `prefix\\:tag`   | `tag` | `prefix:tag[color="green"]`     |
 | ------------- |:------------:|:----------------:|:-----:|:-------------------------------:|
 | $.find        |0             |0                 |6      |0                                |
 | $.nodeFilter  |6             |0                 |0      |1                                |
 
-GitHub
+Source
 ------
 
 [https://github.com/akoskm/nodeFilter](https://github.com/akoskm/nodeFilter)
