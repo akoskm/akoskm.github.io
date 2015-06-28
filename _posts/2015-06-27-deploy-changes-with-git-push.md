@@ -4,24 +4,11 @@ layout: post
 type: post
 ---
 
-Automated deployment processes are great, simply because you can spend more time developing your app and less time following tedious, repetitive tasks.
+Automated deployments are great, simply because you can spend more time developing your app and less time following tedious, repetitive tasks.
 
-It also minimizes the human factor which makes your deployments more reliable and error-free. And it's dead simple.
+They also minimize the human factor of the whole processes so it's more predictable, reliable and error-free.
 
-This article will show you how I automated my deployment script with Git Hooks.
-
-Start off by creating a bare git repository on the server:
-
-<pre><code class="hljs text">$ mkdir akoskm.github.io
-$ cd akoskm.github.io/
-$ git init --bare
-Initialized empty Git repository in /home/akoskm/akoskm.github.io/
-</code></pre>
-
-If you're unfamiliar with bare git repositories here's a great explanation [What is a bare git repository?](http://www.saintsjd.com/2011/01/what-is-a-bare-git-repository/)
-In short, a working git repository is where you will commit changes, while the bare repository only shares those changes between clones (other working repositories).
-
-`git init --bare` will create the following directories:
+I assume you already have a bare git repository on the server which looks similar to this:
 
 <pre><code class="hljs text">branches
 config
@@ -35,9 +22,13 @@ refs
 
 We are going to create a `post-receive` hook in the `hooks` directory. This server-side hook is called after the entire push process is completed.
 
-The idea is to pull the contents of a specific branch into a working directory on the server and to deploy your application from there.
+The idea is to pull the contents of a specific branch into a working directory on the server and deploy your application from there. The steps you want to execute after your `post-receive` is triggered are the following:
 
-Here is how our `post-receive` hook looks like:
+1. check if we pushed to a specific branch
+2. pull the same branch to a server-side working directory
+3. start the deployment in the same directory
+
+Here is how our `post-receive` should look like:
 
 <pre><code>#!/bin/bash
 
@@ -64,12 +55,12 @@ do
 done
 </code></pre>
 
-The script must be executable so don't forget
+The script must be executable so don't forget adding
 
 <pre><code class="hljs text">chmod +x post-receive
 </code></pre>
 
-Pushing to our server will trigger the `post-receive` hook:
+Lets test it:
 
 <pre><code class="hljs text">$ git push origin deploy
 Counting objects: 7, done.
@@ -86,6 +77,14 @@ remote:  1 file changed, 1 insertion(+), 1 deletion(-)
 To /home/akoskm/akoskm.github.io
    212fc95..bf21a7f  deploy -> deploy
 </code></pre>
+
+Pushing to our server triggered the `post-receive` hook and the part specific to `deploy` branch.
+
+Run through this checklist before testing your hook:
+
++ make sure the server-side working directory exists and you have the required permission to execute your deployment scripts there
++ `post-receive` is executable (`chmod +x`)
++ before pushing check that you're on the right branch (`git branch`)
 
 Sources:
 
