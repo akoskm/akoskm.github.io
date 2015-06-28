@@ -24,7 +24,7 @@ refs
 
 We are going to create a `post-receive` hook in the `hooks` directory. This server-side hook is called after the entire push process is completed.
 
-The idea is to pull the contents of a specific branch into a working directory on the server and deploy the application from there. The steps you want to execute after the `post-receive` is triggered are the following:
+The idea is to pull the contents of a specific branch into a working directory on the server and deploy the application from there. The steps you want to execute after `post-receive` is triggered are the following:
 
 1. check if push occurred on a specific branch
 2. pull the same branch to the server-side working directory
@@ -53,6 +53,8 @@ do
 
       # at this point you have the latest source in WORKING_DIR.
       # time to start your build process and deployment scripts
+      # grunt, for instance
+      grunt production
     fi
 done
 </code></pre>
