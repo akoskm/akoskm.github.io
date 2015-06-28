@@ -1,5 +1,5 @@
 ---
-title: Git Hooks - Deploy with git push
+title: Git Hooks - Deploying with git push
 layout: post
 type: post
 ---
