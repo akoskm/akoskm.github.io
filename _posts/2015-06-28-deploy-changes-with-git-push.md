@@ -8,7 +8,7 @@ Automated deployments are great, simply because you can spend more time developi
 
 They also minimize the human factor of the whole processes, so it's more predictable, reliable and error-free.
 
-Thanks to git hooks, automating your deployment process becomes an easy task. Let's see how it's done.
+Thanks to [git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks), automating your deployment process becomes an easy task. Let's see how it's done.
 
 I assume you already have a bare git repository on the server which looks similar to this:
 
