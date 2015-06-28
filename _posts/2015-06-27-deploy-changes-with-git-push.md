@@ -6,7 +6,9 @@ type: post
 
 Automated deployments are great, simply because you can spend more time developing your app and less time following tedious, repetitive tasks.
 
-They also minimize the human factor of the whole processes so it's more predictable, reliable and error-free.
+They also minimize the human factor of the whole processes, so it's more predictable, reliable and error-free.
+
+Thanks to git hooks, automating your deployment process becomes an easy task. Let's see how it's done.
 
 I assume you already have a bare git repository on the server which looks similar to this:
 
@@ -22,13 +24,13 @@ refs
 
 We are going to create a `post-receive` hook in the `hooks` directory. This server-side hook is called after the entire push process is completed.
 
-The idea is to pull the contents of a specific branch into a working directory on the server and deploy your application from there. The steps you want to execute after your `post-receive` is triggered are the following:
+The idea is to pull the contents of a specific branch into a working directory on the server and deploy the application from there. The steps you want to execute after the `post-receive` is triggered are the following:
 
-1. check if we pushed to a specific branch
-2. pull the same branch to a server-side working directory
+1. check if push occurred on a specific branch
+2. pull the same branch to the server-side working directory
 3. start the deployment in the same directory
 
-Here is how our `post-receive` should look like:
+Here is how our `post-receive` hook should look like:
 
 <pre><code>#!/bin/bash
 
@@ -60,7 +62,7 @@ The script must be executable so don't forget adding
 <pre><code class="hljs text">chmod +x post-receive
 </code></pre>
 
-Lets test it:
+Let's test it:
 
 <pre><code class="hljs text">$ git push origin deploy
 Counting objects: 7, done.
@@ -78,7 +80,7 @@ To /home/akoskm/akoskm.github.io
    212fc95..bf21a7f  deploy -> deploy
 </code></pre>
 
-Pushing to our server triggered the `post-receive` hook and the part specific to `deploy` branch.
+Pushing to `origin` triggered the `post-receive` hook and the part specific to `deploy` branch.
 
 Run through this checklist before testing your hook:
 
