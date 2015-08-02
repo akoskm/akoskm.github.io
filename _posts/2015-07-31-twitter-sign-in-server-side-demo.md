@@ -63,7 +63,7 @@ I've set up a little demo project showing these steps in action:
 
 [twitter-sign-in-example](https://github.com/akoskm/twitter-sign-in-example)
 
-If you want to discuss, [leave a comment][6] below or hit me up on [@akoskm](https://twitter.com/akoskm).
+If you want to discuss, [leave a comment][6] or hit me up on [@akoskm](https://twitter.com/akoskm).
 
 [1]: https://github.com/fernandezpablo85/scribe-java/blob/master/src/test/java/org/scribe/examples/TwitterExample.java
 [2]: http://twitter4j.org/en/code-examples.html
