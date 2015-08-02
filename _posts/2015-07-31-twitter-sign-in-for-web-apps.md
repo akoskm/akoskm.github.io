@@ -3,8 +3,6 @@ title: Implementing Twitter Sign-In for Web Apps
 layout: post
 type: post
 ---
-<!--If you already succeed implementing a social sign-in process in Java using popular libraries like [scribe-java](https://github.com/fernandezpablo85/scribe-java) or [twitter4j](https://github.com/yusuke/twitter4j/), then congratulations. But you forgot to report an ambiguity which is present in both libraries.
--->
 In [#560](https://github.com/fernandezpablo85/scribe-java/issues/560) we had a discussion with [@fernandezpablo][3] about the current state of the [scribe-java][4] API. There are couple of examples already for [pin-based](https://dev.twitter.com/oauth/pin-based) authorization, which is fine for desktop apps, but when it comes to web applications, you probably want something else.
 
 With the current API isn't straightforward how to implement a sign-in process which does not require PIN from the user, but uses the "Authorize this app to use your account" page to request access to the user's Twitter profile.
