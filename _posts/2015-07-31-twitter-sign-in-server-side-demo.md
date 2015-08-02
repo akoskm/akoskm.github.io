@@ -20,10 +20,10 @@ Both scribe-java ([TwitterExample.java][1]) and twitter4j ([Code Examples][2], s
 According to [Implementing Sign in with Twitter][5], the workflow for obtaining an access token without PIN is the following:
 
 1. Obtain a request token object, and define a redirect URL. This will be required in 3.
-2. Redirect the user to the authorization URL contained in the request token object received in 1. This URL leads to the "Authorize this app to use your account" page
-3. User clicks Sign In
+2. Redirect the user to the authorization URL contained in the request token received in 1. This URL leads to the "Authorize this app to use your account" page
+3. User clicks "Sign In"
 3. Twitter approves the authorization request and the response is a redirect to the URL supplied in 1. with the following query parameters: **oauth_token**, **oauth_verifier**.
-4. According to [Step 3: Converting the request token to an access token][5], everything you need to obtain a request token are **oauth_token** and **oauth_verifier** received after the previous redirect request. However, both scribe-java and twitter4j expecting you to supply a request token object in order to [obtain an access token](https://github.com/fernandezpablo85/scribe-java/blob/master/src/test/java/org/scribe/examples/TwitterExample.java#L50).
+4. According to [Step 3: Converting the request token to an access token][5], everything you need to obtain a request token is **oauth_token** and **oauth_verifier** from the previous redirect request. However, both scribe-java and twitter4j expecting you to supply a request token object in order to [obtain an access token](https://github.com/fernandezpablo85/scribe-java/blob/master/src/test/java/org/scribe/examples/TwitterExample.java#L50).
 
 The solution is to manually create a new `Token` by using **oauth_token** as token and **oauth_verifier** as secret in:
 
@@ -47,7 +47,7 @@ Token requestToken = new Token(oauthToken, oauthVerifier);
 Verifier verifier = new Verifier(oauthVerifier);
 </code></pre>
 
-Finally, retrieve a new access token from Twitter:
+Finally, retrieve the access token from Twitter:
 <pre><code class="hljs java">
 // POST oauth/access_token
 Token accessToken = service.getAccessToken(requestToken, verifier);
@@ -57,7 +57,7 @@ OAuthRequest request = new OAuthRequest(Verb.GET, PROTECTED_RESOURCE_URL);
 service.signRequest(accessToken, request);
 </code></pre>
 
-This solution is applicable to both scribe-java and twitter4j, because their API is really similar.
+This solution is applicable to both scribe-java and twitter4j, because their API is very similar.
 
 I've set up a little demo project showing these steps in action:
 
