@@ -70,4 +70,4 @@ If you want to discuss, [leave a comment][6] or hit me up on [@akoskm](https://t
 [3]: https://twitter.com/fernandezpablo
 [4]: https://github.com/fernandezpablo85/scribe-java
 [5]: https://dev.twitter.com/web/sign-in/implementing
-[6]: http://localhost:4000/2015/07/31/twitter-sign-in-server-side-demo.html#comments
+[6]: /2015/07/31/twitter-sign-in-server-side-demo.html#comments
