@@ -32,8 +32,7 @@ The solution is to manually create a new `Token` by using **oauth_token** as tok
  * @param token token value. Can't be null.
  * @param secret token secret. Can't be null.
  */
-public Token(String token, String secret)
-{
+public Token(String token, String secret) {
   this(token, secret, null);
 }
 </code></pre>
