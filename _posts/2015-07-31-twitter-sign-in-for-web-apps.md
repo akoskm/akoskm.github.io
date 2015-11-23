@@ -21,7 +21,7 @@ According to [Implementing Sign in with Twitter][5], the workflow for obtaining 
 2. Redirect the user to the authorization URL contained in the request token received in 1. This URL leads to the "Authorize this app to use your account" page
 3. User clicks "Sign In"
 3. Twitter approves the authorization request and the response is a redirect to the URL supplied in 1. with the following query parameters: **oauth_token**, **oauth_verifier**.
-4. According to [Step 3: Converting the request token to an access token][5], everything you need to obtain a request token is **oauth_token** and **oauth_verifier** from the previous redirect request. However, both scribe-java and twitter4j expecting you to supply a request token object in order to [obtain an access token](https://github.com/fernandezpablo85/scribe-java/blob/master/src/test/java/org/scribe/examples/TwitterExample.java#L50).
+4. According to [Step 3: Converting the request token to an access token][5], everything you need to obtain a request token is **oauth_token** and **oauth_verifier** from the previous redirect request. However, both scribe-java and twitter4j expecting you to supply a request token object in order to [obtain an access token](https://github.com/scribejava/scribejava/blob/1.3.6/src/test/java/org/scribe/examples/TwitterExample.java#L51).
 
 The solution is to manually create a new `Token` by using **oauth_token** as token and **oauth_verifier** as secret in:
 
