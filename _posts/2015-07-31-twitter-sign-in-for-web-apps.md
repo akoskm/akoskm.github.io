@@ -6,7 +6,7 @@ type: post
 
 *Updates*
 
-> *2015-11-24:* [scribe-2.0](https://github.com/akoskm/twitter-sign-in-example/tree/scribe-2.0) branch contains the same example with scribe 2.0
+> *2015-11-24:* [scribe-2.0](https://github.com/akoskm/twitter-sign-in-example/tree/scribe-2.0) branch contains the same example using scribe 2.0
 
 In [#560](https://github.com/fernandezpablo85/scribe-java/issues/560) we had a discussion with [@fernandezpablo][3] about the current state of the [scribe-java][4] API. There are couple of examples already for [pin-based](https://dev.twitter.com/oauth/pin-based) authorization, which is fine for desktop apps, but when it comes to web applications, you probably want something else.
 
