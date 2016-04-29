@@ -12,8 +12,6 @@ In [#560](https://github.com/fernandezpablo85/scribe-java/issues/560) we had a d
 
 With the current API isn't straightforward how to implement a sign-in process which does not require PIN from the user, but uses the "Authorize this app to use your account" page to request access to the user's Twitter profile.
 
-![Authorize Twitpic](https://si0.twimg.com/help/1343078567_71751)
-
 Both scribe-java ([TwitterExample.java][1]) and twitter4j ([Code Examples][2], skip to _7. OAuth support_) uses these three steps to obtain a new access token:
 
 1. Obtain a request token object
