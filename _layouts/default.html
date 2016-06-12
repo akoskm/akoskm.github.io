@@ -5,7 +5,8 @@
         <title>
             {{ page.title }}
         </title>
-        <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic' rel='stylesheet' type='text/css'>
+        <!--<link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic' rel='stylesheet' type='text/css'>-->
+        <link href='https://fonts.googleapis.com/css?family=Tienne:400,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="/assets/css/default.css">
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -19,7 +20,8 @@
         </script>
         <style>
           body {
-            font-family: 'Lora', serif;
+            /*font-family: 'Lora', serif;*/
+            font-family: 'Tienne', serif;
             font-size: 22px;
             color: #333;
             background-color: #fff;
@@ -83,10 +85,17 @@
             background-color: #FEFEFE;
           }
 
-          div.main-container span.post-title,
-          div.main-container span.post-title > a {
-            font-size: 1.2em;
+          div.main-container h1 {
+            margin: 0 0 10px 0;
+          }
+
+          div.main-container h1 span.post-title {
+            padding: 0;
             font-weight: 700;
+            font-size: 1.5em;
+          }
+
+          div.main-container span.post-title > a {
             color: #333;
           }
 
@@ -96,7 +105,7 @@
 
           div.main-container ul.posts span.post-title > a {
             font-weight: normal;
-            font-size: 18px;
+            text-decoration: underline;
           }
 
           span.post-date {
@@ -139,17 +148,74 @@
           .table-wrapper {
             overflow: auto;
           }
+
+          img.me {
+            margin: 0px 10px 10px 0px;
+            float: left;
+            border-radius: 6px;
+            width: 196px;
+          }
+
+          div.row-fluid {
+            width: 100%;
+            margin-bottom: 0px;
+          }
+
+          div.cell-one {
+            display: inline-block;
+            vertical-align: top;
+          }
+
+          div.cell-one > p, div.cell-one > ul {
+            margin-top: 0px;
+          }
+
+          div.align {
+            margin: 0 auto;
+            max-width: 1024px;
+          }
+
+          nav.post {
+            display: block;
+            position: fixed;
+            z-index: 99999;
+            background-color: #eaeaea;
+            border: solid 1px #333;
+            border-radius: 25px;
+            text-align: center;
+            height: 30px;
+            width: 30px;
+            margin: 10px;
+            top: 0;
+            left: 0;
+          }
+          nav.post > a {
+            color: #222;
+          }
+
+          div.cell-one3rd {
+            margin: 0;
+            float: left;
+            width: 33.33%;
+          }
+
+          img.image-responsive {
+            vertical-align: middle;
+            display: inline-block;
+          }
+
+          .client-container:before {
+            height: 150px;
+            content: ' ';
+            display: inline-block;
+            vertical-align: middle;
+          }
         </style>
     </head>
     <body>
         <div class="wrapper">
-            {% include header.html %}
             <div class="main-container">
-                <div class="row-fluid">
-                    <div class="span12">
-                        {{ content }}
-                    </div>
-                </div>
+              {{ content }}
             </div>
             {% include footer.html %}
         </div>
