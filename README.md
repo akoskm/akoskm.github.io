@@ -1,2 +1,2 @@
-akoskm.github.io
+akoskm.com
 ================
