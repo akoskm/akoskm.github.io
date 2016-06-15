@@ -3,6 +3,7 @@ title: MongoDB Schemas: Lessons Learned at 10log
 layout: post
 type: post
 ---
+
 Back in 2015, when we started laying down the foundations of [10log.com](https://10log.com) we were pretty new to the whole MongoDB ecosystem. The idea of a schemaless database sounded promising due to the nature of the information we store. We also learned quite a few things!
 
 <!--more-->
