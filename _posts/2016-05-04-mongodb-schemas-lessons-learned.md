@@ -1,5 +1,5 @@
 ---
-title: MongoDB Schemas: Lessons Learned at 10log
+title: MongoDB Schemas&#58; Lessons Learned at 10log
 layout: post
 type: post
 date: 2016-05-04 12:00:00
