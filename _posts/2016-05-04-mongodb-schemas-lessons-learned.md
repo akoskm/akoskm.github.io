@@ -2,11 +2,10 @@
 title: MongoDB Schemas: Lessons Learned at 10log
 layout: post
 type: post
+date: 2016-05-04
 ---
 
 Back in 2015, when we started laying down the foundations of [10log.com](https://10log.com) we were pretty new to the whole MongoDB ecosystem. The idea of a schemaless database sounded promising due to the nature of the information we store. We also learned quite a few things!
-
-<!--more-->
 
 ### Schema design
 We were told that MongoDB is schemaless. It is, in the RDBM sense. Documents in the same collection can have varying sets of fields, with different types for each field.
