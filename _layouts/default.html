@@ -104,6 +104,14 @@
             font-size: 1.5em;
           }
 
+          @media screen and (max-width: 320px) {
+            div.main-container h1 span.post-title {
+              padding: 0;
+              font-weight: 700;
+              font-size: 1em;
+            }
+          }
+
           div.main-container span.post-title > a {
             color: #333;
           }
@@ -120,6 +128,12 @@
           span.post-date {
             display: block;
             font-style: italic;
+          }
+
+          @media screen and (max-width: 800px) {
+            span.post-date {
+              margin-left: 40px;
+            }
           }
 
           /*navigation*/
