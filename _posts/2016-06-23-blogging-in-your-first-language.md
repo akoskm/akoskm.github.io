@@ -24,3 +24,5 @@ What if for somebody it would mean a lot to have things a little bit different. 
 I am sure that there are brilliant minds out there who need just a little help to overcome an obstacle created by a language that is unknown to them.
 
 Can we help to them? Do you create content on your first language? Why? Do you have your audience?
+
+Non-native English speakers, what do you think about blogging in your first language too?
