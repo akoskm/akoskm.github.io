@@ -9,7 +9,7 @@ In 2008 I wrote my [first](http://akoskm.blogspot.rs/2008/08/tha-realy-first-pos
 
 I came to know that some of the Universities in Novi Sad allow people to take the entrance exam in their first language, instead of in Serbian, which is the official language and the language that is used on almost all courses. For a long time I thought that this decision is not particularly useful.
 
-I took my entrance exam in Serbian. I thought that the preparation for that really first exam also serves as a warm-up for what is about to come. I thought that a person who is having difficulties of preparing and exam in a second language will probably fail on a course which is not in his or her first language.
+I took my entrance exam in Serbian. I thought that the preparation for that really first exam also serves as a warm-up for what is about to come. I thought that a person who is having difficulties while preparing and exam in a second language will probably fail on a course which is not in his or her first language.
 
 I guess we judge situations based on our previous experiences and sometimes we forget to consider perspectives that are unknown to us.
 
@@ -19,7 +19,7 @@ My parents helped a lot in achieving this. They gave me a solid base to my educa
 
 There are people out there that do not have the privilege to attend to such courses or the caring parents or the right environment.
 
-What if for somebody it would mean a lot to have things a little bit different. These Universities are giving people with different backgrounds a chance to apply and all my respect goes to them and I was completely wrong. Not just by questioning their strategy but by not trying to reach out to all the people I could, by giving them something useful and informative. I can not recall that I wrote anything on any other language I use, except English.
+What if for somebody it would mean a lot to have things a little bit different. These Universities are giving people with different backgrounds a chance to apply and all my respect goes to them and I was completely wrong. Not just by questioning their strategy but by not trying to reach out to all the people I could, by giving them something useful and informative. Just like I'm doing with my current audience.
 
 I am sure that there are brilliant minds out there who need just a little help to overcome an obstacle created by a language that is unknown to them.
 
