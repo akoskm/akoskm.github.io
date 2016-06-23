@@ -19,7 +19,7 @@ My parents helped a lot in achieving this. They gave me a solid base to my educa
 
 There are people out there that do not have the privilege to attend to such courses or the caring parents or the right environment.
 
-What if for somebody it would mean a lot to have things a little bit different. These Universities are giving people with different backgrounds a chance to apply and all my respect goes to them and I was completely wrong. Not just by questioning their strategy but by not trying to reach out to the people I could, by giving them something useful and informative. I can not recall that I wrote anything on any other language I use, except English.
+What if for somebody it would mean a lot to have things a little bit different. These Universities are giving people with different backgrounds a chance to apply and all my respect goes to them and I was completely wrong. Not just by questioning their strategy but by not trying to reach out to all the people I could, by giving them something useful and informative. I can not recall that I wrote anything on any other language I use, except English.
 
 I am sure that there are brilliant minds out there who need just a little help to overcome an obstacle created by a language that is unknown to them.
 
