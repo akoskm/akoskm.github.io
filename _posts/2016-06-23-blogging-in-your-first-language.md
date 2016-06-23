@@ -1,3 +1,10 @@
+---
+title: Blogging in your first language
+layout: post
+type: post
+date: 2016-06-23 12:00:00
+---
+
 In 2008 I wrote my [first](http://akoskm.blogspot.rs/2008/08/tha-realy-first-post.html) blog post ever, in English. I choose English because I wanted to perfect my writing skills and wanted to reach out to as many people as I can while giving them something useful and informative. These are still between my motives but recently I realized that there might be an audience that I have been ignoring so far.
 
 I came to know that some of the Universities in Novi Sad allow people to take the entrance exam in their first language, instead of in Serbian, which is the official language and the language that is used on almost all courses. For a long time I thought that this decision is not particularly useful.
