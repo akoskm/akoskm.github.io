@@ -1,5 +1,5 @@
 ---
-title: Unit Testing Node.js apps with Stripe API integration
+title: Unit Testing Node.js apps and Stripe API integration
 layout: post
 type: post
 date: 2016-07-01 00:00:01
