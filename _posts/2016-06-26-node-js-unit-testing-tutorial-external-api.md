@@ -2,24 +2,25 @@
 title: Unit Testing Node.js apps with Stripe API integration
 layout: post
 type: post
-date: 2016-06-25 00:00:01
-draft: true
+date: 2016-07-01 00:00:01
 ---
 
 Stripe maintains a handful of [official API libraries](https://stripe.com/docs/libraries/),
-they are straightforward, equipped with simple, language-specific examples so it's really easy
-to integrate it into your own software product.
+they are simple and equipped with language-specific examples so you can easily integrate them
+into your own software product.
 
-Depending on your application a successful payment can have different implications, but you always
-want to make sure that the user gets what he's paid for.
-In the Node-Stripe API world it means that the callback which is executed after the payment behaves
-correctly in various scenarios.
+Depending on your application a successful payment has different implications, but it's always a
+good idea to make sure that the user gets what he's paid for.
+
+In the Node-Stripe API world this means that the callback which is executed after a payment
+has been made behaves correctly in various scenarios. To make sure that it does, let's
+cover it with some unit tests.
 
 _This tutorial is about testing your Stripe driven code, if you're still unfamiliar with stripe
 I suggest you to read the [Node.js Stripe API Reference](https://stripe.com/docs/api/node#intro)._
 
 Let's say we built an application where the users can order hand-made cosmetics through your web-shop.
-This is the module which handles all the Stripe related stuff:
+Here is the module which handles all the Stripe related stuff:
 
 <pre><code class="hljs javascript">
 var stripe = require('stripe')(
@@ -61,46 +62,37 @@ module.exports = {
 });
 </code></pre>
 
-The __stripe.orders.create__ returns an [order](https://stripe.com/docs/api#order_return_object)
+<code>stripe.orders.create</code> returns an [order](https://stripe.com/docs/api#order_return_object)
 object if the call succeeded and err otherwise.
 
 Don't forget that we don't want to test the correctness of the Stripe API itself only the behavior of
-the callback method. We are going to mock the responses from the Stripe API.
-I'm going to use [Sinon.JS](http://sinonjs.org) for this.
+its callback method. We are going to use [Sinon.JS](http://sinonjs.org) to stub the real Stripe API methods
+and return fake responses to our module.
 
-One thing that won't be straightforwards when you start stubbing Stripe methods is that _create_ isn't
-a property of the orders object. That's because
+One thing that won't be obvious when you start stubbing Stripe methods is that _create_ isn't
+a property of the <code>orders</code> object. That's because
 [Orders](https://github.com/stripe/stripe-node/blob/master/lib/resources/Orders.js)
-extends a base class called
+extends
 [StripeResource](https://github.com/stripe/stripe-node/blob/master/lib/StripeResource.js) so the order
 methods are really in <code>orders.__proto__</code>:
 
 <pre><code class="hljs javascript">
-this.sandbox.stub(stripeClient.orders.__proto__, 'create', cb);
+this.sandbox.stub(stripeClient.orders.__proto__, 'create', func);
 </code></pre>
 
 The above stub will prevent the real <code>orders.create</code> from being called
-and will call <code>cb</code> instead. But what <code>cb</code> represents? <code>cb</code> is the callback
-in your module containing the <code>createOrder</code> method:
-<pre><code class="hljs javascript">
-stripe.orders.create({
-  currency: 'usd',
-  items: items,
-  email: email
-}, function(err, order) { // &lt;- this is cb
-  // left for brevity
-}
-</code></pre>
-Let's start by implementing the best-case scenario, when the API executes our callback without errors and with
-a newly created order that contains an id:
+and gives you control over triggering its callback with arbitrary parameters.
+
+Let's start by implementing the best-case scenario, when the Stripe API executes our callback with a newly
+created order that contains only an id and with no errors:
 
 <pre><code class="hljs javascript">
-this.sandbox.stub(stripeClient.orders.__proto__, 'create', function (orderRequest, cb) {
-  cb(null, {id: 123});
+this.sandbox.stub(stripeClient.orders.__proto__, 'create', function (orderRequest, func) {
+  func(null, {id: 123});
 });
 </code></pre>
 
-If we go back to our module we can see what happens in such case:
+Go back to our module we can see what happens in this case:
 
 <pre><code class="hljs javascript">
 if (!order || !order.id) {
@@ -110,11 +102,11 @@ if (!order || !order.id) {
 }
 </code></pre>
 
-Since our order was <code>{id: 123}</code> the callback of <code>createOrder</code> should be called with
-<code>null, order</code>.
+Since our order was <code>{id: 123}</code> the <code>cb</code> callback passed to <code>createOrder</code>
+should be called with <code>null, order</code>.
 
-In order to prove this we'll call <code>module.createOrder</code> in our test suit and see if <code>cb</code> really
-carries the parameters we expect:
+To prove this just call <code>module.createOrder</code> in your favorite test suit and see if the callback
+has the expected parameters:
 
 <pre><code class="hljs javascript">
 stripeConnector.createOrder(request, function (err, order) {
