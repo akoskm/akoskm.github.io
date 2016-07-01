@@ -118,3 +118,5 @@ stripeConnector.createOrder(request, function (err, order) {
 
 For complete code and running tests the git repository:
 [node-stripe-api-testing-tutorial](https://github.com/akoskm/node-stripe-api-testing-tutorial).
+
+Leave a comment below and let me know what you think!
