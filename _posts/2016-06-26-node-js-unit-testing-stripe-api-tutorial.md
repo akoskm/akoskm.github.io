@@ -105,7 +105,7 @@ if (!order || !order.id) {
 Since our order was <code>{id: 123}</code> the <code>cb</code> callback passed to <code>createOrder</code>
 should be called with <code>null, order</code>.
 
-To prove this just call <code>module.createOrder</code> in your favorite test suit and see if the callback
+To prove this just call <code>module.createOrder</code> in your favorite test suite and see if the callback
 has the expected parameters:
 
 <pre><code class="hljs javascript">
