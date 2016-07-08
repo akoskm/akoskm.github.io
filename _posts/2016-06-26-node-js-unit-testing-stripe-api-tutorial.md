@@ -29,34 +29,43 @@ var stripe = require('stripe')(
 
 module.exports = {
 
-  createOrder: function (items, email, cb) {
+  createOrder: function (req, cb) {
+    var items = req.items,
+        email = req.email,
+        errors = [];
+
     // Always validate the user input before handling it to an external API.
-    // If you can detect requests that would fail anyway, you can spare the
+    // If you can detect requests that would fail anyway, you'll spare the
     // cost of the network request before it's even made.
-    if (items === null || items.length < 1) {
-      cb('No items found.', null);
+    if (!items || items.length < 1) {
+      // return cb('No items found.', null);
+      errors.push('No items found.');
     }
 
     // a terrible way to validate an email address
     if (!email) {
-      cb('Email is required.', null);
+      errors.push('Email is required.');
     }
 
-    stripe.orders.create({
-      currency: 'usd',
-      items: items,
-      email: email
-    }, function(err, order) {
-      // stripe response, asynchronously called
-      if (err) {
-        cb('An error occurred.', null);
-      } else {
-        if (!order || !order.id) {
-          cb('Unknown error occurred.', null);
+    if (errors.length > 0) {
+      cb(errors, null);
+    } else {
+      stripe.orders.create({
+        currency: 'usd',
+        items: items,
+        email: email
+      }, function(err, order) {
+        // stripe response, asynchronously called
+        if (err) {
+          cb(err, null);
         } else {
-          cb(null, order);
+          if (!order || !order.id) {
+            cb('Unknown error occurred.', null);
+          } else {
+            cb(null, order);
+          }
         }
-      }
+      });
     }
   }
 });
