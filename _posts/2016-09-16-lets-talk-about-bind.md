@@ -1,94 +1,109 @@
 ---
-title: Lets talk about bind
+title: Let's talk about bind
 layout: post
 type: post
 date: 2016-09-16 00:00:01
 ---
 
-A few days ago I was asked if I could explain the difference between apply call and bind.
-Both methods used to call functions. They're expecting _this_ as their first argument, and if you ever read this clever comparison on [stackoverflow](http://stackoverflow.com/questions/1986896/what-is-the-difference-between-call-and-apply#comment14359320_1986896):
+A few days ago I was asked if I could tell the difference between <code>apply</code>, <code>call</code> and <code>bind</code>.
+Both <code>apply</code> and <code>call</code> used to call functions and there are dozens of posts explaining how they do that.
+They're expecting <code>this</code> as their first argument, and if you ever read this clever comparison on [Stack Overflow](http://stackoverflow.com/questions/1986896/what-is-the-difference-between-call-and-apply#comment14359320_1986896):
 
 > Think of a in apply for array of args and c in call for columns of args.
 
-you'll hardly ever forgets what's the only real difference.
-To make things clear: apply expects the arguments after this in array-like form while call expects them individually.
+you'll hardly ever forget what's the only real difference.
+<code>apply</code> expects the arguments after <code>this</code> in array-like form while <code>call</code> expects them individually.
 
-The only thing I knew about bind is that it annoyed the hell out of me.
-If you did any React programming you know that there is [No Autobinding](https://facebook.github.io/react/docs/reusable-components.html#no-autobinding)
-and you have to explicitly use .bind(this) on every custom function of your React component (or as an alternative you can use [=> functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)).
-
-So I was using _bind_ regularly, I know why I'm using it, but I had no idea how it compares to apply and call.
-Which obviously demands a research and some examples! Here is what I found out:
+Because of [No Autobinding](https://facebook.github.io/react/docs/reusable-components.html#no-autobinding) in React
+I'm using _bind_ regularly, but I still had no idea how it compared to <code>apply</code> or <code>call</code>, so here are my findings:
 
 ### Similarities
 
-1. All three function accept this as their first argument. _bind_ is more _call_-like meaning that it expects the arguments individually.
-This doesn't mean that you can't pass an array to it but the result might surprise you, more about this later.
+1. All three functions accept <code>this</code> as their first argument. <code>bind</code> is more
+<code>call</code>-like meaning that it expects the arguments to be passed individually.
 
 ### Differences
 
 1. <code>apply</code> and <code>call</code> used to invoke functions, <code>bind</code> _creates_ a new function.
+When you invoke this function it will has its <code>this</code> keyword set to the value you provided as first argument.
 
 <pre><code class="hljs javascript">var cat = {
   name: 'Milu',
-  meow: function (greeting) {
+  greet: function (greeting) {
     return greeting + ', ' + this.name;
   }
 };
 
-cat.meow.apply(cat, ['Hi']); // returns Hi, Milu
-cat.meow.call(cat, 'Hello'); // returns Hello, Milu
-var meowBind = cat.meow.bind(cat, 'Hey');   // returns a function
-meowBind() // returns Hey, Milu
+cat.greet.apply(cat, ['Hi']); // returns Hi, Milu
+cat.greet.call(cat, 'Hello'); // returns Hello, Milu
+var greetBound = cat.greet.bind(cat, 'Hey');   // returns a function
+greetBound() // returns Hey, Milu
 </code></pre>
 
-These things can be found in the documentation so now let's do something what's isn't there.
+These things can be found in the documentation so let's do something what isn't there.
 
-### Invocation with a function instead of an object
+### Invocation with Function objects
 
-Depending on the implementation of the function which is binded, it may have interesting results.
-Since functions possess a name property the following call will result in:
+Below is a function `purr`, which in fact is a <code>Function</code> object. Every <code>Function</code> object has a
+<code>name</code> property so the following call will result in:
 <pre><code class="hljs javascript">function purr() {
   return 'purrs at a frequency of 20 to 30 vibrations per second';
 }
 
-cat.meow.apply(purr, ['Hey']); // returns Hey, purr
+var greetBound = cat.greet.bind(purr, ['Hey']);
+greetBound(); // returns Hey, purr
 </code></pre>
 
 The same thing will happen when you call <code>apply</code> or <code>call</code> while providing <code>purr</code> as first argument.
 
 ### Invocation with an array of arguments
 
-Remember how <code>apply</code> works, it takes arguments in array-like format:
+Passing an array of arguments to <code>bind</code> then calling the bound function will have the same effect like
+passing it to <code>call</code>:
 
 <pre><code>var cat = {
   name: 'Milu',
-  meow: function (greeting) {
+  greet: function (greeting) {
     return greeting + ', ' + this.name;
   }
 };
 
-cat.meow.apply(cat, ['Hi', 'Hello']); // returns Hi, Milu
+cat.greet.call(cat, ['Hi', 'Hello']); // returns Hi,Hello, Milu
+var greetBound = cat.greet.bind(cat, ['Hi', 'Hello']);
+greetBound(); // returns Hi,Hello, Milu
 </code></pre>
 
-Since <code>meow</code> takes only one arguments, the rest of the array is ignored.
-If it would take more parameters it would look like:
-<pre><code>meow: function (greeting, greeting2) {
-  return greeting + ', ' + greeting2 + ', ' + this.name;
-}</code></pre>
-and output would be <code>Hi, Hello, Milu</code>.
+<code>bind</code> converts its second argument to string before passing it to the bound function.
 
-Even if <code>bind</code> accepts an array as its second argument it
-handles that array completely different from <code>apply</code>:
+### When to use bind
 
-<pre><code>var cat = {
-  name: 'Milu',
-  meow: function (greeting) {
-    return greeting + ', ' + this.name;
-  }
+Bind is really just a <code>call</code> except that the invocation of the bound function can be delayed.
+This reminds us to callbacks functions. Sadly, most of the examples I encountered did use <code>bind</code>
+with callback functions but they didn't had the most thoughtful design,
+which justified the usage of <code>bind</code>:
+
+<pre><code>var Widget = function () {
+  this.counter = 0;
+  $('button').on('click', function () {
+    this.counter += 1;
+    $('span').text(this.counter);
+  }.bind(this));
 };
-
-cat.meow.bind(cat, ['Hi', 'Hello']); // returns Hi,Hello, Milu
 </code></pre>
 
-<code>bind</code> converst the array with <code>toString</code> then passes it to the newly created function.
+A simpler widget:
+
+<pre><code>var Widget = function () {
+  var counter = 0;
+  $('button').on('click', function () {
+    counter += 1;
+    $('span').text(counter);
+  });
+};
+</code></pre>
+
+Browsing through dozens of examples I realized that <code>bind</code> is more extensively used where the code
+has conventional object-oriented design - which I've been avoiding altogether when it comes to JavaScript, and it pretty
+much explains why I had no idea how it compares to <code>call</code> and <code>apply</code>.
+
+Do you have a specific scenario where <code>bind</code> is inevitable, or more approriate? Let me know in the comments!
