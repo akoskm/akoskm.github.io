@@ -15,7 +15,7 @@ you'll hardly ever forget what's the only real difference.
 <code>apply</code> expects the arguments after <code>this</code> in array-like form while <code>call</code> expects them individually.
 
 Because of [No Autobinding](https://facebook.github.io/react/docs/reusable-components.html#no-autobinding) in React
-I'm using _bind_ regularly, but I still had no idea how it compared to <code>apply</code> or <code>call</code>, so here are my findings:
+I used <code>bind</code> regularly, but I still had no idea how it compared to <code>apply</code> or <code>call</code>, so here are my findings:
 
 ### Similarities
 
