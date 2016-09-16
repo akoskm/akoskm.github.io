@@ -102,8 +102,8 @@ A simpler widget:
 };
 </code></pre>
 
-Browsing through dozens of examples I realized that <code>bind</code> is more extensively used where the code
+Browsing through dozens of examples I saw that <code>bind</code> is more extensively used where the code
 has conventional object-oriented design - which I've been avoiding altogether when it comes to JavaScript, and it pretty
 much explains why I had no idea how it compares to <code>call</code> and <code>apply</code>.
 
-Do you have a specific scenario where <code>bind</code> is inevitable, or more approriate? Let me know in the comments!
+Do you have a specific scenario where <code>bind</code> is inevitable, or more appropriate? Let me know in the comments!
