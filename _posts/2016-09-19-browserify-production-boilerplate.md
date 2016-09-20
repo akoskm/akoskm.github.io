@@ -33,8 +33,8 @@ was also a requirement. So the two main goals were:
 
 ### Debugging separate files
 
-This was failry easy, thanks to the built-in flag of [browserify](https://github.com/substack/node-browserify#usage).
-A quick googling might suggest that you could do it through minifyify.
+This was fairly easy, thanks to the built-in flag of [browserify](https://github.com/substack/node-browserify#usage).
+A quick googling might suggest that you could do it through [minifyify](https://github.com/ben-ng/minifyify).
 But the source maps won't behave as you would expect and what could be easier than:
 
 <pre>
@@ -54,11 +54,11 @@ made the original source files debuggable, separately, without any additional pl
 
 ### Production build
 
-The final script is produced by [minifyify](https://github.com/ben-ng/minifyify) (which internally uses
+The final script is produced by minifyify (which internally uses
 [uglify-js](https://github.com/mishoo/UglifyJS2)), because it creates smaller bundles then uglify-js itself.
 The final bundle was 811 KB with uglify-js while with minifyify only 596 KB.
 
-The basic command for doing a minifyify-ed build looks like:
+The command for doing a minifyify-ed build looks like:
 
 <pre><code class="hljs text">browserify src/blueprint3d.js -p [minifyify --no-map] > example/js/blueprint3d.js
 </code></pre>
