@@ -2,12 +2,12 @@
 title: Browserify for development and production
 layout: post
 type: post
-date: 2016-09-18 00:00:01
+date: 2016-09-20 00:00:01
 ---
 
 Realtime Raytracer, the acoustical design tool, is now in alpha! Check out the demo
 [here](http://bp3dbt2d-env.us-east-1.elasticbeanstalk.com) and the promo video
-[here](http://bp3dbt2d-env.us-east-1.elasticbeanstalk.com).
+[here](https://www.youtube.com/watch?v=cBA91hA2NEw).
 
 One of the final steps before the alpha release was to improve the existing npm scripts to
 produce files that are easier to debug and to create a compressed bundle which will be served to the client.
