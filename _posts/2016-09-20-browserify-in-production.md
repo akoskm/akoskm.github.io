@@ -79,3 +79,5 @@ from [uglify-js](https://github.com/mishoo/UglifyJS2#mangler-options).
 
 If you would like to experiment further, there is a minimalistic application which uses these
 scripts to generate development and production bundles: [browserify-example](https://github.com/akoskm/browserify-example).
+
+Is there a better way to do this? Do you use something else? Feel free to leave a comment below!
