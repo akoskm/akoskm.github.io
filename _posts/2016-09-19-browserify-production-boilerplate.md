@@ -6,10 +6,11 @@ date: 2016-09-18 00:00:01
 ---
 
 Realtime Raytracer, the acoustical design tool, is now in alpha! Check out the demo
-[here](http://bp3dbt2d-env.us-east-1.elasticbeanstalk.com) or
-see the promo video [here](http://bp3dbt2d-env.us-east-1.elasticbeanstalk.com). One of the final steps before
-the alpha release was to improve the existing npm scripts to produce files that are easier to debug and to create
-a compressed bundle which will be served to the client.
+[here](http://bp3dbt2d-env.us-east-1.elasticbeanstalk.com) and the promo video
+[here](http://bp3dbt2d-env.us-east-1.elasticbeanstalk.com).
+
+One of the final steps before the alpha release was to improve the existing npm scripts to
+produce files that are easier to debug and to create a compressed bundle which will be served to the client.
 
 ### blueprint3d scripts
 
@@ -32,9 +33,9 @@ was also a requirement. So the two main goals were:
 
 ### Debugging separate files
 
-This was pretty easy to solve thanks to the built-in flag of [browserify](https://github.com/substack/node-browserify#usage).
+This was failry easy, thanks to the built-in flag of [browserify](https://github.com/substack/node-browserify#usage).
 A quick googling might suggest that you could do it through minifyify.
-But the source maps won't behave as you would expect and it hardly can be simpler than:
+But the source maps won't behave as you would expect and what could be easier than:
 
 <pre>
  --debug -d  Enable source maps that allow you to debug your files
@@ -49,7 +50,7 @@ Adding this to the existing npm script:
 }
 </code></pre>
 
-made the original source files debuggable, separately, without any additional plugins.
+made the original source files debuggable, separately, without any additional plugin.
 
 ### Production build
 
@@ -59,7 +60,7 @@ The final bundle was 811 KB with uglify-js while with minifyify only 596 KB.
 
 The basic command for doing a minifyify-ed build looks like:
 
-<pre><code>browserify src/blueprint3d.js -p [minifyify --no-map] > example/js/blueprint3d.js
+<pre><code class="hljs text">browserify src/blueprint3d.js -p [minifyify --no-map] > example/js/blueprint3d.js
 </code></pre>
 
 and here is the final set of scripts that is currently in use for production and development:
@@ -71,7 +72,7 @@ and here is the final set of scripts that is currently in use for production and
 
 If you want mangling, that's possible too. Specify any mangling options after <code>--mangle</code>:
 
-<pre><code>browserify src/blueprint3d.js -p [minifyify --no-map --uglify [ --mangle [ 'toplevel' ] ] ] > example/js/blueprint3d.js
+<pre><code class="hljs text">browserify src/blueprint3d.js -p [minifyify --no-map --uglify [ --mangle [ 'toplevel' ] ] ] > example/js/blueprint3d.js
 </code></pre>
 
 from [uglify-js](https://github.com/mishoo/UglifyJS2#mangler-options).
