@@ -1,63 +1,40 @@
 ---
-title: Browserify Boilerplate
+title: Browserify for development and production
 layout: post
 type: post
 date: 2016-09-18 00:00:01
 ---
 
-Chances that you can set up a project from scratch and use whatever technologies
-you're familiar with doesn't happen every day. Sometimes you just have to work with what you've got.
-It's been a while since we started working on a project that is based on [blueprint3d](https://github.com/furnishup/blueprint3d) -
-an open source project for designing interior spaces such as homes or apartments.
-If you didn't hear about it yet, check out their demo:
-[http://furnishup.github.io/blueprint3d/example/](http://furnishup.github.io/blueprint3d/example/)!
+Realtime Raytracer, the acoustical design tool, is now in alpha! Check out the demo
+[here](http://bp3dbt2d-env.us-east-1.elasticbeanstalk.com) or
+see the promo video [here](http://bp3dbt2d-env.us-east-1.elasticbeanstalk.com). One of the final steps before
+the alpha release was to improve the existing npm scripts to produce files that are easier to debug and to create
+a compressed bundle which will be served to the client.
 
-### Initial setup
+### blueprint3d scripts
 
-blueprint3d, being an open source project, contains a single npm script which builds the application without
-any further minification or obfuscation, it's pretty simple:
+The designer is based on [blueprint3d](https://github.com/furnishup/blueprint3d).
+In the beginning <code>package.json</code> contained only a single npm script which built the application without
+any further minification or obfuscation:
 
 <pre><code>"scripts": {
   "build": "browserify src/blueprint3d.js > example/js/blueprint3d.js --verbose"
 }</code></pre>
 
-### Goals
+Because the previous command dumped everything into a single file, it was a bit uncomfortable for
+debugging, especially when the application began to grow.
 
-The previous command dumps everything into a single file, which is a bit uncomfortable for
-debugging. You can't just jump to specific line in a specific file since everything is contained in
-<code>blueprint3d.js</code>. So we wanted somehow to make debugging easier while having a compressed,
-if possible obfuscated, final file in production.
+Speaking about size, trimming out the unnecessary characters from the source before delivering it to the client
+was also a requirement. So the two main goals were:
 
-### Mistake 1 - not checking what you're existing tool is capable of
+* to have the ability of debugging separate files
+* deliver a compressed, if possible 'uglified', final file to the client
 
-Browserify + minify + uglify, that's
-how we came to [minifyify](https://www.npmjs.com/package/minifyify). Thanks to minifyify's simplistic github page
-the command what we needed was right there, at least we thought:
+### Debugging separate files
 
-<pre><code>$ browserify entry.js -d -p [minifyify --map bundle.js.map --output bundle.js.map --uglify [ --compress [ --dead_code--comparisons 0 ] ] ] > bundle.js</code></pre>
-
-Sourcemaps: checked, uglify: checked. All set, let's give it a try!
-We indeed could open individual files for debugging, only the debugger wasn't stepping over the source as we expected.
-
-> If you are currently using uglifyify and realized that your sourcemap is behaving strangely, you're not alone. 
-
-This is one of the [advantages of minifyify](https://github.com/ben-ng/minifyify#advantages) and we weren't using uglifyify
-at all.
-
-### Mistake 2 - instead of rethinking your approach digging deeper
-
-All right, so there was a tool uglifyify which was mentioned earlier so we went straight with uglifyify.
-It behaved pretty much the same like minifyify did. At this point we had no choices then to browse through minifyify
-issues and try to figure out if someone had the same problem.
-
-Reading [this](https://github.com/ben-ng/minifyify/issues/64#issuecomment-54495037) comment we realized that
-minifyify was obviously made for production and we're thinking in the wrong direction.
-If minifyify is meant for production and my problem is with having to debug everything inside a single file,
-then the problem is probably with browserify?
-
-### -d
-
-[Browserify usage](https://github.com/substack/node-browserify#usage):
+This was pretty easy to solve thanks to the built-in flag of [browserify](https://github.com/substack/node-browserify#usage).
+A quick googling might suggest that you could do it through minifyify.
+But the source maps won't behave as you would expect and it hardly can be simpler than:
 
 <pre>
  --debug -d  Enable source maps that allow you to debug your files
@@ -65,24 +42,39 @@ then the problem is probably with browserify?
              separately.
 </pre>
 
-Adding this single flag to the existing npm script:
+Adding this to the existing npm script:
 
 <pre><code>"scripts": {
   "build": "browserify -d src/blueprint3d.js > example/js/blueprint3d.js --verbose"
 }
 </code></pre>
 
-made the original source files debuggable, without any additional plugin.
+made the original source files debuggable, separately, without any additional plugins.
 
 ### Production build
 
-Here is how our production script looked like:
+The final script is produced by [minifyify](https://github.com/ben-ng/minifyify) (which internally uses
+[uglify-js](https://github.com/mishoo/UglifyJS2)), because it creates smaller bundles then uglify-js itself.
+The final bundle was 811 KB with uglify-js while with minifyify only 596 KB.
+
+The basic command for doing a minifyify-ed build looks like:
+
+<pre><code>browserify src/blueprint3d.js -p [minifyify --no-map] > example/js/blueprint3d.js
+</code></pre>
+
+and here is the final set of scripts that is currently in use for production and development:
 
 <pre><code>"scripts": {
-  "build": "browserify -d src/blueprint3d.js > example/js/blueprint3d.js --verbose"
-  "production": "browserify src/blueprint3d.js -p [minifyify --no-map] > example/js/blueprint3d.js"
+  "dev": "browserify -d src/blueprint3d.js > example/js/blueprint3d.js --verbose"
+  "prod": "browserify src/blueprint3d.js -p [minifyify --no-map] > example/js/blueprint3d.js"
 }</code></pre>
 
-In the end we went with minifyify, seems that the [2nd advantage](https://github.com/ben-ng/minifyify#advantages)
-of minifyify about creating Smaller Bundles then uglify-js itself seems to be true. With uglify-js our final bundle
-was 811 KB while with minifyify only 596 KB.
+If you want mangling, that's possible too. Specify any mangling options after <code>--mangle</code>:
+
+<pre><code>browserify src/blueprint3d.js -p [minifyify --no-map --uglify [ --mangle [ 'toplevel' ] ] ] > example/js/blueprint3d.js
+</code></pre>
+
+from [uglify-js](https://github.com/mishoo/UglifyJS2#mangler-options).
+
+If you would like to experiment further, there is a minimalistic application which uses these
+scripts to generate development and production bundles: [browserify-example](https://github.com/akoskm/browserify-example).
