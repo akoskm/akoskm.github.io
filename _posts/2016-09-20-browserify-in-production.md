@@ -14,7 +14,7 @@ produce files that are easier to debug and to create a compressed bundle which w
 
 ### blueprint3d scripts
 
-The designer is based on [blueprint3d](https://github.com/furnishup/blueprint3d).
+The Realtime Raytracer is based on [blueprint3d](https://github.com/furnishup/blueprint3d).
 In the beginning <code>package.json</code> contained only a single npm script which built the application without
 any further minification or obfuscation:
 
