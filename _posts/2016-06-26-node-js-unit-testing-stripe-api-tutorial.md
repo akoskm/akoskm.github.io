@@ -5,6 +5,8 @@ type: post
 date: 2016-07-01 00:00:01
 ---
 
+_Wohoo! This tutorial appeared in <a href='http://nodeweekly.com/issues/145'>node weekly</a>._
+
 Stripe maintains a handful of [official API libraries](https://stripe.com/docs/libraries/),
 they are simple and equipped with language-specific examples so you can easily integrate them
 into your own software product.
