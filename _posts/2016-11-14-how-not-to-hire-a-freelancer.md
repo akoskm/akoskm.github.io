@@ -5,6 +5,8 @@ type: post
 date: 2016-11-14 00:00:01
 ---
 
+_This post appeared in [42hire.com](https://42hire.com/how-not-to-hire-a-freelancer-d61c26d8ef70#.ucyontt2j)_
+
 Being in direct contact with my clients definitely has its benefits. It helps us to build the mutual trust that is necessary in remote work environments. I enjoy transparent work and tend to initiate the next steps. Sometimes I’m overly excited about a project and missing the obvious signs that our professional relationship probably won’t last long. Recently I had a disturbing conference call, which could have been easily avoided, if I pay attention to the these warning signs. If you’re about to hire a freelancer for your next awesome project, don’t contact me if:
 
 ### 1. Your friend contacts me
