@@ -3,6 +3,7 @@ title: How not to hire a freelancer
 layout: post
 type: post
 date: 2016-11-14 00:00:01
+draft: true
 ---
 
 _This post appeared in [42hire.com](https://42hire.com/how-not-to-hire-a-freelancer-d61c26d8ef70#.ucyontt2j)._
