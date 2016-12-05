@@ -1,5 +1,5 @@
 ---
-title: "Redis + Node.js: Introduction to Caching"
+title: "Redis + Node.js: Introduction to Caching - @RisingStack"
 layout: post
 type: 3rdparty
 date: 2016-11-15 00:00:01
