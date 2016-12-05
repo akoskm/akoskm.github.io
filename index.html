@@ -46,9 +46,28 @@ title: Akos Kemives
   <div class="align">
     <div class="grid">
       <div class="col-1">
+        <h3>Published by others</h3>
+        <ul class="posts">
+          {% for post in site.posts %}
+              {% if post.draft == false and post.type == "3rdparty" %}
+                <li>
+                    <span>{{ post.date | date_to_string }}</span>
+                    <span class="seperator"> &rsaquo; </span>
+                    <span class="post-title">
+                        <a href="{{ post.redirect }}">{{ post.title }}</a>
+                    </span>
+                </li>
+              {% endif %}
+            {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="col-1">
+        <h3>Published by me</h3>
         <ul class="posts">
             {% for post in site.posts %}
-              {% if post.draft == false %}
+              {% if post.draft == false and post.type != "3rdparty"%}
                 <li>
                     <span>{{ post.date | date_to_string }}</span>
                     <span class="seperator"> &rsaquo; </span>
