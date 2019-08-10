@@ -9,14 +9,14 @@ layout: default
   </a>
 </nav>
 <p>
-    <span class="post-date">{{ page.date | date_to_string }}</span>
-    <h1>
-      <span class="post-title">
-          {% if page.title %}
-              <a href="{{ root_url }}{{ post.url }}">{{ page.title }}</a>
-          {% endif %}
-      </span>
-    </h1>
+  <h1>
+    <span class="post-title">
+      {% if page.title %}
+      <a href="{{ root_url }}{{ post.url }}">{{ page.title }}</a>
+      {% endif %}
+    </span>
+  </h1>
+  <span class="post-date">{{ page.date | date_to_string }}</span>
 </p>
 <span>
     <a href="{{ root_url }}{{ post.url }}#disqus_thread"></a>
