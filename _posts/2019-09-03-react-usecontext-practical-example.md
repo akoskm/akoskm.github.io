@@ -1,4 +1,8 @@
-# Use React Context to DRY up your architecture
+---
+title: Use React Context to DRY up your architecture
+layout: post
+type: post
+---
 
 ## aka. How to reduce plumbing in React apps?
 
