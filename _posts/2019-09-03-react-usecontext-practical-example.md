@@ -44,7 +44,7 @@ Creating a context is as simple as:
 
 and to subscribe to it:
 
-    const value = React.useContext(TableContext);
+<script src="https://gist.github.com/akoskm/71c234a90dc39823eacd3bb6426164e4.js?file=subscribe-to-context.jsx "></script>
 
 Use `<TableContext.Provider>` to set the `value` of the context. We wrap both `Table` and `Sidebar` components with this component because we want both of them to update when the context value changes:
 
