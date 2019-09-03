@@ -1,6 +1,6 @@
 # React.useContext to reduce plumbing
 
-Plumbing in programming is something you have to do to make things work. It's sometimes repetitive or looks like a boilerplate you would usually remove. It's also crucial because it connects different layers of the application. In this post, I'll show you a typical example of plumbing inside a React application.
+Plumbing in programming is something you have to do to make things work. It's sometimes repetitive or looks like a boilerplate you would usually remove. It's also crucial because it connects different layers of the application. In this post, I'll show you a typical example of plumbing inside a React application and a way to fix it.
 
 Let's take a look at a pretty standard, table-sidebar layout:
 
@@ -11,7 +11,7 @@ Let's take a look at a pretty standard, table-sidebar layout:
     />
     <Sidebar product={product} />
 
-You can find the complete project here: https://codesandbox.io/embed/table-sidebar-layout-with-plumbing-xk591?fontsize=14, without using hooks. (this is not the recommended approach)
+You can find the complete project here: https://codesandbox.io/embed/table-sidebar-layout-with-plumbing-xk591?fontsize=14, without using hooks (this is not the recommended approach).
 
 The table contains a list of products. When one of them, is clicked, the sidebar shows the details of the product and highlights the row clicked. Both `Table` and `Sidebar` need to know about the selected `product`.
 
@@ -105,3 +105,15 @@ We see the real benefit of `useContext` as our application grows. Earlier we pre
     );
 
 See this code in action here: https://codesandbox.io/embed/table-sidebar-layout-with-usecontext-os7wr?fontsize=14
+
+Another benefit of not passing down the same object to multiple components is avoiding repeated PropTypes declarations. Googling for "react PropTypes repeated" this looks like a problem React developers encounter. With the above approach, there is one place left to define the shape of the product:
+
+    const TableContext = React.createContext();
+    TableContext.Provider.propTypes = {
+      value: PropTypes.shape({
+        id: PropTypes.string,
+        name: PropTypes.string,
+        sku: PropTypes.string,
+      }),
+    }
+    export default TableContext;
