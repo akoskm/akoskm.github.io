@@ -13,52 +13,21 @@ Let's take a look at a pretty standard, table-sidebar layout:
 
 <script src="https://gist.github.com/akoskm/71c234a90dc39823eacd3bb6426164e4.js?file=index.jsx "></script>
 
-    <Table
-      selectedProduct={product}
-      products={products}
-      onProductChange={handleProductChange}
-    />
-    <Sidebar product={product} />
-
-You can find the complete project here: https://codesandbox.io/embed/table-sidebar-layout-with-plumbing-xk591?fontsize=14, without using hooks (this is not the recommended approach).
+You can find the complete project [here](https://codesandbox.io/embed/table-sidebar-layout-with-plumbing-xk591?fontsize=14), without using hooks (this is not the recommended approach).
 
 The table contains a list of products. When one of them, is clicked, the sidebar shows the details of the product and highlights the row clicked. Both `Table` and `Sidebar` need to know about the selected `product`.
 
 `Table` needs to highlight the row:
 
-    const Table = ({ selectedProduct, products, onProductChange }) => (
-      <tbody>
-        {products.map(currProduct => (
-          <TableRow
-            selected={isSelected(currProduct, selectedProduct)}
-            key={currProduct.id}
-            product={currProduct}
-            onProductChange={onProductChange}
-          />
-        ))}
-      </tbody>
-    );
-    export default Table;
+<script src="https://gist.github.com/akoskm/71c234a90dc39823eacd3bb6426164e4.js?file=table.jsx "></script>
 
 and `Sidebar` displays additional information about the selected product:
 
-    const Sidebar = ({ product }) => (
-      <div className="sidebar">
-        <h3>{product.name}</h3>
-        <p>ID: {product.id}</p>
-        <p>SKU: {product.sku}</p>
-      </div>
-    );
-    export default Sidebar;
+<script src="https://gist.github.com/akoskm/71c234a90dc39823eacd3bb6426164e4.js?file=sidebar.jsx "></script>
 
 Later we decide to extend the sidebar with some sections:
 
-    const Sidebar = ({ product }) => (
-      <div className="sidebar">
-        <DetailsPanel product={product} />
-        <DimensionsPanel product={product} />
-      </div>
-    );
+<script src="https://gist.github.com/akoskm/71c234a90dc39823eacd3bb6426164e4.js?file=sidebar-v2.jsx "></script>
 
 As the application grows, we create wrapper components like `Sidebar`. These components don't immediately use `product`, only pass it down to child components.
 
@@ -71,8 +40,7 @@ The great thing about Contexts is that the component subscribed to it automatica
 
 Creating a context is as simple as:
 
-    const TableContext = React.createContext();
-    export default TableContext;
+<script src="https://gist.github.com/akoskm/71c234a90dc39823eacd3bb6426164e4.js?file=table-context.jsx "></script>
 
 and to subscribe to it:
 
@@ -80,52 +48,22 @@ and to subscribe to it:
 
 Use `<TableContext.Provider>` to set the `value` of the context. We wrap both `Table` and `Sidebar` components with this component because we want both of them to update when the context value changes:
 
-    <TableContext.Provider value={product}>
-      <Table
-        products={products}
-        onProductChange={handleProductChange}
-      />
-      <Sidebar />
-    </TableContext.Provider>
+<script src="https://gist.github.com/akoskm/71c234a90dc39823eacd3bb6426164e4.js?file=index-new.jsx "></script>
 
 Now instead of passing the selected product to the Sidebar component, we set it as the current value of `<TableContext.Provider>`. Finally, we subscribe `Sidebar` to context updates:
 
-    const Sidebar = () => {
-      const product = React.useContext(TableContext);
-
-      return (
-        <>
-          <h3>{product.name}</h3>
-          <p>ID: {product.id}</p>
-          <p>SKU: {product.sku}</p>
-        </>
-      );
-    }
-    export default Sidebar;
+<script src="https://gist.github.com/akoskm/71c234a90dc39823eacd3bb6426164e4.js?file=sidebar-new.jsx "></script>
 
 The use of context allowed us to remove the product prop from the `Sidebar` component.
 We see the real benefit of `useContext` as our application grows. Earlier we presented how the `Sidebar` would look like after some development and how different Sidebar panels would need a reference to the current product. With the use of React.useContext passing down this selection through multiple layers of components is not required anymore. We subscribe to product updates with each panel as we did above with the `Sidebar` and this simplifies the component:
 
-    const Sidebar = () => (
-      <div className="sidebar">
-        <DetailsPanel />
-        <DimensionsPanel />
-      </div>
-    );
+<script src="https://gist.github.com/akoskm/71c234a90dc39823eacd3bb6426164e4.js?file=sidebar-v2-new.jsx "></script>
 
-See this code in action here: https://codesandbox.io/embed/table-sidebar-layout-with-usecontext-os7wr?fontsize=14
+See this code in action [here](https://codesandbox.io/embed/table-sidebar-layout-with-usecontext-os7wr?fontsize=14).
 
 Another benefit of not passing down the same object to multiple components is avoiding repeated PropTypes declarations. Googling for "react PropTypes repeated" this looks like a problem React developers encounter. With the above approach, there is one place left to define the shape of the product:
 
-    const TableContext = React.createContext();
-    TableContext.Provider.propTypes = {
-      value: PropTypes.shape({
-        id: PropTypes.string,
-        name: PropTypes.string,
-        sku: PropTypes.string,
-      }),
-    }
-    export default TableContext;
+<script src="https://gist.github.com/akoskm/71c234a90dc39823eacd3bb6426164e4.js?file=table-context-proptypes.jsx "></script>
 
 Did you find React Context useful in some other scenarios? Let me hear your story in the comment section below!
 
