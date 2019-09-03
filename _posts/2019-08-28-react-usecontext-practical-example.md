@@ -1,4 +1,6 @@
-# React.useContext to reduce plumbing
+# Use React Context to DRY up your architecture
+
+## aka. How to reduce plumbing in React apps?
 
 Plumbing in programming is something you have to do to make things work. It's sometimes repetitive or looks like a boilerplate you would usually remove. It's also crucial because it connects different layers of the application. In this post, I'll show you a typical example of plumbing inside a React application and a way to fix it.
 
