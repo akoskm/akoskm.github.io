@@ -11,6 +11,8 @@ Plumbing in programming is something you have to do to make things work. It's so
 
 Let's take a look at a pretty standard, table-sidebar layout:
 
+<script src="https://gist.github.com/akoskm/71c234a90dc39823eacd3bb6426164e4.js?file=index.jsx "></script>
+
     <Table
       selectedProduct={product}
       products={products}
