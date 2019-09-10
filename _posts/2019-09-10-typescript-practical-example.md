@@ -134,7 +134,7 @@ export type Product = {
 
 Applying it to parameters is done in the fashion on `variable:type`. Don't forget to rename the files where you're introducing types to ts or tsx, from js or jsx:
 
-https://imgur.com/OKZ63OX
+![typescript into ts or tsx](https://i.imgur.com/OKZ63OX.png)
 
 Now that we have the Product type we can replace the propTypes of the Table component.
 
@@ -148,7 +148,7 @@ type TableProps = {
 
 TypeScript also makes your editor smarter by giving cloues about where you could improve your code:
 
-![type suggestion](https://imgur.com/9ALoIYW)
+![type suggestion](https://i.imgur.com/9ALoIYW.png)
 
 Finally our Table component looks like this:
 
@@ -259,7 +259,7 @@ interface TableRowProps extends ProductChangeListener {
 
 After update the `TableRowProps` accordingly the editor immeditelly warns us about an error we made:
 
-![type error](https://imgur.com/NwzlVsD)
+![type error](https://i.imgur.com/NwzlVsD.png)
 
 We defined our interface method to accept MouseEvent and not Product. To correct definition simply change `MouseEvent` to `Product` in the definition of your interface:
 
