@@ -134,7 +134,7 @@ export type Product = {
 
 Applying it to parameters is done in the fashion on `variable:type`. Don't forget to rename the files where you're introducing types to ts or tsx, from js or jsx:
 
-![typescript must be in ts or tsx files](https://imgur.com/OKZ63OX)
+https://imgur.com/OKZ63OX
 
 Now that we have the Product type we can replace the propTypes of the Table component.
 
