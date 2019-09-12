@@ -22,7 +22,7 @@ const Sidebar = () => (
 );
 ```
 
-hiding the fact that both of these need some data in order work. We could argue that not passing down props negatively affects the readability and maintainability of this code.
+hiding the fact that both of these need some data in order to work. We could argue that not passing down props negatively affects the readability and maintainability of this code.
 
 So I asked myself, could we stay explicit without repeating PropTypes? The answer is yes, by using TypeScript to describe the props of our components.
 
@@ -237,7 +237,7 @@ Interfaces and types are mostly interchangeable, but there are some restrictions
 
 We can create an interface with a method and share it between `TableRowProps` and `TableProps`.
 
-We'll use [MouseEvent](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) to describe the incoming event of our click handler (*Spoiler alert*: this declaration is wrong, but TypeScript will warn us! 🎉):
+We'll use [MouseEvent](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) to describe the incoming event of our click handler (*Spoiler alert*: this declaration is wrong, but TypeScript will warn us 🎉):
 
 ```
 export interface ProductChangeListener {
