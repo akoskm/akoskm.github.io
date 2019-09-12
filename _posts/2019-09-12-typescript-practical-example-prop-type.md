@@ -13,7 +13,7 @@ While React Context did eliminate the repetitions in our code, it introduced a d
 
 Our components became less explicit:
 
-```
+```jsx
 const Sidebar = () => (
   <div className="sidebar">
     <DetailsPanel />
@@ -36,7 +36,7 @@ You can introduce TypeScript only to some parts of your codebase and leave the r
 
 Having that in mind, first, we'll convert the `Table` component which currently looks like this:
 
-```
+```jsx
 import React from "react";
 import PropTypes from "prop-types";
 import TableRow from "./table-row";
@@ -115,7 +115,7 @@ Use `void` to indicate that a function returns undefined.
 
 A function that accepts any parameter and returns undefined (could be a click handler) would look like this:
 
-```
+```ts
 onClick: (event: any) => void
 ```
 
@@ -123,7 +123,7 @@ Yeah, I know, such handlers are called with a specific event type, but we're goi
 
 After having a basic understanding of which TypeScript types could replace certain PropTypes, we can define Product as:
 
-```
+```ts
 // types.ts
 
 export type Product = {
@@ -158,7 +158,7 @@ TypeScript also makes your editor smarter by giving clues about where you could 
 
 Finally, our `Table` component looks like this:
 
-```
+```tsx
 import React from "react";
 import TableRow from "./table-row";
 import { Product } from "./types";
@@ -198,7 +198,7 @@ export default Table;
 
 Let's convert `TableRow` in the same fashion:
 
-```
+```tsx
 import React from "react";
 import { Product } from "./types";
 
@@ -239,7 +239,7 @@ We can create an interface with a method and share it between `TableRowProps` an
 
 We'll use [MouseEvent](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) to describe the incoming event of our click handler (*Spoiler alert*: this declaration is wrong, but TypeScript will warn us 🎉):
 
-```
+```tsx
 export interface ProductChangeListener {
   onProductChange: (event: MouseEvent) => void;
 }
@@ -248,7 +248,7 @@ export interface ProductChangeListener {
 Both types and interfaces can extend other interfaces, but the syntax is different:
 
  - types extending interfaces:
-```
+```tsx
 type TableRowProps = ProductChangeListener & {
   product: Product;
   selected: boolean;
@@ -256,7 +256,7 @@ type TableRowProps = ProductChangeListener & {
 ```
 
  - interfaces extending interfaces
-```
+```tsx
 interface TableRowProps extends ProductChangeListener {
   product: Product;
   selected: boolean;
@@ -269,7 +269,7 @@ After updating `TableRowProps`, the editor immediately warns us about the error 
 
 We defined our interface method to accept `MouseEvent` instead of `Product`. Let's fix the interface declaration:
 
-```
+```tsx
 export interface ProductChangeListener {
   onProductChange: (event: Product) => void;
 }
