@@ -116,4 +116,6 @@ We successfully cleaned up these two components from PropTypes repetitions, and 
 
 Are you already using TypeScript? I think it adds slightly more complexity to your code than PropTypes but also provides more benefits.
 
+Let me hear your thoughts on this in the comment section below or on [Reddit](https://www.reddit.com/r/javascript/comments/d38l90/use_typescript_to_dry_up_your_components/)!
+
 If you found this content useful, please show the love by sharing it with others. Thank you!
