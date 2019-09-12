@@ -13,14 +13,7 @@ While React Context did eliminate the repetitions in our code, it introduced a d
 
 Our components became less explicit:
 
-```jsx
-const Sidebar = () => (
-  <div className="sidebar">
-    <DetailsPanel />
-    <DimensionsPanel />
-  </div>
-);
-```
+<script src="https://gist.github.com/akoskm/69a69d6668246db3464ab01c0361d689.js?file=sidebar.jsx "></script>
 
 hiding the fact that both of these need some data in order to work. We could argue that not passing down props negatively affects the readability and maintainability of this code.
 
@@ -36,62 +29,7 @@ You can introduce TypeScript only to some parts of your codebase and leave the r
 
 Having that in mind, first, we'll convert the `Table` component which currently looks like this:
 
-```jsx
-import React from "react";
-import PropTypes from "prop-types";
-import TableRow from "./table-row";
-
-const isSelected = (currProduct, selectedProduct) =>
-  selectedProduct && selectedProduct.id === currProduct.id;
-
-const Table = ({ selectedProduct, products, onProductChange }) => (
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>SKU</th>
-      </tr>
-    </thead>
-    <tbody>
-      {products.map(currProduct => (
-        <TableRow
-          selected={isSelected(currProduct, selectedProduct)}
-          key={currProduct.id}
-          product={currProduct}
-          onProductChange={onProductChange}
-        />
-      ))}
-    </tbody>
-  </table>
-);
-Table.propTypes = {
-  selectedProduct: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    sku: PropTypes.string.isRequired,
-    dimensions: PropTypes.shape({
-      x: PropTypes.number.isRequired,
-      y: PropTypes.number.isRequired,
-      z: PropTypes.number.isRequired
-    })
-  }),
-  products: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      sku: PropTypes.string.isRequired,
-      dimensions: PropTypes.shape({
-        x: PropTypes.number.isRequired,
-        y: PropTypes.number.isRequired,
-        z: PropTypes.number.isRequired
-      }).isRequired
-    }).isRequired
-  ),
-  onProductChange: PropTypes.func.isRequired
-};
-export default Table;
-```
+<script src="https://gist.github.com/akoskm/69a69d6668246db3464ab01c0361d689.js?file=table.jsx"></script>
 
 We immediately notice a few things:
  - `products` has the same props as `selectedProduct` wrapped in an array
@@ -115,28 +53,13 @@ Use `void` to indicate that a function returns undefined.
 
 A function that accepts any parameter and returns undefined (could be a click handler) would look like this:
 
-```ts
-onClick: (event: any) => void
-```
+<script src="https://gist.github.com/akoskm/69a69d6668246db3464ab01c0361d689.js?file=function.ts"></script>
 
 Yeah, I know, such handlers are called with a specific event type, but we're going to talk about that later.
 
 After having a basic understanding of which TypeScript types could replace certain PropTypes, we can define Product as:
 
-```ts
-// types.ts
-
-export type Product = {
-  id: number;
-  name: string;
-  sku: string;
-  dimensions: {
-    x: number;
-    y: number;
-    z: number;
-  };
-};
-```
+<script src="https://gist.github.com/akoskm/69a69d6668246db3464ab01c0361d689.js?file=types.ts"></script>
 
 Don't forget to rename the files when you're adding types, js to ts and jsx to tsx:
 
@@ -144,13 +67,7 @@ Don't forget to rename the files when you're adding types, js to ts and jsx to t
 
 Now that we have the Product type ready, we can replace the `propTypes` part of the `Table` component:
 
-```
-type TableProps = {
-  selectedProduct: Product;
-  products: Array<Product>;
-  onProductChange: (event: any) => void;
-};
-```
+<script src="https://gist.github.com/akoskm/69a69d6668246db3464ab01c0361d689.js?file=table-props.ts"></script>
 
 TypeScript also makes your editor smarter by giving clues about where you could improve your code:
 
@@ -158,73 +75,11 @@ TypeScript also makes your editor smarter by giving clues about where you could 
 
 Finally, our `Table` component looks like this:
 
-```tsx
-import React from "react";
-import TableRow from "./table-row";
-import { Product } from "./types";
-
-type TableProps = {
-  selectedProduct: Product;
-  products: Array<Product>;
-  onProductChange: (event: any) => void;
-};
-
-const isSelected = (currProduct: Product, selectedProduct: Product) =>
-  selectedProduct && selectedProduct.id === currProduct.id;
-
-const Table = ({ selectedProduct, products, onProductChange }: TableProps) => (
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>SKU</th>
-      </tr>
-    </thead>
-    <tbody>
-      {products.map((currProduct: Product) => (
-        <TableRow
-          selected={isSelected(currProduct, selectedProduct)}
-          key={currProduct.id}
-          product={currProduct}
-          onProductChange={onProductChange}
-        />
-      ))}
-    </tbody>
-  </table>
-);
-export default Table;
-```
+<script src="https://gist.github.com/akoskm/69a69d6668246db3464ab01c0361d689.js?file=table.tsx"></script>
 
 Let's convert `TableRow` in the same fashion:
 
-```tsx
-import React from "react";
-import { Product } from "./types";
-
-type TableRowProps = {
-  product: Product;
-  onProductChange: (event: any) => void;
-  selected: boolean;
-};
-
-const TableRow = ({ product, onProductChange, selected }: TableRowProps) => {
-  return (
-    <tr
-      className={selected ? "selected" : undefined}
-      key={product.id}
-      onClick={() => {
-        onProductChange(product);
-      }}
-    >
-      <td>{product.id}</td>
-      <td>{product.name}</td>
-      <td>{product.sku}</td>
-    </tr>
-  );
-};
-export default TableRow;
-```
+<script src="https://gist.github.com/akoskm/69a69d6668246db3464ab01c0361d689.js?file=table-row.tsx"></script>
 
 We notice the repetition of the `onProductChange: (event: any) => void;` function in `TableProps` and `TableRowProps`, and we're going to use [Interfaces](https://www.typescriptlang.org/docs/handbook/interfaces.html) to solve this problem.
 
@@ -239,29 +94,15 @@ We can create an interface with a method and share it between `TableRowProps` an
 
 We'll use [MouseEvent](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) to describe the incoming event of our click handler (*Spoiler alert*: this declaration is wrong, but TypeScript will warn us 🎉):
 
-```tsx
-export interface ProductChangeListener {
-  onProductChange: (event: MouseEvent) => void;
-}
-```
+<script src="https://gist.github.com/akoskm/69a69d6668246db3464ab01c0361d689.js?file=interface-v1.jsx"></script>
 
 Both types and interfaces can extend other interfaces, but the syntax is different:
 
  - types extending interfaces:
-```tsx
-type TableRowProps = ProductChangeListener & {
-  product: Product;
-  selected: boolean;
-};
-```
+<script src="https://gist.github.com/akoskm/69a69d6668246db3464ab01c0361d689.js?file=type-and-interface.ts"></script>
 
  - interfaces extending interfaces
-```tsx
-interface TableRowProps extends ProductChangeListener {
-  product: Product;
-  selected: boolean;
-}
-```
+<script src="https://gist.github.com/akoskm/69a69d6668246db3464ab01c0361d689.js?file=interface-and-interface.ts"></script>
 
 After updating `TableRowProps`, the editor immediately warns us about the error we made:
 
@@ -269,11 +110,7 @@ After updating `TableRowProps`, the editor immediately warns us about the error 
 
 We defined our interface method to accept `MouseEvent` instead of `Product`. Let's fix the interface declaration:
 
-```tsx
-export interface ProductChangeListener {
-  onProductChange: (event: Product) => void;
-}
-```
+<script src="https://gist.github.com/akoskm/69a69d6668246db3464ab01c0361d689.js?file=interface-v2.jsx "></script>
 
 We successfully cleaned up these two components from PropTypes repetitions, and you can find the updated code here: https://codesandbox.io/s/table-sidebar-layout-with-typescript-2si7g.
 
