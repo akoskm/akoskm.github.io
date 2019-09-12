@@ -226,9 +226,7 @@ const TableRow = ({ product, onProductChange, selected }: TableRowProps) => {
 export default TableRow;
 ```
 
-We notice that we repeated the definition of the `onProductChange: (event: any) => void;` function.
-
-We're going to use [Interfaces](https://www.typescriptlang.org/docs/handbook/interfaces.html) to solve this problem.
+We notice the repetition of the `onProductChange: (event: any) => void;` function in `TableProps` and `TableRowProps`, and we're going to use [Interfaces](https://www.typescriptlang.org/docs/handbook/interfaces.html) to solve this problem.
 
 Interfaces are constraints between the interface and the implementing type.
 They make sure that all (or some) properties or functions are present on the type that uses the interface.
@@ -237,7 +235,7 @@ Interfaces and types are mostly interchangeable, but there are some restrictions
  - https://stackoverflow.com/a/52682220/407466
  - https://medium.com/@martin_hotell/interface-vs-type-alias-in-typescript-2-7-2a8f1777af4c
 
-We can create an interface with this method and reuse it when we define `TableRowProps` and `TableProps`.
+We can create an interface with a method and share it between `TableRowProps` and `TableProps`.
 
 We'll use [MouseEvent](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) to describe the incoming event of our click handler (*Spoiler alert*: this declaration is wrong, but TypeScript will warn us! 🎉):
 
@@ -281,4 +279,4 @@ We successfully cleaned up these two components from PropTypes repetitions, and 
 
 Are you already using TypeScript? I think it adds slightly more complexity to your code than PropTypes but also provides more benefits.
 
-If you enjoyed this content, please show the love by sharing it with others. Thank you!
+If you found this content useful, please show the love by sharing it with others. Thank you!
