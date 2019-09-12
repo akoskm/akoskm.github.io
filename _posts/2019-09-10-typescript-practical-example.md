@@ -7,7 +7,7 @@ date: 2019-09-03 00:00:01
 
 In the [previous post](https://akoskm.com/2019/09/03/react-usecontext-practical-example.html), we talked about ”plumbing” in React and how it affects the readability of our code.
 
-We used React Context to avoid passing down the same props to multiple layers of components and repeat PropTypes definitions.
+We used React Context to avoid passing down the same props to multiple layers of components and to avoid repeating PropTypes definitions.
 
 While React Context did eliminate the repetitions in our code, it introduced a different problem.
 
@@ -24,17 +24,17 @@ const Sidebar = () => (
 
 hiding the fact that both of these need some data in order work. We could argue that not passing down props negatively affects the readability and maintainability of this code.
 
-Could we stay explicit without repeating PropTypes? The answer is yes, by using TypeScript instead of PropTypes.
+So I asked myself, could we stay explicit without repeating PropTypes? The answer is yes, by using TypeScript to describe the props of our components.
 
-Of course, TypeScript does a lot more than that. It adds types to JavaScript, which makes your code more readable and easier to maintain. It makes some editors smarter, enhances autocomplete features, and shows information about the TypeScript types you're writing.
+Of course, TypeScript does a lot more than that. It adds types to JavaScript, which makes your code more readable and easier to maintain. It makes some editors smarter, enhances autocomplete features, and shows information about the TypeScript types you're using and many more.
 
-We'll work on the sidebar-table app from the previous post, which still has the prop repetitions: https://codesandbox.io/s/table-sidebar-layout-without-usecontext-xk591
+We'll work on the sidebar-table app from the previous post, which still has the prop repetitions: https://codesandbox.io/s/table-sidebar-layout-without-usecontext-xk591.
 To get started with TypeScript in your project, I recommend following one of the official guides: https://www.typescriptlang.org/samples/index.html. Here we'll jump straight into adding types to the app.
 
 One of the things I like about TypeScript is that you can add it incrementally to your project.
-You can introduce TypeScript only to parts of your codebase and leave the rest of the app untouched.
+You can introduce TypeScript only to some parts of your codebase and leave the rest of the app untouched.
 
-First, we'll convert the Table component:
+Having that in mind, first, we'll convert the Table component which currently looks like this:
 
 ```
 import React from "react";
@@ -107,7 +107,7 @@ When rewriting existing, PropTypes-based components to TypeScript we're looking 
 
 **PropTypes.string** ➡ **string**.
 
-**PropTypes.arrayOf(PropTypes.number)** ➡ **Array<number>**.
+**PropTypes.arrayOf(PropTypes.number)** ➡ **Array\<number\>**.
 
 Use `any` to opt-out compile time checks for a variable.
 
@@ -136,11 +136,16 @@ export type Product = {
 };
 ```
 
-Decorating something with a certain type is done in the following way: `variable:type`. Don't forget to rename the files when you're adding types, js to ts and jsx to tsx:
+Decorating something with a certain type is done in the following way:
+
+```
+variable:type
+```
+Don't forget to rename the files when you're adding types, js to ts and jsx to tsx:
 
 ![typescript into ts or tsx](https://i.imgur.com/OKZ63OX.png)
 
-Now that we have the Product type, we can replace the `propTypes` part of the Table component.
+Now that we have the Product type ready, we can replace the `propTypes` part of the Table component.
 
 ```
 type TableProps = {
@@ -229,15 +234,15 @@ We notice that we repeated the definition of the `onProductChange: (event: any) 
 We're going to use TypeScript interfaces to solve this problem.
 
 Interfaces are constraints between the interface and the implementing type.
-They make sure that all (or some) properties or functions are present on the type that implements the interface.
+They make sure that all (or some) properties or functions are present on the type that uses the interface.
 
 Interfaces and types are mostly interchangeable, but there are some restrictions:
  - https://stackoverflow.com/a/52682220/407466
  - https://medium.com/@martin_hotell/interface-vs-type-alias-in-typescript-2-7-2a8f1777af4c
 
-We can create an interface with this method and reuse it when we define TableRowProps and TableProps.
+We can create an interface with this method and reuse it when we define `TableRowProps` and `TableProps`.
 
-We'll be using [MouseEvent](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) to describe the incoming event of our click handler (*Spoiler alert*: this declaration is wrong, but TypeScript will warn us! 🎉):
+We'll use [MouseEvent](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) to describe the incoming event of our click handler (*Spoiler alert*: this declaration is wrong, but TypeScript will warn us! 🎉):
 
 ```
 export interface ProductChangeListener {
@@ -275,7 +280,7 @@ export interface ProductChangeListener {
 }
 ```
 
-We successfully DRYed up these two components that previously had PropTypes repetitions, and you can find the updated code here: https://codesandbox.io/s/table-sidebar-layout-with-typescript-2si7g.
+We successfully cleaned up these two components from PropTypes repetitions, and you can find the updated code here: https://codesandbox.io/s/table-sidebar-layout-with-typescript-2si7g.
 
 Are you already using TypeScript? I think it adds slightly more complexity to your code than PropTypes but also provides more benefits.
 
