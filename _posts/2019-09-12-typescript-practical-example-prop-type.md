@@ -21,8 +21,8 @@ So I asked myself, could we stay explicit without repeating PropTypes? The answe
 
 Of course, TypeScript does a lot more than that. It adds types to JavaScript, which makes your code more readable and easier to maintain. It makes some editors smarter, enhances autocomplete features, and shows information about the TypeScript types you're using and many more.
 
-We'll work on the sidebar-table app from the previous post, which still has the prop repetitions: https://codesandbox.io/s/table-sidebar-layout-without-usecontext-xk591.
-To get started with TypeScript in your project, I recommend following one of the official guides: https://www.typescriptlang.org/samples/index.html. Here we'll jump straight into adding types to the app.
+We'll work on the sidebar-table app from the previous post, which still has the prop repetitions: [https://codesandbox.io/s/table-sidebar-layout-without-usecontext-xk591].
+To get started with TypeScript in your project, I recommend following one of the [official guides](https://www.typescriptlang.org/samples/index.html). Here we'll jump straight into adding types to the app.
 
 One of the things I like about TypeScript is that you can add it incrementally to your project.
 You can introduce TypeScript only to some parts of your codebase and leave the rest of the app untouched.
@@ -87,14 +87,14 @@ Interfaces are constraints between the interface and the implementing type.
 They make sure that all (or some) properties or functions are present on the type that uses the interface.
 
 Interfaces and types are mostly interchangeable, but there are some restrictions:
- - https://stackoverflow.com/a/52682220/407466
- - https://medium.com/@martin_hotell/interface-vs-type-alias-in-typescript-2-7-2a8f1777af4c
+ - [Typescript: Interfaces vs Types](https://stackoverflow.com/a/52682220/407466)
+ - [Interface vs Type alias in TypeScript 2.7](https://medium.com/@martin_hotell/interface-vs-type-alias-in-typescript-2-7-2a8f1777af4c)
 
 We can create an interface with a method and share it between `TableRowProps` and `TableProps`.
 
 We'll use [MouseEvent](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) to describe the incoming event of our click handler (*Spoiler alert*: this declaration is wrong, but TypeScript will warn us 🎉):
 
-<script src="https://gist.github.com/akoskm/69a69d6668246db3464ab01c0361d689.js?file=interface-v1.jsx"></script>
+<script src="https://gist.github.com/akoskm/69a69d6668246db3464ab01c0361d689.js?file=interface-v1.ts"></script>
 
 Both types and interfaces can extend other interfaces, but the syntax is different:
 
@@ -110,9 +110,9 @@ After updating `TableRowProps`, the editor immediately warns us about the error 
 
 We defined our interface method to accept `MouseEvent` instead of `Product`. Let's fix the interface declaration:
 
-<script src="https://gist.github.com/akoskm/69a69d6668246db3464ab01c0361d689.js?file=interface-v2.jsx "></script>
+<script src="https://gist.github.com/akoskm/69a69d6668246db3464ab01c0361d689.js?file=interface-v2.ts"></script>
 
-We successfully cleaned up these two components from PropTypes repetitions, and you can find the updated code here: https://codesandbox.io/s/table-sidebar-layout-with-typescript-2si7g.
+We successfully cleaned up these two components from PropTypes repetitions, and you can find the updated code here: [https://codesandbox.io/s/table-sidebar-layout-with-typescript-2si7g].
 
 Are you already using TypeScript? I think it adds slightly more complexity to your code than PropTypes but also provides more benefits.
 
