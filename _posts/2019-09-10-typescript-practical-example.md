@@ -34,7 +34,7 @@ To get started with TypeScript in your project, I recommend following one of the
 One of the things I like about TypeScript is that you can add it incrementally to your project.
 You can introduce TypeScript only to some parts of your codebase and leave the rest of the app untouched.
 
-Having that in mind, first, we'll convert the Table component which currently looks like this:
+Having that in mind, first, we'll convert the `Table` component which currently looks like this:
 
 ```
 import React from "react";
@@ -94,7 +94,7 @@ export default Table;
 ```
 
 We immediately notice a few things:
- - `products` has the same props as selectedProduct wrapped in an array
+ - `products` has the same props as `selectedProduct` wrapped in an array
  - the `isSelected` function receives two products but there is no indication of that
 
 Let's start by defining our first type: `Product`.
@@ -124,6 +124,8 @@ Yeah, I know, such handlers are called with a specific event type, but we're goi
 After having a basic understanding of which TypeScript types could replace certain PropTypes, we can define Product as:
 
 ```
+// types.ts
+
 export type Product = {
   id: number;
   name: string;
@@ -136,16 +138,11 @@ export type Product = {
 };
 ```
 
-Decorating something with a certain type is done in the following way:
-
-```
-variable:type
-```
 Don't forget to rename the files when you're adding types, js to ts and jsx to tsx:
 
 ![typescript into ts or tsx](https://i.imgur.com/OKZ63OX.png)
 
-Now that we have the Product type ready, we can replace the `propTypes` part of the Table component.
+Now that we have the Product type ready, we can replace the `propTypes` part of the `Table` component:
 
 ```
 type TableProps = {
@@ -159,7 +156,7 @@ TypeScript also makes your editor smarter by giving clues about where you could 
 
 ![type suggestion](https://i.imgur.com/9ALoIYW.png)
 
-Finally, our Table component looks like this:
+Finally, our `Table` component looks like this:
 
 ```
 import React from "react";
@@ -199,7 +196,7 @@ const Table = ({ selectedProduct, products, onProductChange }: TableProps) => (
 export default Table;
 ```
 
-Let's convert TableRow in the same fashion:
+Let's convert `TableRow` in the same fashion:
 
 ```
 import React from "react";
@@ -231,7 +228,7 @@ export default TableRow;
 
 We notice that we repeated the definition of the `onProductChange: (event: any) => void;` function.
 
-We're going to use TypeScript interfaces to solve this problem.
+We're going to use [Interfaces](https://www.typescriptlang.org/docs/handbook/interfaces.html) to solve this problem.
 
 Interfaces are constraints between the interface and the implementing type.
 They make sure that all (or some) properties or functions are present on the type that uses the interface.
