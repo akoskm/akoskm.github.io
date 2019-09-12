@@ -21,7 +21,7 @@ So I asked myself, could we stay explicit without repeating PropTypes? The answe
 
 Of course, TypeScript does a lot more than that. It adds types to JavaScript, which makes your code more readable and easier to maintain. It makes some editors smarter, enhances autocomplete features, and shows information about the TypeScript types you're using and many more.
 
-We'll work on the sidebar-table app from the previous post, which still has the prop repetitions: [https://codesandbox.io/s/table-sidebar-layout-without-usecontext-xk591].
+We'll work on the [sidebar-table app](https://codesandbox.io/s/table-sidebar-layout-without-usecontext-xk591) from the previous post, which still has the prop repetitions.
 To get started with TypeScript in your project, I recommend following one of the [official guides](https://www.typescriptlang.org/samples/index.html). Here we'll jump straight into adding types to the app.
 
 One of the things I like about TypeScript is that you can add it incrementally to your project.
@@ -112,7 +112,7 @@ We defined our interface method to accept `MouseEvent` instead of `Product`. Let
 
 <script src="https://gist.github.com/akoskm/69a69d6668246db3464ab01c0361d689.js?file=interface-v2.ts"></script>
 
-We successfully cleaned up these two components from PropTypes repetitions, and you can find the updated code here: [https://codesandbox.io/s/table-sidebar-layout-with-typescript-2si7g].
+We successfully cleaned up these two components from PropTypes repetitions, and you can find the updated code [here](https://codesandbox.io/s/table-sidebar-layout-with-typescript-2si7g).
 
 Are you already using TypeScript? I think it adds slightly more complexity to your code than PropTypes but also provides more benefits.
 
