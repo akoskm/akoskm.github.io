@@ -2,7 +2,7 @@
 title: Use TypeScript to DRY up your components
 layout: post
 type: post
-date: 2019-09-03 00:00:01
+date: 2019-09-12 00:00:01
 ---
 
 In the [previous post](https://akoskm.com/2019/09/03/react-usecontext-practical-example.html), we talked about ”plumbing” in React and how it affects the readability of our code.
