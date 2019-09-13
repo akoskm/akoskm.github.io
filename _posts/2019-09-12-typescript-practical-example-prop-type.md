@@ -5,6 +5,11 @@ type: post
 date: 2019-09-12 00:00:01
 ---
 
+* TOC
+{:toc}
+
+# Introduction
+
 In the [previous post](https://akoskm.com/2019/09/03/react-usecontext-practical-example.html), we talked about ”plumbing” in React and how it affects the readability of our code.
 
 We used React Context to avoid passing down the same props to multiple layers of components and to avoid repeating PropTypes definitions.
@@ -36,6 +41,8 @@ We immediately notice a few things:
  - the `isSelected` function receives two products but there is no indication of that
 
 Let's start by defining our first type: `Product`.
+
+# TypeScript types
 
 When rewriting existing, PropTypes-based components to TypeScript we're looking for [basic TypeScript types](https://www.typescriptlang.org/docs/handbook/basic-types.html) that could replace PropTypes, but essentially:
 
@@ -73,6 +80,8 @@ TypeScript also makes your editor smarter by giving clues about where you could 
 
 ![type suggestion](https://i.imgur.com/9ALoIYW.png)
 
+# Components with TypeScript
+
 Finally, our `Table` component looks like this:
 
 <script src="https://gist.github.com/akoskm/69a69d6668246db3464ab01c0361d689.js?file=table.tsx"></script>
@@ -80,6 +89,8 @@ Finally, our `Table` component looks like this:
 Let's convert `TableRow` in the same fashion:
 
 <script src="https://gist.github.com/akoskm/69a69d6668246db3464ab01c0361d689.js?file=table-row.tsx"></script>
+
+# TypeScript Interfaces
 
 We notice the repetition of the `onProductChange: (event: any) => void;` function in `TableProps` and `TableRowProps`, and we're going to use [Interfaces](https://www.typescriptlang.org/docs/handbook/interfaces.html) to solve this problem.
 
@@ -103,6 +114,8 @@ Both types and interfaces can extend other interfaces, but the syntax is differe
 
  - interfaces extending interfaces
 <script src="https://gist.github.com/akoskm/69a69d6668246db3464ab01c0361d689.js?file=interface-and-interface.ts"></script>
+
+# Catching early bugs
 
 After updating `TableRowProps`, the editor immediately warns us about the error we made:
 
