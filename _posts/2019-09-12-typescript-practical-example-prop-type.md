@@ -1,9 +1,12 @@
 ---
-title: Use TypeScript to DRY up your components
+title: Use TypeScript to DRY up React components
 layout: post
 type: post
 date: 2019-09-12 00:00:01
 ---
+
+# On this post
+{: .no_toc}
 
 * TOC
 {:toc}
