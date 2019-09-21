@@ -2,26 +2,40 @@
 title: Enabling custom domain for your heroku app with HTTPS
 layout: post
 type: post
-date: 2019-09-03 00:00:01
+date: 2019-09-23 00:00:01
 ---
 
-Step 1.
+Got a Heroku app and want to make it public with some fancy domain?
 
-Buy a domain if you don't have one.
+I compiled this list to help you publish your next awesome project, built on Heroku.
 
-Step 2.
+_I had to do this a few times last month, so this is an extended version of the guide I wrote to myself._ 😬
+
+This guide got you covered:
+
+Step-by-step ✅
+
+HTTPS ✅
+
+Copy&past commands ✅
+
+## Step 1.
+
+Buy a domain.
+
+## Step 2.
 
 Log in to your heroku console:
 
 ```
 $ heroku login
 heroku: Press any key to open up the browser to login or q to exit:
-Opening browser to https://cli-auth.heroku.com/auth/browser/f2737dbd-d14c-11c0-bafd-f12ff3d2499d
+Opening browser to https://cli-auth.heroku.com/auth/browser/f345127ead-d14c-11c0-bafd-f12ff3d2499d
 Logging in... done
 Logged in as hello@akoskm.com
 ```
 
-Step 3.
+## Step 3.
 
 Assign the custom domain to your heroku app:
 
@@ -35,9 +49,9 @@ The domain my-heroku-app.akoskm.com has been enqueued for addition
  ▸    Run heroku domains:wait 'my-heroku-app.akoskm.com' to wait for completion
 ```
 
-Step 4.
+## Step 4.
 
-Go to the DNS zone editor of your domain and add a CNAME entry. The naming in your DNS editor might be different but here are the only a few things you have to fill:
+Wherever you bought your domain, it should have a DNS editor. Open it and add a CNAME entry. The naming in your DNS editor might be different but here are the only a few things you have to fill:
 
 ```
 Zone name: my-heroku-app.akoskm.com
@@ -46,26 +60,26 @@ Type: CNAME (this is usually prefilled if your DNS editor is smart enough)
 TTL: 14400 (mine says 14400, that's the default)
 ```
 
-This is how it looks like in CPanel:
+You'll have something like this in CPanel:
 
 ![cname editor](https://i.imgur.com/uHe8hze.png)
 
 At this point you should be able to navigate to http://my-heroku-app.akoskm.com and see your heroku app.
 `https://` access shouldn't work at this point.
 
-Step 5.
+## Step 5.
 
 Adding SSL
 
 
-You can check if auto certifcate management is enabled for your app:
+You can check if the [automated certificate management](https://devcenter.heroku.com/articles/automated-certificate-management) is enabled for your app:
 
 ```
 $ heroku certs:auto -a my-heroku-app
 === Automatic Certificate Management is disabled on my-heroku-app
 ```
 
-if it says disabled simple enable it:
+if it says disabled, simple enable it:
 
 ```
 $ heroku certs:auto:enable -a my-heroku-app
@@ -90,6 +104,10 @@ Domain              Status       Last Updated
 ──────────────────  ───────────  ──────────────────
 my-heroku-app.akoskm.com  Cert issued  less than a minute
 ```
+
+https://my-heroku-app.akoskm.com should be reachable at this point.
+
+Hope this little guide saves you some time! If you liked it, please show the love by sharing it with others. Thank you!
 
 
 Source:
