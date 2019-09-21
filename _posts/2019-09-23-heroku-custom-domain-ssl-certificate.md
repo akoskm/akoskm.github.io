@@ -1,5 +1,5 @@
 ---
-title: Enabling custom domain for your heroku app with HTTPS
+title: Enabling custom domain with HTTPS for heroku apps
 layout: post
 type: post
 date: 2019-09-23 00:00:01
