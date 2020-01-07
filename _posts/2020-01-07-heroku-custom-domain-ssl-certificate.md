@@ -69,10 +69,7 @@ HTTPS access shouldn't work at this point.
 
 ## Step 5.
 
-Adding SSL
-
-
-Check if the [automated certificate management](https://devcenter.heroku.com/articles/automated-certificate-management) is enabled for your app:
+Now it's time to add SSL. Check if the [automated certificate management](https://devcenter.heroku.com/articles/automated-certificate-management) is enabled for your app:
 
 ```
 $ heroku certs:auto -a my-heroku-app
