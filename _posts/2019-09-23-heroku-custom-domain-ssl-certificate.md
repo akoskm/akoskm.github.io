@@ -7,17 +7,17 @@ date: 2019-09-23 00:00:01
 
 Got a Heroku app and want to make it public with some fancy domain?
 
-I compiled this list to help you publish your next awesome project, built on Heroku.
+I compiled this list to help you publish your next awesome project on Heroku.
 
 _I had to do this a few times last month, so this is an extended version of the guide I wrote to myself._ 😬
 
-This guide got you covered:
+This guide is:
 
 Step-by-step ✅
 
 HTTPS ✅
 
-Copy&past commands ✅
+Copy & past commands ✅
 
 ## Step 1.
 
@@ -30,7 +30,7 @@ Log in to your heroku console:
 ```
 $ heroku login
 heroku: Press any key to open up the browser to login or q to exit:
-Opening browser to https://cli-auth.heroku.com/auth/browser/f345127ead-d14c-11c0-bafd-f12ff3d2499d
+Opening browser to https://cli-auth.heroku.com/auth/browser/f34512meow-d14c-11c0-bafd-f12ff3d2499d
 Logging in... done
 Logged in as hello@akoskm.com
 ```
@@ -51,7 +51,7 @@ The domain my-heroku-app.akoskm.com has been enqueued for addition
 
 ## Step 4.
 
-Wherever you bought your domain, it should have a DNS editor. Open it and add a CNAME entry. The naming in your DNS editor might be different but here are the only a few things you have to fill:
+Wherever you bought your domain, it should have a DNS editor. Open it and add a CNAME entry. The naming in your DNS editor might be different but here are the things you have to fill:
 
 ```
 Zone name: my-heroku-app.akoskm.com
@@ -60,7 +60,7 @@ Type: CNAME (this is usually prefilled if your DNS editor is smart enough)
 TTL: 14400 (mine says 14400, that's the default)
 ```
 
-You'll have something like this in CPanel:
+If you're using CPanle as your DNS editor you'll see something like this:
 
 ![cname editor](https://i.imgur.com/uHe8hze.png)
 
@@ -79,7 +79,7 @@ $ heroku certs:auto -a my-heroku-app
 === Automatic Certificate Management is disabled on my-heroku-app
 ```
 
-if it says disabled, simple enable it:
+if it says disabled, simply enable it:
 
 ```
 $ heroku certs:auto:enable -a my-heroku-app
