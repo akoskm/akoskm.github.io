@@ -11,14 +11,6 @@ I compiled this list to help you publish your next awesome project on Heroku.
 
 _I had to do this a few times last month, so this is an extended version of the guide I wrote to myself._ 😬
 
-This guide is:
-
-Step-by-step ✅
-
-HTTPS ✅
-
-Copy & past commands ✅
-
 ## Step 1.
 
 Buy a domain.
