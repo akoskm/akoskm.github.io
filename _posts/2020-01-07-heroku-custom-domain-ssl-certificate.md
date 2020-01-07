@@ -2,7 +2,7 @@
 title: Enabling custom domain with HTTPS for heroku apps
 layout: post
 type: post
-date: 2019-09-23 00:00:01
+date: 2020-01-07 00:00:01
 ---
 
 Got a Heroku app and want to make it public with some fancy domain?
