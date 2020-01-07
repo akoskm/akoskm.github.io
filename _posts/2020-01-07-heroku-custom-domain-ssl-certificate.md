@@ -81,14 +81,14 @@ $ heroku certs:auto -a my-heroku-app
 
 if it says disabled, simply enable it:
 
-```
+```bash
 $ heroku certs:auto:enable -a my-heroku-app
 Enabling Automatic Certificate Management... starting. See status with heroku certs:auto or wait until active with heroku certs:auto:wait
 === Your certificate will now be managed by Heroku.  Check the status by running heroku certs:auto.
 ```
 
 When you check the status it should display something like this:
-```
+```bash
 $ heroku certs:auto -a my-heroku-app
 === Automatic Certificate Management is enabled on my-heroku-app
 
