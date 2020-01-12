@@ -6,78 +6,41 @@ title: akoskm.com
   <div class="align">
     <div class="grid">
       <div class="col-1">
-        <h1>
-          <span class="post-title">About me</span>
-        </h1>
-      </div>
-    </div>
-    <div class="grid">
-      <div class="col-1">
-        <img src="assets/img/me.png" class="me"></img>
-        <p>Hi, my name is Ákos. I’m a freelance JavaScript Engineer with a background in various industries, including fintech, acoustics, gaming, and workflow automation.</p>
-        <p>Currently working on projects where we convert apps written with different technologies into React.</p>
-        <p>You can find me on <a href="https://twitter.com/akoskm">Twitter</a>, <a href="https://github.com/akoskm">GitHub</a>, <a href="https://www.upwork.com/o/profiles/users/_~012ad77c4b0d832a53/">Upwork</a> and <a href="https://www.linkedin.com/in/akoskm">LinkedIn</a>.</p>
+        <center>
+          <p>Welcome to my personal blog!</p>
+          <p>My name is Ákos, I build web apps for living.</p>
+          <p>You can find me on <a href="https://twitter.com/akoskm">Twitter</a>, <a href="https://github.com/akoskm">GitHub</a>, <a href="https://www.upwork.com/o/profiles/users/_~012ad77c4b0d832a53/">Upwork</a> and <a href="https://www.linkedin.com/in/akoskm">LinkedIn</a>.</p>
+        </center>
       </div>
     </div>
   </div>
 </section>
 <section class="posts">
-  <div class="align">
-    <div class="grid">
-      <div class="col-1">
-        <h1>
-          <span class="post-title">Writings</span>
-        </h1>
-      </div>
-    </div>
-  </div>
-  <div class="align">
-    <div class="grid">
-      <div class="col-1">
-        <h3>Guest Posts</h3>
-        <ul class="posts">
-          {% for post in site.posts %}
-              {% if post.draft == false and post.type == "3rdparty" %}
-                <li>
-                    <span>{{ post.date | date_to_string }}</span>
-                    <span class="seperator"> &rsaquo; </span>
-                    <span class="post-title">
-                        <a href="{{ post.redirect }}">{{ post.title }}</a>
-                    </span>
-                </li>
+  <div class="grid">
+    <div class="col-1">
+      {% for post in site.posts %}
+        {% if post.draft == false %}
+        <div class="post-header">
+            <span class="post-title">
+              <h3>
+              {% if post.type == "post"%}
+                <a href="{{ post.url }}">
               {% endif %}
-            {% endfor %}
-        </ul>
-      </div>
-    </div>
-    <div class="grid">
-      <div class="col-1">
-        <h3>Published by me</h3>
-        <ul class="posts">
-            {% for post in site.posts %}
-              {% if post.draft == false and post.type != "3rdparty"%}
-                <li>
-                    <span>{{ post.date | date_to_string }}</span>
-                    <span class="seperator"> &rsaquo; </span>
-                    <span class="post-title">
-                        <a href="{{ post.url }}">{{ post.title }}</a>
-                    </span>
-                </li>
+              {% if post.type == "3rdparty"%}
+                <a href="{{ post.redirect }}">
               {% endif %}
-            {% endfor %}
-        </ul>
-      </div>
+                  {{ post.title }}
+                </a>
+              </h3>
+            </span>
+            <span class="post-date">{{ post.date | date: "%-d %B, %Y" }}</small>
+          </div>
+        {% endif %}
+      {% endfor %}
     </div>
   </div>
 </section>
 <section class="exp">
-  <div class="grid">
-    <div class="col-1">
-      <h1>
-        <span class="post-title">Experience</span>
-      </h1>
-    </div>
-  </div>
   <div class="grid">
     <div class="col-1">
       <p>

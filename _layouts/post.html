@@ -4,23 +4,23 @@ layout: default
 <nav class="post">
   <a href="/" title="Back">
     <div>
-      &lsaquo;
+      &larr; All posts
     </div>
   </a>
 </nav>
-<p>
-  <h1>
-    <span class="post-title">
+<div class="post-header">
+  <span class="post-title">
+    <h1>
       {% if page.title %}
       <a href="{{ root_url }}{{ post.url }}">{{ page.title }}</a>
       {% endif %}
-    </span>
-  </h1>
-  <span class="post-date">{{ page.date | date_to_string }}</span>
-</p>
-<span>
+    </h1>
+  </span>
+  <span class="post-date">{{ page.date | date: "%-d %B, %Y" }}</span>
+  <span>
     <a href="{{ root_url }}{{ post.url }}#disqus_thread"></a>
-</span>
+  </span>
+</div>
 
 {{ content }}
 
