@@ -2,10 +2,17 @@
 title: Replacing Mocha with Jest
 layout: post
 type: post
-date: 2020-01-23 00:00:01
+date: 2020-01-22 00:00:01
 ---
 
+{: .no_toc}
+
+* TOC
+{:toc}
+
 When everything works and clients are happy, sometimes we forget to upgrade stuff. That's how a jsdom version from 2016 ended up in our testing stack.
+
+If you used Mocha earlier for testing web apps, you already know that you have to set up jsdom manually.
 
 I decided to replace Mocha with Jest while I was searching jsdom's issue tracker and run into a post.
 
@@ -17,12 +24,12 @@ It turned out that Jest has a configuration option [testEnvironment](https://jes
 
 From this point, it was all downhill. I had the whole day allocated for the upgrade but I did it in a few hours.
 
-I'll show you how we tweaked our Mocha setup to work with Jest. Where we moved our environment setup which functions needed rename or refactoring and how we updated the Babel configuration.
+I'll show you how I tweaked our Mocha setup to work with Jest. Where was the environment setup moved which functions needed rename or refactoring and how the Babel configuration was updated.
 
 # Configuration
 
 ## Mocha
-There several ways to [configure Mocha]([https://mochajs.org/#configuring-mocha-nodejs]). The `mocha.opts` file we used is already deprecated, but later I'm going to reference its contents:
+There are several ways to [configure Mocha]([https://mochajs.org/#configuring-mocha-nodejs]). The `mocha.opts` file we used is already deprecated, but later I'm going to reference its contents:
 
 ```
 --reporter spec
@@ -33,14 +40,14 @@ There several ways to [configure Mocha]([https://mochajs.org/#configuring-mocha-
 --file test_helpers/test_setup.js
 ```
 
-and this is how we used to run it:
+and this is how we used to run Mocha:
 ```
 mocha --opts mocha.opts
 ```
 
 
 ## Jest
-Jest can be configured with `jest.config.js`, any js or JSON file with the `--config` flag, and inside `package.json`, see [Configuring Jest](https://jestjs.io/docs/en/configuration.html). I suggest using package.json, once the configuration gets more complicated, move it to a separate file.
+Jest can be configured with `jest.config.js`, any js or JSON file with the `--config` flag, and in `package.json`, see [Configuring Jest](https://jestjs.io/docs/en/configuration.html). I suggest starting with package.json. Once the configuration gets more complicated, move it to a separate file.
 In `package.json` you should use the key "jest" on top level, like this:
 
 ```
@@ -60,11 +67,11 @@ jest
 # Initializing environments
 
 ## Mocha
-In our case `test_helpers/test_setup.js` contains the environment setup.
+In our case `test_helpers/test_setup.js` had the environment setup.
 
-To keep things simple, let's say we need only a [Sinon sandbox](https://sinonjs.org/releases/latest/sandbox/).
+To keep things simple, let's say we needed only a [Sinon sandbox](https://sinonjs.org/releases/latest/sandbox/).
 
-(If you're using React this is the place where you configure Enzyme.)
+If you're using React, this is the place where you keep your Enzyme configuration.
 
 ```
 global.sinonSandbox = sinon.createSandbox();
@@ -75,7 +82,7 @@ afterEach(function() {
 
 ## Jest
 We have a similar approach here with [`setupFilesAfterEnv`](https://jestjs.io/docs/en/configuration#setupfilesafterenv-array).
-This option tells Jest which file(s) to run before each test. Put the path `test_helpers/test_setup.js` file into `package.json`:
+This option tells Jest which file(s) to run before each test. Put this into `package.json`:
 
 ```
 {
@@ -87,7 +94,7 @@ This option tells Jest which file(s) to run before each test. Put the path `test
 }
 ```
 
-Sidenote: this doesn't exactly match the behavior of the Mocha configuration. Now we create a sandbox before each test, while earlier we created it only once when Mocha loaded the file. However, there should be no differences in the way you interact with Sinon in your tests.
+Sidenote: this doesn't exactly match the behavior of the Mocha configuration. Now we create a sandbox before each test, while earlier we created it only when Mocha first loaded the file. However, there should be no differences in the way you interact with Sinon in your tests.
 
 # Hooks
 
@@ -99,7 +106,7 @@ Jest uses a bit different naming, in general, you're safe to replace:
 
 `after` ➡️ `afterAll`
 
-`context` doesn't have an equivalent in Jest, so we decided to use `describe`.
+`context` doesn't have an equivalent in Jest, so I decided to use `describe`.
 You can find & replace all occurrences of `context`, `before`, and `after` or put the following code into `test_helpers/test_setup.js`:
 
 ```
@@ -124,7 +131,7 @@ beforeEach(fn, timeout)
 afterEach(fn, timeout)
 ```
 
-To strip out the descriptions from every `beforeEach` I run in my editor the following regular expression find:
+To strip out the descriptions from every `beforeEach` run the following regular expression in your editor:
 ```
 beforeEach\([^(]*
 ```
@@ -137,6 +144,7 @@ beforeEach(
 # Babel
 
 ## Mocha
+
 We set up Babel in `test_helpers/babel_loader.js`:
 
 ```
@@ -148,12 +156,13 @@ require('@babel/register')({
 ```
 
 ## Jest
-Install `babel-jest`
+
+Install `babel-jest`:
 ```
 yarn add --dev babel-jest
 ```
 
-and add the transformer to  `package.json`:
+and add the following to `package.json`:
 ```
 // A map from regular expressions to paths to transformers
 transform: {
@@ -165,7 +174,7 @@ See more on [using Babel with Jest](https://jestjs.io/docs/en/getting-started#us
 
 # Conclusion
 
-At this point, you're pretty much ready to run your old tests with Jest.
+At this point, you're pretty much ready to run the tests with Jest.
 
 What I liked about Jest is the simple configuration and the "work great by default" philosophy.
 
@@ -183,6 +192,6 @@ In /Users/akoskm/Projects/test
 Pattern:  - 0 matches
 ```
 
-It doesn't ask for configuration files or necessary parameters, it just works.
+It doesn't ask for configuration files or necessary parameters it just works.
 
-This is different from how we used to interract with libraries and certainly a philosophy we should follow when building new tools.
+This is different from how we used to interact with libraries and, in my opinion, a philosophy we should follow when building new tools.
