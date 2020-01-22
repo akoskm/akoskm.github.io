@@ -21,6 +21,8 @@ From this point, it was all downhill. I had the whole day allocated for the upgr
 
 I'll show you how I tweaked our Mocha setup to work with Jest. Where was the environment setup moved which functions needed rename or refactoring and how the Babel configuration was updated.
 
+If you're new to Jest, check out their [Getting Started](https://jestjs.io/docs/en/getting-started) page.
+
 # Configuration
 
 ## Mocha
