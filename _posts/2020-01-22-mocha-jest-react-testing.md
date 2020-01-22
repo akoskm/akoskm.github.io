@@ -5,11 +5,6 @@ type: post
 date: 2020-01-22 00:00:01
 ---
 
-{: .no_toc}
-
-* TOC
-{:toc}
-
 When everything works and clients are happy, sometimes we forget to upgrade stuff. That's how a jsdom version from 2016 ended up in our testing stack.
 
 If you used Mocha earlier for testing web apps, you already know that you have to set up jsdom manually.
