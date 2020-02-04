@@ -2,3 +2,5 @@ name: "a developer with deadlines"
 description: "stories from production"
 future: true
 url: "https://akoskm.com"
+plugins:
+  - jekyll-feed
