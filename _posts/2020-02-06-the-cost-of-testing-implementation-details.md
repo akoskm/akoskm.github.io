@@ -58,3 +58,5 @@ A test, checking a specific implementation, or a test proving that the problem i
 Imagine their face when they run the tests and see all the false positives.
 
 <iframe src="https://giphy.com/embed/6229k5h1JkuvS" width="480" height="358" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/star-trek-trouble-with-tribbles-kirk-gets-shitted-on-by-6229k5h1JkuvS">via GIPHY</a></p>
+
+Let’s continue the discussion on [Twitter](https://twitter.com/akoskm/status/1225367339836878850) or in the comments below.
