@@ -15,16 +15,14 @@ As [@tastapod](https://twitter.com/tastapod) puts it in one of his [talks](https
 
 So, I'm pretty sure it has to do something with goals and accomplishing them over time within some financial or some other constraints.
 
-Writing code costs. Whether we add functionality or write tests, it costs to write, understand, maintain, improve, or even introduce it to developers that just joined our team. So more code probably equals higher costs.
+Writing code costs. Whether we add functionality or tests, it costs to write, understand, maintain, improve, or even introduce it to developers that just joined our team. So more code probably equals higher costs.
 
 Therefore, solving business requirements without creating new code should be ideal, but unfortunately, that's not always an easy task.
 
-How this all relates to testing implementation details and why we should avoid doing it?
+So, how this all relates to testing implementation details and why we should avoid doing it?
 
-Through a platform that hosts coding challenges, I'll try to explain why I see little value in testing implementation details.
+Through a platform that hosts coding challenges, I'll try to explain why I think you shouldn't focus on testing implementation details.
 While such tests increase costs, in the end, they not necessarily tell us if our software still works as it should be. They're tightly coupled to the implementation and not reusable, meaning, if you delete the implementation, you must delete those tests as well.
-
-> Software testing is an investigation conducted to provide stakeholders with information about the quality of the software product or service under test. - Wikipedia
 
 Have you ever tried programming challenges? Back in the days, Project Euler was popular. All it did, was asking you for a single input.
 
@@ -35,8 +33,6 @@ Looking at the newer platforms (Project Euler started in 2001), not much has cha
 Let's take a look at the ”First Factorial” coding challenge.
 
 We can identify some business requirements here. We need to write a program that helps the user to calculate the factorial of an integer.
-
-*Ignore the fact that there are already thousands of solutions for this, built into almost anything.*
 
 The panels, from left to right, clearly separate the business requirement, the software, and the tests.
 
@@ -52,13 +48,13 @@ Wouldn't be better to test that for an integer input, the output is going to be 
 
 ![Codebite loop](/assets/posts/images/2020-02-05/loop.jpg)
 
-If you test the software as I described above, the test will pass even after you change the implementation. That's because we realized that the recursion wasn't the business requirement. The requirement was to help the user to calculate the factorial of an integer.
+Keep in mind the requirements while writing tests, and they will work even after you change the implementation. In our case, the recursion is not a business requirement. The requirement is to calculate the factorial of an integer.
 
 So next time, you're about to test a new feature, think about the moment when someone decides to rewrite your implementation.
 
 What will bring more value to the team?
 
-A test checking a specific implementation, or a test proving that the problem is solved?
+A test, checking a specific implementation, or a test proving that the problem is solved?
 Imagine their face when they run the tests and see all the false positives.
 
 <iframe src="https://giphy.com/embed/6229k5h1JkuvS" width="480" height="358" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/star-trek-trouble-with-tribbles-kirk-gets-shitted-on-by-6229k5h1JkuvS">via GIPHY</a></p>
