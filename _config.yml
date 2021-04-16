@@ -5,3 +5,4 @@ future: true
 url: "https://akoskm.com"
 plugins:
   - jekyll-feed
+permalink: /:title/
