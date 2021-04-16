@@ -1,62 +1,61 @@
 ---
-title: The cost of testing implementation details
+title: Writing the right tests can actually save you money
 layout: post
 type: post
+featured: true
 date: 2020-02-06 00:00:01
 ---
 
-Have you ever wondered, what's the goal of software development?
+Through a platform that hosts coding challenges, I'll show you how to recognize when you're testing implementation details, and tell you why that's not a great idea.
 
-Could we define it as a discipline that solves business requirements within the constraints of budget, schedule, and technology? Maybe.
+When working with clients, apply these practices to keep development costs optimal, increase confidence in the software, and let the project move faster.
 
-As [@tastapod](https://twitter.com/tastapod) puts it in one of his [talks](https://www.youtube.com/watch?v=4Y0tOi7QWqM):
+And now for the readers who think that the ultimate cost-saving is to not write tests, ever:
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">– We don&#39;t write tests.<br>– Why?<br>– Because we don’t have time for it.<br>– Why?<br>– Because there is too much work and pressure.<br>– Why?<br>– Because we don’t move fast enough.<br>– Why?<br>– Because changing software has become difficult and risky.<br>– Why?<br>– Because we don’t write tests.</p>&mdash; Eduards Sizovs (@eduardsi) <a href="https://twitter.com/eduardsi/status/1381633331230601221?ref_src=twsrc%5Etfw">April 12, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+Now read the whole thing again, with a twist, replace time with money.
+
+Tests coupled to the implementation become useless if the implementation changes. Throwaway Money LLC, basically. After all, organized software development is the science of not burning through your budget as quickly as possible while still making some business impact.
+
+Or, as [@tastapod](https://twitter.com/tastapod) puts it in one of his [talks](https://www.youtube.com/watch?v=4Y0tOi7QWqM):
 
 > ”... sustainably minimizing lead time to business impact and that is the goal of the system of work that we call software development.”
 
-So, I'm pretty sure it has to do something with goals and accomplishing them over time within some financial or some other constraints.
+Writing code costs. Whether we add functionality, tests, it costs to write, understand, maintain, improve the code.
+Usually, the more code you have the higher the development costs are.
 
-Writing code costs. Whether we add functionality or tests, it costs to write, understand, maintain, improve, or even introduce it to developers that just joined our team. So more code probably equals higher costs.
+Solving business requirements without creating new code should be ideal, but that's not always an easy task. But how this all relates to testing implementation details and why we should avoid doing it?
 
-Therefore, solving business requirements without creating new code should be ideal, but unfortunately, that's not always an easy task.
+Let's get back to our coding challenge platform and try to identify the business requirements in the ”First Factorial” challenge.
 
-So, how this all relates to testing implementation details and why we should avoid doing it?
+The UI is quite intuitively structured, because the panels from left to right separate the requirements, the software, and the tests.
 
-Through a platform that hosts coding challenges, I'll try to explain why I think you shouldn't focus on testing implementation details.
-While such tests increase costs, in the end, they not necessarily tell us if our software still works as it should be. They're tightly coupled to the implementation and not reusable, meaning, if you delete the implementation, you must delete those tests as well.
+The business requirement here is to write a program that calculates the factorial of an integer.
 
-Have you ever tried programming challenges? Back in the days, Project Euler was popular. All it did, was asking you for a single input.
+![Codebite recursion](/assets/posts/images/2020-02-05/recursion.jpg "JavaScript code, calculating the first factorial of an integer with recursion.")
 
-![Project Euler interface](/assets/posts/images/2020-02-05/euler.jpg)
+Let's pretend for a moment that we like the idea of testing implementation details. In fact, all we do is test implementation details so this one is going to be easy! We should definitely test the number of recursive function calls for a given input.
 
-Looking at the newer platforms (Project Euler started in 2001), not much has changed. They're still telling if you correctly solved their problem, and do nothing more.
+Now, fast forward a year.
 
-Let's take a look at the ”First Factorial” coding challenge.
-
-We can identify some business requirements here. We need to write a program that helps the user to calculate the factorial of an integer.
-
-The panels, from left to right, clearly separate the business requirement, the software, and the tests.
-
-![Codebite recursion](/assets/posts/images/2020-02-05/recursion.jpg)
-
-Above, we have a working software returning the factorial of a positive integer. One way to test this software is to check the number of recursive function calls, but I don't think that's happening under the hood.
-
-That's probably because the problem has more than one solution (which is the case for most of the stuff we do in real-world applications). Even if we tie the tests our initial, working implementation, we just wrote code we throw away when that implementation changes.
-
-Will these tests increase the confidence in our software? Probably not, because they don't show that the software works. They indicate the presence of recursion.
-
-Wouldn't be better to test that for an integer input, the output is going to be a specific integer? As we learn more about data structures, we might move from recursion to a loop, but our software should continue to calculate the factorial of an integer.
+Let's say we took a course from Data Structures an Algorithms and we learned we can turn recursions into loops.
+We come up with this brand new way of calculating factorials:
 
 ![Codebite loop](/assets/posts/images/2020-02-05/loop.jpg)
 
-Keep in mind the requirements while writing tests, and they will work even after you change the implementation. In our case, the recursion is not a business requirement. The requirement is to calculate the factorial of an integer.
+We're excited to try this new algorithm, but our implementation specific test won't pass. The recursions are gone!
 
-So next time, you're about to test a new feature, think about the moment when someone decides to rewrite your implementation.
+You'll run into the same problem while developing or maintaining an kind of software over a period of time. Your software development skills improve during that period, but the problems you solved remain the same.
+Today we use LibX to make a network request tomorrow we'll be using LibZ. Unless your task is to explicitly test that LibZ made that request, you should never check that.
 
-What will bring more value to the team?
+Such tests don't increase confidence in our software. They only show the presence of a recursion, the presence of a LibZ call or any other implementation detail that could be temporary.
 
-A test, checking a specific implementation, or a test proving that the problem is solved?
-Imagine their face when they run the tests and see all the false positives.
+Focus on the business requirements while writing tests so they keep working even after the implementation changes.
+In our case, calculating the factorial of an integer was the requirement and not the presence of recursions.
 
-<iframe src="https://giphy.com/embed/6229k5h1JkuvS" width="480" height="358" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/star-trek-trouble-with-tribbles-kirk-gets-shitted-on-by-6229k5h1JkuvS">via GIPHY</a></p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Write tests. Not too many. Mostly integration.</p>&mdash; Guillermo Rauch (@rauchg) <a href="https://twitter.com/rauchg/status/807626710350839808?ref_src=twsrc%5Etfw">December 10, 2016</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+Do you or your team write tests at all? Are you thinking about what part of the software you should test?
 
 Let’s continue the discussion on [Twitter](https://twitter.com/akoskm/status/1225367339836878850) or in the comments below.
