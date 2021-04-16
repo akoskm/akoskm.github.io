@@ -3,6 +3,7 @@ title: Replacing Mocha with Jest
 layout: post
 type: post
 date: 2020-01-22 00:00:01
+featured: yes
 ---
 
 When everything works and clients are happy, sometimes we forget to upgrade stuff. That's how a jsdom version from 2016 ended up in our testing stack.

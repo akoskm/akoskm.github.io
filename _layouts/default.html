@@ -2,15 +2,14 @@
     <head>
         <meta charset="utf-8">
         <meta name=viewport content="width=device-width, initial-scale=1">
-        <title>
-            {{ page.title }}
-        </title>
+        <meta name="description" content="akoskm - Full-Stack development">
+        <title>{{ page.title }}</title>
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="manifest" href="/site.webmanifest">
-        <link href="https://fonts.googleapis.com/css?family=Roboto:900&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Rasa:300display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Brygada+1918&family=Buenard&family=Roboto:wght@900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/assets/css/default.css">
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -25,23 +24,20 @@
         <style>
 
           body {
-            font-family: 'Rasa', serif;
-            font-size: 23px;
+            font-family: 'Buenard', serif;
+            font-size: 21px;
             font-style: normal;
-            font-weight: 300;
             color: #333;
             background-color: #fdfdfd;
             margin: 0;
             padding: 0;
-            line-height: 1.3;
-            -webkit-font-smoothing: antialiased;
-            font-display: swap;
+            line-height: 1.55;
           }
 
           body a {
-            text-decoration: none;
+            text-decoration: underline;
             color: inherit;
-            color: #3792FF;
+            color: #6392ca;
           }
 
           body p {
@@ -104,9 +100,9 @@
           .post-title a {
             font-family: 'Roboto', sans-serif;
             padding: 0;
-            font-weight: 800;
-            font-size: 1em;
-            color: #9D6DAE;
+            font-weight: 900;
+            font-size: 1.2em;
+            text-decoration: none;
           }
 
           .post-title h3 {
@@ -141,8 +137,16 @@
             text-align: center;
           }
 
-          section.about div {
-            margin-left: 170px;
+          section.about h1:nth-child(2) {
+            text-indent: 40px;
+          }
+
+          section.about img {
+            margin: 14px 10px;
+          }
+
+          section.about svg {
+            margin: -7px 0px;
           }
 
           span.post-date {
@@ -213,11 +217,61 @@
             position: relative;
             top: -5px;
           }
+
+          span.tech {
+            margin: 0px 2px;
+            padding: 0px 5px;
+            border-radius: 4px;
+          }
+          span.n {
+            color: #fdfdfd;
+            background-color: #689f63;
+          }
+          span.p {
+            color: #fdfdfd;
+            background-color: #31648c;
+          }
+          span.m {
+            color: #fdfdfd;
+            background-color: #4ca449;
+          }
+          span.b {
+            color: #fdfdfd;
+            background-color: #0071b5;
+          }
+          span.r {
+            background-color: #61dafb;
+          }
+
+          nav.header {
+            position: relative;
+            padding: 20px 0px;
+          }
+
+          nav.header .home {
+            position: absolute;
+            left: 0;
+            float: left;
+          }
+
+          nav.header .blog {
+            position: absolute;
+            right: 0;
+            float: right
+          }
         </style>
     </head>
     <body>
         <div class="wrapper">
             <div class="main-container">
+              <nav class="header">
+                <div class="home">
+                  <a href="/">akoskm.com</a>
+                </div>
+                <div class="blog">
+                  <a href="/blog">Blog</a>
+                </div>
+              </nav>
               {{ content }}
             </div>
             {% include footer.html %}

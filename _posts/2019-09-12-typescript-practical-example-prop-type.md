@@ -3,6 +3,7 @@ title: Use TypeScript to DRY up React components
 layout: post
 type: post
 date: 2019-09-12 00:00:01
+featured: yes
 ---
 
 {: .no_toc}
