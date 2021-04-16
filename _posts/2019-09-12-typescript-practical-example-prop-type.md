@@ -13,7 +13,7 @@ featured: yes
 
 # Introduction
 
-In the [previous post](/react-usecontext-practical-example), we talked about ”plumbing” in React and how it affects the readability of our code.
+In the [previous post](/blog/react-usecontext-practical-example), we talked about ”plumbing” in React and how it affects the readability of our code.
 
 We used React Context to avoid passing down the same props to multiple layers of components and to avoid repeating PropTypes definitions.
 
