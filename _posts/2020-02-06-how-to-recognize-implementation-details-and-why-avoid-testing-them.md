@@ -16,7 +16,7 @@ And now for the readers who think that the ultimate cost-saving is to not write 
 
 ### What are implementation details?
 
-Let's say you shipped a piece of software that sorts To-do list items by their weight.
+Let's say you shipped a software that sorts To-do list items by their weight.
 To sort this list, you used [Insertion sort](https://en.wikipedia.org/wiki/Insertion_sort) because of its simplicity.
 This is one of the lists your software displays:
 
@@ -31,13 +31,13 @@ Congratulations, you just spotted an implementation detail!
 
 ### Why I should avoid testing them?
 
-Tests coupled to a specific implementation become useless when that implementation changes. Throwaway Money LLC, basically. After all, organized software development is the science of not burning through your budget as quickly as possible while still making some business impact, right?
+Tests coupled to a specific implementation become useless when that implementation changes. Money thrown away, basically. Organized software development is all about not burning through your budget as quickly as possible while still making some business impact, right?
 
 Or, as [@tastapod](https://twitter.com/tastapod) puts it in one of his [talks](https://www.youtube.com/watch?v=4Y0tOi7QWqM):
 
 > ”... sustainably minimizing lead time to business impact and that is the goal of the system of work that we call software development.”
 
-Writing code costs. Whether we add functionality, tests, it costs to write, understand, maintain, and improve the code.
+Writing code costs a lot. Whether we add functionality, tests, it costs to write, understand, maintain, and improve the code.
 Usually, the more code you have the higher the development costs are.
 
 Solving business requirements without creating new code would be ideal, but that's not always an easy task.
@@ -63,9 +63,9 @@ We come up with this brand new way of calculating factorials:
 
 We're excited to try this new algorithm, but our test won't pass anymore. The recursion is gone!
 
-You'll run into the same problem while working on any kind of software over a period of time. Your software development skills might improve during that period, you rewrite some of your code, but the problems you solve remain the same.
+The biggest problem with such tests is that they don't increase confidence in our software. The only thing they show is the presence of a recursion, an implementation detail that might change in the future.
 
-The biggest problem is that such tests don't increase confidence in our software. They only thing they show is the presence of a recursion, an implementation detail that might change over time.
+You'll run into the same problem while working on any kind of software over a period of time. Your development skills might improve during that period, you rewrite some of your code, but the problems you solve remain the same.
 
 Focus on the business requirements while writing tests so they keep working even after the implementation changes.
 
@@ -73,4 +73,4 @@ Focus on the business requirements while writing tests so they keep working even
 
 Do you write tests at all? Are you thinking what's the best way to test your software?
 
-Let’s continue the discussion on [Twitter](https://twitter.com/akoskm/status/1225367339836878850) or in the comments below.
+Let me know in the comments below!
