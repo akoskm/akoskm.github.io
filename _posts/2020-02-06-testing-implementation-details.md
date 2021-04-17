@@ -1,9 +1,11 @@
 ---
-title: How to recognize if you're testing implementation details
+title: Why avoid testing implementation details
 layout: post
 type: post
 featured: true
 date: 2020-02-06 00:00:01
+hero: /assets/posts/images/2020-02-05/pexels-startup-stock-photos-212286.jpg
+hero_credit: Photo by Startup Stock Photos from Pexels
 ---
 
 Let's find out you why it isn't such a great idea to test implementation details and how to tell if you're already doing it!
