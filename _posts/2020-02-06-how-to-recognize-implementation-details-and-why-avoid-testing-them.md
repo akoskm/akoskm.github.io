@@ -1,35 +1,52 @@
 ---
-title: How to recognize implementation details - and why avoid testing them
+title: How to recognize if you're testing implementation details
 layout: post
 type: post
 featured: true
 date: 2020-02-06 00:00:01
 ---
 
-Through a platform that hosts coding challenges, I'll show you how to recognize when you're testing implementation details, and tell you why that's not a great idea.
+Let's find out you why it isn't such a great idea to test implementation details and how to tell if you're already doing it!
 
-When working with clients, apply these practices to keep development costs optimal, increase confidence in the software, and let the project move faster.
+When working on projects, apply these practices to keep development costs optimal, increase confidence in the software, and let the project move faster.
 
 And now for the readers who think that the ultimate cost-saving is to not write tests, ever:
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">– We don&#39;t write tests.<br>– Why?<br>– Because we don’t have time for it.<br>– Why?<br>– Because there is too much work and pressure.<br>– Why?<br>– Because we don’t move fast enough.<br>– Why?<br>– Because changing software has become difficult and risky.<br>– Why?<br>– Because we don’t write tests.</p>&mdash; Eduards Sizovs (@eduardsi) <a href="https://twitter.com/eduardsi/status/1381633331230601221?ref_src=twsrc%5Etfw">April 12, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-Now read the whole thing again, with a twist, replace time with money.
+### What are implementation details?
 
-Tests coupled to the implementation become useless if the implementation changes. Throwaway Money LLC, basically. After all, organized software development is the science of not burning through your budget as quickly as possible while still making some business impact.
+Let's say you shipped a piece of software that sorts To-do list items by their weight.
+To sort this list, you used [Insertion sort](https://en.wikipedia.org/wiki/Insertion_sort) because of its simplicity.
+This is one of the lists your software displays:
+
+- 4 whole eggs
+- 1 cup of whole cow's milk
+- 120 grams of oats
+
+One day you decide to replace the sort algorithm with [Bucket sort](https://en.wikipedia.org/wiki/Bucket_sort).
+Is this change going to impact how your users interact with this software? Think about the release notes, should you explain why you did this change? Probably not.
+
+Congratulations, you just spotted an implementation detail!
+
+### Why I should avoid testing them?
+
+Tests coupled to a specific implementation become useless when that implementation changes. Throwaway Money LLC, basically. After all, organized software development is the science of not burning through your budget as quickly as possible while still making some business impact, right?
 
 Or, as [@tastapod](https://twitter.com/tastapod) puts it in one of his [talks](https://www.youtube.com/watch?v=4Y0tOi7QWqM):
 
 > ”... sustainably minimizing lead time to business impact and that is the goal of the system of work that we call software development.”
 
-Writing code costs. Whether we add functionality, tests, it costs to write, understand, maintain, improve the code.
+Writing code costs. Whether we add functionality, tests, it costs to write, understand, maintain, and improve the code.
 Usually, the more code you have the higher the development costs are.
 
-Solving business requirements without creating new code should be ideal, but that's not always an easy task. But how this all relates to testing implementation details and why we should avoid doing it?
+Solving business requirements without creating new code would be ideal, but that's not always an easy task.
 
-Let's get back to our coding challenge platform and try to identify the business requirements in the ”First Factorial” challenge.
+### Am I testing the right thing?
 
-The UI is quite intuitively structured, because the panels from left to right separate the requirements, the software, and the tests.
+During my studies we were *obsessed* with coding challenges. I came across this site called [Coderbyte](https://coderbyte.com/) that hosts such challenges and realized how well it represents this idea of what to test.
+
+The UI immediately creates the right separation. The panels from left to right represent the requirements, the software, and the tests.
 
 The business requirement here is to write a program that calculates the factorial of an integer.
 
@@ -39,23 +56,21 @@ Let's pretend for a moment that we like the idea of testing implementation detai
 
 Now, fast forward a year.
 
-Let's say we took a course from Data Structures an Algorithms and we learned we can turn recursions into loops.
+We took a course from Data Structures an Algorithms and we learned we can turn recursions into loops.
 We come up with this brand new way of calculating factorials:
 
 ![Codebite loop](/assets/posts/images/2020-02-05/loop.jpg)
 
-We're excited to try this new algorithm, but our implementation specific test won't pass. The recursions are gone!
+We're excited to try this new algorithm, but our test won't pass anymore. The recursion is gone!
 
-You'll run into the same problem while developing or maintaining an kind of software over a period of time. Your software development skills improve during that period, but the problems you solved remain the same.
-Today we use LibX to make a network request tomorrow we'll be using LibZ. Unless your task is to explicitly test that LibZ made that request, you should never check that.
+You'll run into the same problem while working on any kind of software over a period of time. Your software development skills might improve during that period, you rewrite some of your code, but the problems you solve remain the same.
 
-Such tests don't increase confidence in our software. They only show the presence of a recursion, the presence of a LibZ call or any other implementation detail that could be temporary.
+The biggest problem is that such tests don't increase confidence in our software. They only thing they show is the presence of a recursion, an implementation detail that might change over time.
 
 Focus on the business requirements while writing tests so they keep working even after the implementation changes.
-In our case, calculating the factorial of an integer was the requirement and not the presence of recursions.
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Write tests. Not too many. Mostly integration.</p>&mdash; Guillermo Rauch (@rauchg) <a href="https://twitter.com/rauchg/status/807626710350839808?ref_src=twsrc%5Etfw">December 10, 2016</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-Do you or your team write tests at all? Are you thinking about what part of the software you should test?
+Do you write tests at all? Are you thinking what's the best way to test your software?
 
 Let’s continue the discussion on [Twitter](https://twitter.com/akoskm/status/1225367339836878850) or in the comments below.
