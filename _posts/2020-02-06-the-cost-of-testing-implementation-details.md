@@ -1,5 +1,5 @@
 ---
-title: Writing the right tests can actually save you money
+title: How to recognize implementation details - and why avoid testing them
 layout: post
 type: post
 featured: true
