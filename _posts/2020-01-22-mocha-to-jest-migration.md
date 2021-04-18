@@ -1,5 +1,5 @@
 ---
-title: How to tweak your existing Mocha setup and start using Jest
+title: How to move from Mocha to Jest
 layout: post
 type: post
 date: 2020-01-22 00:00:01
@@ -8,7 +8,7 @@ featured: yes
 
 Jest is a simple testing library that works with zero configuration. Because of its great API - if you're already using Mocha - with a few find & replace and minimal effort you can move to Jest, without having to rewrite any of your tests.
 
-In this post I'll show you how I tweaked my existing environment setup, and what needed some refactoring.
+In this post I'll show you how I tweaked my existing Mocha setup to achieve this.
 
 If you're new to Jest, don't forget to check out their [Getting Started](https://jestjs.io/docs/en/getting-started) page as well.
 
@@ -34,7 +34,7 @@ and this is how I used to run Mocha:
 mocha --opts mocha.opts
 ```
 
-You can configure Jest with `jest.config.js`, a js or JSON file with the `--config` flag, and in `package.json`, see [Configuring Jest](https://jestjs.io/docs/en/configuration.html). I suggest you start with `package.json` because I think that's the simplest. Once the configuration gets more complicated, you can always move it into a separate file.
+You can configure Jest with `jest.config.js`, a js or JSON file with the `--config` flag, and in `package.json`, see [Configuring Jest](https://jestjs.io/docs/en/configuration.html). I suggest you start with `package.json` because I think that's the simplest. Once the configuration gets more complex, you can always move it into a separate file.
 In `package.json` you should use the key `"jest"` on top level, like this:
 
 ```
@@ -53,9 +53,9 @@ jest
 
 # Setup
 
-This is the only place where depending on what other libraries you use in your tests, you might want to tweak the setup a bit.
+This is the only place where depending on what other libraries you use in your tests, you might want to tweak their setup a bit.
 
-In my case `test_helpers/test_setup.js` had the environment setup for Mocha
+In my case `test_helpers/test_setup.js` had the environment setup for Mocha.
 If you're using Enzyme or Sinon for example, this is the place where you keep their configuration.
 Let's say your file has something similar:
 ```
@@ -64,10 +64,10 @@ afterEach(function() {
   return global.sinonSandbox.restore();
 });
 ```
-Then you should be able to reuse this.
+Then you should be able to reuse this with Jest.
 
 Jest does its environment setup with [`setupFilesAfterEnv`](https://jestjs.io/docs/en/configuration#setupfilesafterenv-array).
-This option tells Jest which file(s) to run before each test. Put this into `package.json` after `verbose`:
+This option tells the library which file(s) to run before each test. Put this into `package.json` after `verbose`:
 
 ```
 {
@@ -187,6 +187,6 @@ Pattern:  - 0 matches
 
 It doesn't ask for configuration files or necessary parameters, it simply works. I think this is a philosophy worth following when designing new tools.
 
-What frameworks you use to test your application?
+What frameworks you use to test your code?
 
 Are you stuck in the middle of a migration? Let me know in the comments or find me on <a href="https://twitter.com/akoskm">Twitter</a>.
