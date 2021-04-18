@@ -93,6 +93,8 @@ Let's convert `TableRow` in the same fashion:
 
 <script src="https://gist.github.com/akoskm/69a69d6668246db3464ab01c0361d689.js?file=table-row.tsx"></script>
 
+see <a href="https://codesandbox.io/embed/table-sidebar-layout-with-plumbing-xk591?fontsize=14">here</a> the original version.
+
 # TypeScript Interfaces
 
 We notice the repetition of the `onProductChange: (event: any) => void;` function in `TableProps` and `TableRowProps`, and we're going to use [Interfaces](https://www.typescriptlang.org/docs/handbook/interfaces.html) to solve this problem.
@@ -130,8 +132,6 @@ We defined our interface method to accept `MouseEvent` instead of `Product`. Let
 
 We successfully cleaned up these two components from PropTypes repetitions, and you can find the updated code [here](https://codesandbox.io/s/table-sidebar-layout-with-typescript-2si7g).
 
-Are you already using TypeScript? I think it adds slightly more complexity to your code than PropTypes but also provides more benefits.
+Do you use TypeScript? Do you think this introduces more complexity than PropTypes?
 
-Let me hear your thoughts on this in the comment section below or on [Reddit](https://www.reddit.com/r/javascript/comments/d38l90/use_typescript_to_dry_up_your_components/)!
-
-If you found this content useful, please show the love by sharing it with others. Thank you!
+Let me hear your thoughts on this in the comment section!
