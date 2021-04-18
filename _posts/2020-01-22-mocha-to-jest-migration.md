@@ -6,13 +6,15 @@ date: 2020-01-22 00:00:01
 featured: yes
 ---
 
-Jest is a simple testing library that works with zero configuration. Because of its great API - if you're already using Mocha - with a few Find & Replace and minimal effort you can move to Jest, without having to rewrite your tests.
+Jest is a simple testing library that works with zero configuration. Because of its great API - if you're already using Mocha - with a few find & replace and minimal effort you can move to Jest, without having to rewrite any of your tests.
 
-In this post I'll show you how I moved to Jest from an existing Mocha configuration. How I tweak the existing environment setup, the Babel configuration, and refactored some functions.
+In this post I'll show you how I tweaked my existing environment setup, and what needed some refactoring.
 
 If you're new to Jest, don't forget to check out their [Getting Started](https://jestjs.io/docs/en/getting-started) page as well.
 
 I personally got hooked on Jest when I realized it comes with a configuration option [testEnvironment](https://jestjs.io/docs/en/configuration#testenvironment-string), that gives you a test environment with a JSDOM that works out of the box, without actually configuring JSDOM. I've lost count, across all projects, how many times I wanted to update the testing environment and ended up not doing it because I couldn't get JSDOM to work with my existing tests.
+
+So let's jump straight into it!
 
 # Configuration
 
@@ -35,7 +37,7 @@ mocha --opts mocha.opts
 
 
 ## Jest
-You can configure Jest with `jest.config.js`, a js or JSON file with the `--config` flag, and in `package.json`, see [Configuring Jest](https://jestjs.io/docs/en/configuration.html). I suggest starting with `package.json`. Once the configuration gets more complicated, move it to a separate file.
+You can configure it with `jest.config.js`, a js or JSON file with the `--config` flag, and in `package.json`, see [Configuring Jest](https://jestjs.io/docs/en/configuration.html). I suggest you start with `package.json` because I think that's the simplest. Once the configuration gets more complicated, you can always move it into a separate file.
 In `package.json` you should use the key `"jest"` on top level, like this:
 
 ```
@@ -58,7 +60,7 @@ This is the only place where depending on what other libraries you use in your t
 
 ## Mocha
 In my case `test_helpers/test_setup.js` had the environment setup.
-If you're using Enzyme or Sinon for example, this is the place where you keep that configuration as well.
+If you're using Enzyme or Sinon for example, this is the place where you keep their configuration.
 Let's say your file has something similar:
 ```
 global.sinonSandbox = sinon.createSandbox();
@@ -82,7 +84,7 @@ This option tells Jest which file(s) to run before each test. Put this into `pac
 }
 ```
 
-Side-note: this doesn't exactly match the behavior of the Mocha configuration. Now we create a sandbox before each test, while earlier we created it only when Mocha first loaded the file. However, there should be no difference in the way how Sinon interacts in your tests.
+Side-note: this doesn't exactly match the behavior of the Mocha configuration. Instead of creating only one sandbox, now we create one sandbox before each test. However, there should be no difference in how Sinon interacts with your tests.
 
 # Hooks
 
@@ -152,7 +154,7 @@ require('@babel/register')({
 
 ## Jest
 
-Install `babel-jest`:
+You have to install `babel-jest`:
 ```
 yarn add --dev babel-jest
 ```
@@ -164,8 +166,8 @@ then add `transfer` to `package.json` that now should look like this:
   "jest": {
     "verbose": true,
     "setupFilesAfterEnv": ["<rootDir>/test_helpers/test_setup.js"],
-    transform: {
-      '^.+\\.[t|j]sx?$': 'babel-jest',
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest",
     }
   }
 }
@@ -173,11 +175,10 @@ then add `transfer` to `package.json` that now should look like this:
 
 See more on [using Babel with Jest](https://jestjs.io/docs/en/getting-started#using-babel).
 
+At this point, you're pretty much ready to run your existing tests with Jest.
 # Conclusion
 
-At this point, you're pretty much ready to run your existing tests with Jest.
-
-What I liked about Jest is the simple configuration and the "work great by default" philosophy.
+What I really liked about Jest is the "work great by default" philosophy.
 
 Even when installed in an empty package and run, it gives you a meaningful output:
 
@@ -193,9 +194,8 @@ In /Users/akoskm/Projects/test
 Pattern:  - 0 matches
 ```
 
-It doesn't ask for configuration files or necessary parameters it simply works.
+It doesn't ask for configuration files or necessary parameters, it simply works. I think this is a philosophy worth following when designing new tools.
 
-This is different from how we used to interact with libraries and, in my opinion, a philosophy we should follow when building new tools.
+What frameworks you use to test your application?
 
-What framework you use to test your application?
-You are in the middle of a similar migration and stuck? Let me know in the comments or find me on <a href="https://twitter.com/akoskm">Twitter</a>.
+Are you stuck in the middle of a migration? Let me know in the comments or find me on <a href="https://twitter.com/akoskm">Twitter</a>.
