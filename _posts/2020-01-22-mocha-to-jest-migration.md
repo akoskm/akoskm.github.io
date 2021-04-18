@@ -12,14 +12,13 @@ In this post I'll show you how I tweaked my existing environment setup, and what
 
 If you're new to Jest, don't forget to check out their [Getting Started](https://jestjs.io/docs/en/getting-started) page as well.
 
-I personally got hooked on Jest when I realized it comes with a configuration option [testEnvironment](https://jestjs.io/docs/en/configuration#testenvironment-string), that gives you a test environment with a JSDOM that works out of the box, without actually configuring JSDOM. I've lost count, across all projects, how many times I wanted to update the testing environment and ended up not doing it because I couldn't get JSDOM to work with my existing tests.
+I personally got hooked on this library when I realized it comes with a configuration option [testEnvironment](https://jestjs.io/docs/en/configuration#testenvironment-string), that gives you a test environment with a JSDOM that works out of the box, without actually configuring JSDOM. I've lost count, across all projects, how many times I wanted to update the testing environment and ended up not doing it because I couldn't get JSDOM to work with my existing tests.
 
 So let's jump straight into it!
 
 # Configuration
 
-## Mocha
-I did it through `mocha.opts`, the contents are important because I'm going to reference some of these files later:
+I use `mocha.opts` to configure Mocha. The contents of this file are important because I'm going to reference them later:
 
 ```
 --reporter spec
@@ -35,9 +34,7 @@ and this is how I used to run Mocha:
 mocha --opts mocha.opts
 ```
 
-
-## Jest
-You can configure it with `jest.config.js`, a js or JSON file with the `--config` flag, and in `package.json`, see [Configuring Jest](https://jestjs.io/docs/en/configuration.html). I suggest you start with `package.json` because I think that's the simplest. Once the configuration gets more complicated, you can always move it into a separate file.
+You can configure Jest with `jest.config.js`, a js or JSON file with the `--config` flag, and in `package.json`, see [Configuring Jest](https://jestjs.io/docs/en/configuration.html). I suggest you start with `package.json` because I think that's the simplest. Once the configuration gets more complicated, you can always move it into a separate file.
 In `package.json` you should use the key `"jest"` on top level, like this:
 
 ```
@@ -58,8 +55,7 @@ jest
 
 This is the only place where depending on what other libraries you use in your tests, you might want to tweak the setup a bit.
 
-## Mocha
-In my case `test_helpers/test_setup.js` had the environment setup.
+In my case `test_helpers/test_setup.js` had the environment setup for Mocha
 If you're using Enzyme or Sinon for example, this is the place where you keep their configuration.
 Let's say your file has something similar:
 ```
@@ -70,7 +66,6 @@ afterEach(function() {
 ```
 Then you should be able to reuse this.
 
-## Jest
 Jest does its environment setup with [`setupFilesAfterEnv`](https://jestjs.io/docs/en/configuration#setupfilesafterenv-array).
 This option tells Jest which file(s) to run before each test. Put this into `package.json` after `verbose`:
 
@@ -140,9 +135,7 @@ beforeEach(
 
 # Babel
 
-## Mocha
-
-We set up Babel in `test_helpers/babel_loader.js`:
+We set up Babel in `test_helpers/babel_loader.js` for Mocha:
 
 ```
 // Run before any test files are loaded to use Babel for subsequent parsing
@@ -152,9 +145,7 @@ require('@babel/register')({
 });
 ```
 
-## Jest
-
-You have to install `babel-jest`:
+You have to install `babel-jest` to use Babel with Jest:
 ```
 yarn add --dev babel-jest
 ```
