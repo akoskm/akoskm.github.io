@@ -4,6 +4,8 @@ layout: post
 type: post
 date: 2020-01-22 00:00:01
 featured: yes
+hero: /assets/posts/images/2020-01-22/pexels-christina-morillo-1181263.jpg
+hero_credit: Photo by Christina Morillo from Pexels
 ---
 
 Jest is a simple testing library that works with zero configuration. Because of its great API - if you're already using Mocha - with a few find & replace and minimal effort you can move to Jest, without having to rewrite any of your tests.
