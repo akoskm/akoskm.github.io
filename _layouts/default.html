@@ -169,7 +169,7 @@
           }
 
           p > img {
-            margin: 10px;
+            margin: 10px 0px;
           }
 
           img.me {
@@ -271,6 +271,40 @@
             width: 1280px;
             display: block;
             margin: 0 auto;
+          }
+
+          @media screen and (max-width: 820px) {
+            nav.wrapped {
+              width: 100%;
+            }
+            section {
+              width: 100%;
+            }
+
+            .post-content.wrapped,
+            .post-header.wrapped {
+              width: 100%;
+            }
+
+            .post-hero {
+              display: none;
+            }
+
+            div.wrapped {
+              width: 100%;
+            }
+
+            footer.wrapped {
+              width: 100%;
+            }
+
+            body {
+              font-size: 18px;
+            }
+
+            .post-title h1 a {
+              font-size: 0.7em;
+            }
           }
         </style>
     </head>
