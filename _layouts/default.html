@@ -11,17 +11,17 @@
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
-        <meta property="og:url" content="{{ page.url }}">
+        <meta property="og:url" content="{{ site.url }}{{ page.url }}">
         <meta property="og:title" content="{{ page.title }}">
         <meta property="og:description" content="{{ page.excerpt | strip_html | normalize_whitespace | truncate: 160 | escape }}">
-        <meta property="og:image" content="{{ page.hero }}">
+        <meta property="og:image" content="{{ site.url }}{{ page.hero }}">
 
         <!-- Twitter -->
         <meta property="twitter:card" content="{{ page.title }}">
-        <meta property="twitter:url" content="{{ page.url }}">
+        <meta property="twitter:url" content="{{ site.url }}{{ page.url }}">
         <meta property="twitter:title" content="{{ page.title }}">
         <meta property="twitter:description" content="{{ page.excerpt | strip_html | normalize_whitespace | truncate: 160 | escape }}">
-        <meta property="twitter:image" content="{{ page.hero }}">
+        <meta property="twitter:image" content="{{ site.url }}{{ page.hero }}">
 
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
