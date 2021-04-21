@@ -4,6 +4,7 @@ layout: post
 type: post
 date: 2019-09-12 00:00:01
 featured: yes
+excerpt: A practical guide to replacing React PropTypes with TypeScript.
 ---
 
 {: .no_toc}

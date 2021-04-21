@@ -8,7 +8,7 @@ hero: /assets/posts/images/2020-02-05/pexels-startup-stock-photos-212286.jpg
 hero_credit: Photo by Startup Stock Photos from Pexels
 ---
 
-Let's find out you why it isn't such a great idea to test implementation details and how to tell if you're already doing it!
+Let's find out why it isn't such a great idea to test implementation details and how to tell if you're already doing it!
 
 When working on projects, apply these practices to keep development costs optimal, increase confidence in the software, and let the project move faster.
 
