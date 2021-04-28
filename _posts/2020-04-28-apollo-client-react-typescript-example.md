@@ -6,21 +6,19 @@ featured: true
 date: 2021-04-28 00:00:01
 ---
 
-In this tutorial, we'll find out why Apollo Client with React and TypeScript is a great combination to power your front-end app.
+In this tutorial, we’ll find out why Apollo Client with React and TypeScript is a great combination to power your front-end app.
 We love Apollo Client because of its built-in robust state management, in-memory caching, and error handling capabilities.
-To keep the demo simple we're not going to write any backend code for this presentation.
-We'll use the publicly available SpaceX GraphQL API, because who doesn't love rockets, rights?
-And come on, it's a perfect combination, rockets, Apollo... 🥁
+To keep the demo simple we’re not going to write any backend code for this presentation, and use the publicly available SpaceX GraphQL API.
 
 # Installing Apollo Client with React and TypeScript
 
-To make our lives simpler we're also going to start with `create-react-app`, specifically with a typescript template:
+To make our lives simpler we’re also going to start with `create-react-app`, specifically with a typescript template:
 
 ```
 yarn create react-app apollo-client-react-typescript --template typescript
 ```
 
-Next, we're going to install the Apollo Client alongside GraphQL:
+Next, we’re going to install the Apollo Client alongside GraphQL:
 
 ```
 yarn addd @apollo/client graphql
@@ -28,7 +26,7 @@ yarn addd @apollo/client graphql
 
 The `@apollo/client` package contains the state management/caching and error handling while `grahpql` parses the GraphQL queries.
 
-Now that we have these packages installed we'll create the building blocks that are necessary to communicate with the GraphQL endpoint.
+Now that we have these packages installed we’ll create the building blocks that are necessary to communicate with the GraphQL endpoint.
 
 # Data fetching with Apollo Client
 
@@ -85,12 +83,12 @@ ReactDOM.render(
 
 ## Querying data with Apollo Client and TypeScript
 
-Now that we wrapped the `App` React Component with `ApolloProvider`, we're ready to make some queries.
+Now that we wrapped the `App` React Component with `ApolloProvider`, we’re ready to make some queries.
 GraphQL, thanks to its GraphiQL interface provides an easy way to discover GraphQL APIs.
 
-If you haven't decided what you want to query for, visit the interactive explorer of the SpaceX API here: [https://api.spacex.land/graphql/](https://api.spacex.land/graphql/).
+If you haven’t decided what you want to query for, visit the interactive explorer of the SpaceX API here: [https://api.spacex.land/graphql/](https://api.spacex.land/graphql/).
 
-Let's say we want to create a query that returns the id, name, the Wikipedia link, and a brief description of each SpaceX rocket.
+Let’s say we want to create a query that returns the id, name, the Wikipedia link, and a brief description of each SpaceX rocket.
 
 _If you're new to the GraphQL syntax I suggest you visit [https://graphql.org/learn/queries/](https://graphql.org/learn/queries/)._
 
@@ -107,26 +105,26 @@ The query would look like this:
 }
 ```
 
-Let's create a type that describes a single rocket:
+Let’s create a type that describes a single rocket:
 
 ```typescript
 interface RocketData {
   id: string;
   name: string;
   wikipedia: string;
-  description: string
+  description: string;
 }
 ```
 
-Don't forget, we're going to receive an array of rockets here, so let's create a type for that as well:
+Don’t forget, we’re going to receive an array of rockets here, so let’s create a type for that as well:
 
 ```typescript
 interface RocketsResult {
-  rockets: Array<RocketData>
+  rockets: Array<RocketData>;
 }
 ```
 
-To run this query we're going to use the `useQuery` hook and the `gql` function, provided by the Apollo Client:
+To run this query we’re going to use the `useQuery` hook and the `gql` function, provided by the Apollo Client:
 
 ```typescript
 import { useQuery, gql } from '@apollo/client';
@@ -161,7 +159,7 @@ function App() {
 export default App;
 ```
 
-`useQuery`’s first type is the type that corresponds to the data structure we're going to receive from the GraphQL endpoint.
+`useQuery`’s first type is the type that corresponds to the data structure we’re going to receive from the GraphQL endpoint.
 
 The `useQuery` hook also returns an object with the following properties:
 
@@ -175,7 +173,7 @@ Now you can run the app with `yarn start` and you should see something similar i
 
 # Modifying data with Apollo Client
 
-Now that we've learned how to fetch data with Apollo Client it would be nice to see how we can update things at the other end of the GraphQL endpoint.
+Now that we’ve learned how to fetch data with Apollo Client it would be nice to see how we can update things at the other end of the GraphQL endpoint.
 
 SpaceX API provides a simple interface for adding users.
 
@@ -194,9 +192,9 @@ const ADD_USER = gql`
 `;
 ```
 
-You might've already noticed that, unlike the query, the mutation has a function-like signature. In case of `insert_user` it accepts `objects: { name: $name }`.
+You might’ve already noticed that, unlike the query, the mutation has a function-like signature. In case of `insert_user` it accepts `objects: { name: $name }`.
 
-Let's define some TypeScript types to describe what kind of data we're getting back from this mutation. These types are going to depend a lot on how the GraphQL endpoint formats its response. In our case, the types are the following:
+Let’s define some TypeScript types to describe what kind of data we’re getting back from this mutation. These types are going to depend a lot on how the GraphQL endpoint formats its response. In our case, the types are the following:
 
 ```typescript
 interface UserDetails {
@@ -218,10 +216,10 @@ The `useMutation` query has the following signature:
 ```
 
 Important to note that the mutation is not called when we define the hook.
-It returns a function - in our case, that’s `addUser` - we should call with the necessary parameters.
+It returns a function - in our case `addUser` - that we should call with the necessary parameters.
 Same as for the `userQuery` hooks, the type you pass into `useMutation` should match the response you get back from the server after you call this mutation.
 
-Now let's put it all together:
+Now let’s put it all together:
 ```typescript
 interface UserDetails {
   id?: string;
@@ -265,12 +263,12 @@ function App() {
 }
 ```
 
-Here's what you should see in your browser:
+Here’s what you should see in your browser:
 
 ![Website saving SpaceX user data](/assets/posts/images/apollo-client-react-typescript/save.gif "Website saving SpaceX user data")
 
 Congratulation, you just added a new user to SpaceX API’s Database!
 
-What's next? If you would like to further explore the capabilities of Apollo GraphQL I suggest checking out their [Subscriptions](https://www.apollographql.com/docs/react/data/subscriptions/) interface and [Fragments](https://www.apollographql.com/docs/react/data/fragments/) logic.
+What’s next? If you would like to further explore the capabilities of Apollo GraphQL I suggest checking out their [Subscriptions](https://www.apollographql.com/docs/react/data/subscriptions/) interface and [Fragments](https://www.apollographql.com/docs/react/data/fragments/) logic.
 
 This Demo project is available on [GitHub](https://github.com/akoskm/apollo-client-react-typescript).
