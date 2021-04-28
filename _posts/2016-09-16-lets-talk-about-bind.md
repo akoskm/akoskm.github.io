@@ -27,7 +27,8 @@ I used <code>bind</code> regularly, but I still had no idea how it compared to <
 1. <code>apply</code> and <code>call</code> used to invoke functions, <code>bind</code> _creates_ a new function.
 When you invoke this function it will has its <code>this</code> keyword set to the value you provided as first argument.
 
-<pre><code class="hljs javascript">var cat = {
+```javascript
+var cat = {
   name: 'Milu',
   greet: function (greeting) {
     return greeting + ', ' + this.name;
@@ -38,7 +39,7 @@ cat.greet.apply(cat, ['Hi']); // returns Hi, Milu
 cat.greet.call(cat, 'Hello'); // returns Hello, Milu
 var greetBound = cat.greet.bind(cat, 'Hey');   // returns a function
 greetBound() // returns Hey, Milu
-</code></pre>
+```
 
 These things can be found in the documentation so let's do something what isn't there.
 
@@ -46,13 +47,15 @@ These things can be found in the documentation so let's do something what isn't 
 
 Below is a function `purr`, which in fact is a <code>Function</code> object. Every <code>Function</code> object has a
 <code>name</code> property so the following call will result in:
-<pre><code class="hljs javascript">function purr() {
+
+```javascript
+function purr() {
   return 'purrs at a frequency of 20 to 30 vibrations per second';
 }
 
 var greetBound = cat.greet.bind(purr, ['Hey']);
 greetBound(); // returns Hey, purr
-</code></pre>
+```
 
 The same thing will happen when you call <code>apply</code> or <code>call</code> while providing <code>purr</code> as first argument.
 
@@ -61,7 +64,8 @@ The same thing will happen when you call <code>apply</code> or <code>call</code>
 Passing an array of arguments to <code>bind</code> then calling the bound function will have the same effect like
 passing it to <code>call</code>:
 
-<pre><code>var cat = {
+```javascript
+var cat = {
   name: 'Milu',
   greet: function (greeting) {
     return greeting + ', ' + this.name;
@@ -71,7 +75,7 @@ passing it to <code>call</code>:
 cat.greet.call(cat, ['Hi', 'Hello']); // returns Hi,Hello, Milu
 var greetBound = cat.greet.bind(cat, ['Hi', 'Hello']);
 greetBound(); // returns Hi,Hello, Milu
-</code></pre>
+```
 
 <code>bind</code> converts its second argument to string before passing it to the bound function.
 
@@ -82,25 +86,27 @@ This reminds us to callbacks functions. Sadly, most of the examples I encountere
 with callback functions but they didn't had the most thoughtful design,
 which justified the usage of <code>bind</code>:
 
-<pre><code>var Widget = function () {
+```javascript
+var Widget = function () {
   this.counter = 0;
   $('button').on('click', function () {
     this.counter += 1;
     $('span').text(this.counter);
   }.bind(this));
 };
-</code></pre>
+```
 
 A simpler widget:
 
-<pre><code>var Widget = function () {
+```javascript
+var Widget = function () {
   var counter = 0;
   $('button').on('click', function () {
     counter += 1;
     $('span').text(counter);
   });
 };
-</code></pre>
+```
 
 Browsing through dozens of examples I saw that <code>bind</code> is more extensively used where the code
 has conventional object-oriented design - which I've been avoiding altogether when it comes to JavaScript, and it pretty

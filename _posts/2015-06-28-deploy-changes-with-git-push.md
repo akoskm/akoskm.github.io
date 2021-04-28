@@ -12,7 +12,8 @@ Thanks to [git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks),
 
 I assume you already have a bare git repository on the server which looks similar to this:
 
-<pre><code class="hljs text">branches
+```
+branches
 config
 description
 HEAD
@@ -20,7 +21,7 @@ hooks
 info
 objects
 refs
-</code></pre>
+```
 
 We are going to create a `post-receive` hook in the `hooks` directory. This server-side hook is called after the entire push process is completed.
 
@@ -32,7 +33,8 @@ The idea is to pull the contents of a specific branch into a working directory o
 
 Here is how our `post-receive` hook should look like:
 
-<pre><code>#!/bin/bash
+```
+#!/bin/bash
 
 # branch to watch for push
 DEPLOYMENT_BRANCH=deploy
@@ -57,16 +59,18 @@ do
       grunt production
     fi
 done
-</code></pre>
+```
 
 The script must be executable so don't forget adding
 
-<pre><code class="hljs text">chmod +x post-receive
-</code></pre>
+```
+chmod +x post-receive
+```
 
 Let's test it:
 
-<pre><code class="hljs text">$ git push origin deploy
+```
+$ git push origin deploy
 Counting objects: 7, done.
 Writing objects: 100% (3/3), 241 bytes | 0 bytes/s, done.
 Total 3 (delta 0), reused 0 (delta 0)
@@ -80,7 +84,7 @@ remote:  foo | 2 +-
 remote:  1 file changed, 1 insertion(+), 1 deletion(-)
 To /home/akoskm/akoskm.github.io
    212fc95..bf21a7f  deploy -> deploy
-</code></pre>
+```
 
 Pushing to `origin` triggered the `post-receive` hook and the part specific to `deploy` branch.
 

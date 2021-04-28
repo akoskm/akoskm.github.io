@@ -181,7 +181,7 @@ SpaceX API provides a simple interface for adding users.
 
 When writing a mutation query we use the same `gql` function we used for the query:
 
-```javascript
+```typescript
 const ADD_USER = gql`
   mutation InsertUser($name: String!) {
     insert_users(objects: { name: $name }) {
@@ -211,7 +211,7 @@ interface AddUserResponse {
 
 The `useMutation` query has the following signature:
 
-```javascript
+```typescript
   const [addUser, { data: userData }] = useMutation<
     { insert_users: AddUserResponse }
   >(ADD_USER);
@@ -222,7 +222,7 @@ It returns a function - in our case, that’s `addUser` - we should call with th
 Same as for the `userQuery` hooks, the type you pass into `useMutation` should match the response you get back from the server after you call this mutation.
 
 Now let's put it all together:
-```javascript
+```typescript
 interface UserDetails {
   id?: string;
   name: string;

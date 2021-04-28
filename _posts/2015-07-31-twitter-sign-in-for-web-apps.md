@@ -28,7 +28,7 @@ According to [Implementing Sign in with Twitter][5], the workflow for obtaining 
 
 The solution is to manually create a new `Token` by using **oauth_token** as token and **oauth_verifier** as secret in:
 
-<pre><code class="hljs java">
+```
 /**
  * Default constructor
  *
@@ -38,24 +38,25 @@ The solution is to manually create a new `Token` by using **oauth_token** as tok
 public Token(String token, String secret) {
   this(token, secret, null);
 }
-</code></pre>
+```
 
 and a new `Verifier` from **oauth_verifier**:
 
-<pre><code class="hljs java">
+```
 Token requestToken = new Token(oauthToken, oauthVerifier);
 Verifier verifier = new Verifier(oauthVerifier);
-</code></pre>
+```
 
 Finally, retrieve the access token from Twitter:
-<pre><code class="hljs java">
+
+```
 // POST oauth/access_token
 Token accessToken = service.getAccessToken(requestToken, verifier);
 
 // Do something with the access token
 OAuthRequest request = new OAuthRequest(Verb.GET, PROTECTED_RESOURCE_URL);
 service.signRequest(accessToken, request);
-</code></pre>
+```
 
 This solution is applicable to both scribe-java and twitter4j, because their API is very similar.
 

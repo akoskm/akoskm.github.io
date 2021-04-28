@@ -18,9 +18,11 @@ The Realtime Raytracer is based on [blueprint3d](https://github.com/furnishup/bl
 In the beginning <code>package.json</code> contained only a single npm script which built the application without
 any further minification or obfuscation:
 
-<pre><code>"scripts": {
+```json
+"scripts": {
   "build": "browserify src/blueprint3d.js > example/js/blueprint3d.js --verbose"
-}</code></pre>
+}
+```
 
 Because the previous command dumped everything into a single file, it was a bit uncomfortable for
 debugging, especially when the application began to grow.
@@ -37,18 +39,19 @@ This was fairly easy, thanks to the built-in flag of [browserify](https://github
 A quick googling might suggest that you could do it through [minifyify](https://github.com/ben-ng/minifyify).
 But the source maps won't behave as you would expect and what could be easier than:
 
-<pre>
+```
  --debug -d  Enable source maps that allow you to debug your files
 
              separately.
-</pre>
+```
 
 Adding this to the existing npm script:
 
-<pre><code>"scripts": {
+```json
+"scripts": {
   "build": "browserify -d src/blueprint3d.js > example/js/blueprint3d.js --verbose"
 }
-</code></pre>
+```
 
 made the original source files debuggable, separately, without any additional plugin.
 
@@ -60,20 +63,24 @@ The final bundle was 811 KB with uglify-js while with minifyify only 596 KB.
 
 The command for doing a minifyify-ed build looks like:
 
-<pre><code class="hljs text">browserify src/blueprint3d.js -p [minifyify --no-map] > example/js/blueprint3d.js
-</code></pre>
+```
+browserify src/blueprint3d.js -p [minifyify --no-map] > example/js/blueprint3d.js
+```
 
 and here is the final set of scripts that is currently in use for production and development:
 
-<pre><code>"scripts": {
+```json
+"scripts": {
   "dev": "browserify -d src/blueprint3d.js > example/js/blueprint3d.js --verbose"
   "prod": "browserify src/blueprint3d.js -p [minifyify --no-map] > example/js/blueprint3d.js"
-}</code></pre>
+}
+```
 
 If you want mangling, that's possible too. Specify any mangling options after <code>--mangle</code>:
 
-<pre><code class="hljs text">browserify src/blueprint3d.js -p [minifyify --no-map --uglify [ --mangle [ 'toplevel' ] ] ] > example/js/blueprint3d.js
-</code></pre>
+```
+browserify src/blueprint3d.js -p [minifyify --no-map --uglify [ --mangle [ 'toplevel' ] ] ] > example/js/blueprint3d.js
+```
 
 from [uglify-js](https://github.com/mishoo/UglifyJS2#mangler-options).
 

@@ -24,7 +24,7 @@ I suggest you to read the [Node.js Stripe API Reference](https://stripe.com/docs
 Let's say we built an application where the users can order hand-made cosmetics through your web-shop.
 Here is the module which handles all the Stripe related stuff:
 
-<pre><code class="hljs javascript">
+```javascript
 var stripe = require('stripe')(
   'sk_test_your_stripe_test_key'
 );
@@ -71,7 +71,7 @@ module.exports = {
     }
   }
 });
-</code></pre>
+```
 
 <code>stripe.orders.create</code> returns an [order](https://stripe.com/docs/api#order_return_object)
 object if the call succeeded and err otherwise.
@@ -87,9 +87,9 @@ extends
 [StripeResource](https://github.com/stripe/stripe-node/blob/master/lib/StripeResource.js) so the order
 methods are really in <code>orders.__proto__</code>:
 
-<pre><code class="hljs javascript">
+```javascript
 this.sandbox.stub(stripeClient.orders.__proto__, 'create', func);
-</code></pre>
+```
 
 The above stub will prevent the real <code>orders.create</code> from being called
 and gives you control over triggering its callback with arbitrary parameters.
@@ -97,21 +97,21 @@ and gives you control over triggering its callback with arbitrary parameters.
 Let's start by implementing the best-case scenario, when the Stripe API executes our callback with a newly
 created order that contains only an id and with no errors:
 
-<pre><code class="hljs javascript">
+```javascript
 this.sandbox.stub(stripeClient.orders.__proto__, 'create', function (orderRequest, func) {
   func(null, {id: 123});
 });
-</code></pre>
+```
 
 Go back to our module we can see what happens in this case:
 
-<pre><code class="hljs javascript">
+```javascript
 if (!order || !order.id) {
   cb('Unknown error occurred.', null);
 } else {
   cb(null, order);
 }
-</code></pre>
+```
 
 Since our order was <code>{id: 123}</code> the <code>cb</code> callback passed to <code>createOrder</code>
 should be called with <code>null, order</code>.
@@ -119,13 +119,13 @@ should be called with <code>null, order</code>.
 To prove this just call <code>module.createOrder</code> in your favorite test suite and see if the callback
 has the expected parameters:
 
-<pre><code class="hljs javascript">
+```javascript
 stripeConnector.createOrder(request, function (err, order) {
   assert.isNull(err);
   assert.isNotNull(order.id);
   assert.equal(123, order.id);
 });
-</code></pre>
+```
 
 For complete code and running tests the git repository:
 [node-stripe-api-testing-tutorial](https://github.com/akoskm/node-stripe-api-testing-tutorial).
