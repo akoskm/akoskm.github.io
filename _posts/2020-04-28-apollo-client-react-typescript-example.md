@@ -125,7 +125,7 @@ interface RocketsResult {
 }
 ```
 
-To run this query we’re going to use the `useQuery` hook and the `gql` function, provided by the Apollo Client:
+To run this query we’re going to use the [`useQuery`](https://www.apollographql.com/docs/react/api/react/hooks/#usequery) hook and the `gql` function, provided by the Apollo Client:
 
 ```typescript
 import { useQuery, gql } from '@apollo/client';
@@ -208,7 +208,7 @@ interface AddUserResponse {
 }
 ```
 
-The `useMutation` query has the following signature:
+The [`useMutation`](https://www.apollographql.com/docs/react/api/react/hooks/#usemutation) query has the following signature:
 
 ```typescript
   const [addUser, { data: userData }] = useMutation<
