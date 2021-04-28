@@ -8,7 +8,7 @@ date: 2021-04-28 00:00:01
 
 In this tutorial, we’ll find out why Apollo Client with React and TypeScript is a great combination to power your front-end app.
 We love Apollo Client because of its built-in robust state management, in-memory caching, and error handling capabilities.
-To keep the demo simple we’re not going to write any backend code for this presentation, and use the publicly available SpaceX GraphQL API.
+To keep the demo simple we’re not going to write any backend code for this presentation, and use the publicly available [SpaceX GraphQL API](https://akoskm.com/blog/apollo-client-react-typescript-example/).
 
 # Installing Apollo Client with React and TypeScript
 
