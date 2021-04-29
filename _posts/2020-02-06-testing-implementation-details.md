@@ -18,7 +18,7 @@ And now for the readers who think that the ultimate cost-saving is to not write 
 
 ### What are implementation details?
 
-Let's say you shipped a software that sorts To-do list items by their weight.
+Let’s say you release software that sorts To-do list items by their weight.
 To sort this list, you used [Insertion sort](https://en.wikipedia.org/wiki/Insertion_sort) because of its simplicity.
 This is one of the lists your software displays:
 
@@ -46,7 +46,7 @@ Solving business requirements without creating new code would be ideal, but that
 
 ### Am I testing the right thing?
 
-During my studies we were *obsessed* with coding challenges. I came across this site called [Coderbyte](https://coderbyte.com/) that hosts such challenges and realized how well it represents this idea of what to test.
+During my studies, we were *obsessed* with coding challenges. I came across this site called [Coderbyte](https://coderbyte.com/) that hosts such challenges and realized how well it represents this idea of what to test.
 
 The UI immediately creates the right separation. The panels from left to right represent the requirements, the software, and the tests.
 
@@ -58,14 +58,14 @@ Let's pretend for a moment that we like the idea of testing implementation detai
 
 Now, fast forward a year.
 
-We took a course from Data Structures an Algorithms and we learned we can turn recursions into loops.
+We took a course from Data Structures and Algorithms and we learned we can turn recursions into loops.
 We come up with this brand new way of calculating factorials:
 
 ![Codebite loop](/assets/posts/images/2020-02-05/loop.jpg)
 
 We're excited to try this new algorithm, but our test won't pass anymore. The recursion is gone!
 
-The biggest problem with such tests is that they don't increase confidence in our software. The only thing they show is the presence of a recursion, an implementation detail that might change in the future.
+The biggest problem with such tests is that they don't increase confidence in our software. The only thing they show is the presence of recursion, an implementation detail that might change in the future.
 
 You'll run into the same problem while working on any kind of software over a period of time. Your development skills might improve during that period, you rewrite some of your code, but the problems you solve remain the same.
 
@@ -73,6 +73,4 @@ Focus on the business requirements while writing tests so they keep working even
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Write tests. Not too many. Mostly integration.</p>&mdash; Guillermo Rauch (@rauchg) <a href="https://twitter.com/rauchg/status/807626710350839808?ref_src=twsrc%5Etfw">December 10, 2016</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-Do you write tests at all? Are you thinking what's the best way to test your software?
-
-Let me know in the comments below!
+Do you write tests at all? Are you thinking about what's the best way to test your software?
