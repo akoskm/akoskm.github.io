@@ -5,4 +5,5 @@ future: true
 url: "https://akoskm.com"
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
 permalink: /blog/:title/
