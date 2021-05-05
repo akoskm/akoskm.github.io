@@ -9,7 +9,7 @@ hero: /assets/posts/images/apollo-client-react-typescript/pexels-spacex-23769.jp
 
 In this tutorial, we’ll find out how we can use Apollo Client with React and TypeScript to power our front-end apps.
 We love Apollo Client because of its built-in robust state management, in-memory caching, and error handling capabilities.
-To keep the demo simple we’re not going to write any backend code for this presentation, and use the publicly available [SpaceX GraphQL API](https://akoskm.com/blog/apollo-client-react-typescript-example/).
+To keep the demo simple we’re not going to write any backend code for this presentation, and use the publicly available [SpaceX GraphQL API](https://api.spacex.land/graphql/).
 
 # Installing Apollo Client with React and TypeScript
 
