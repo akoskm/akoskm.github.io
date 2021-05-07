@@ -22,7 +22,7 @@ yarn create react-app apollo-client-react-typescript --template typescript
 Next, we’re going to install the Apollo Client alongside GraphQL:
 
 ```
-yarn addd @apollo/client graphql
+yarn add @apollo/client graphql
 ```
 
 The `@apollo/client` package contains the state management/caching and error handling while `graphql` parses the GraphQL queries.
