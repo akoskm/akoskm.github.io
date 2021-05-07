@@ -7,4 +7,6 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-redirect-from
+whitelist:
+  - jekyll-redirect-from
 permalink: /blog/:title/
