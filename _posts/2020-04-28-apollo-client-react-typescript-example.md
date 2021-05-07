@@ -25,7 +25,7 @@ Next, we’re going to install the Apollo Client alongside GraphQL:
 yarn addd @apollo/client graphql
 ```
 
-The `@apollo/client` package contains the state management/caching and error handling while `grahpql` parses the GraphQL queries.
+The `@apollo/client` package contains the state management/caching and error handling while `graphql` parses the GraphQL queries.
 
 Now that we have these packages installed we’ll create the building blocks that are necessary to communicate with the GraphQL endpoint.
 
@@ -52,7 +52,7 @@ const client = new ApolloClient({
 ## Building an Apollo Provider
 
 To be able to use this Apollo Client instance inside a React Component, we have to wrap the React component with a specific component called [`ApolloProvider`](https://www.apollographql.com/docs/react/api/react/hooks/#the-apolloprovider-component).
-`ApolloProvider` accepts a single prop: `client` that is an instance of an `ApolloClient`.
+This accepts a single prop: `client` that is an instance of an `ApolloClient`.
 
 ## Connecting the Apollo Provider to the React Component
 
@@ -79,7 +79,6 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-
 ```
 
 ## Querying data with Apollo Client and TypeScript
@@ -270,6 +269,8 @@ Here’s what you should see in your browser:
 
 Congratulation, you just added a new user to SpaceX API’s Database!
 
+This Demo project is available on [GitHub](https://github.com/akoskm/apollo-client-react-typescript).
+
 What’s next? If you would like to further explore the capabilities of Apollo GraphQL I suggest checking out their [Subscriptions](https://www.apollographql.com/docs/react/data/subscriptions/) interface and [Fragments](https://www.apollographql.com/docs/react/data/fragments/) logic.
 
-This Demo project is available on [GitHub](https://github.com/akoskm/apollo-client-react-typescript).
+Are you already using GraphQL in some of your projects? Do you think it's going to replace REST?
