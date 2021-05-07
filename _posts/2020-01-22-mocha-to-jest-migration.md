@@ -1,5 +1,5 @@
 ---
-title: How to move from Mocha to Jest
+title: How to migrate from Mocha to Jest
 layout: post
 type: post
 date: 2020-01-22 00:00:01
