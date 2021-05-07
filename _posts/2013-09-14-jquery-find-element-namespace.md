@@ -2,6 +2,8 @@
 title: $.find and XML namespaces
 layout: post
 type: post
+redirect_from:
+ - /2013/09/14/jquery-find-element-namespace.html
 ---
 
 Querying XML documents

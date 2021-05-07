@@ -3,6 +3,8 @@ title: Let's talk about bind
 layout: post
 type: post
 date: 2016-09-16 00:00:01
+redirect_from:
+ - /2016/09/16/lets-talk-about-bind.html
 ---
 
 A few days ago I was asked if I could tell the difference between <code>apply</code>, <code>call</code> and <code>bind</code>.

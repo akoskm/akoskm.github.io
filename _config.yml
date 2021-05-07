@@ -6,4 +6,5 @@ url: "https://akoskm.com"
 plugins:
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-redirect-from
 permalink: /blog/:title/

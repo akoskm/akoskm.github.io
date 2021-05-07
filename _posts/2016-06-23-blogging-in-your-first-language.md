@@ -3,6 +3,8 @@ title: Blogging in your first language
 layout: post
 type: post
 date: 2016-06-23 00:00:01
+redirect_from:
+ - /2016/06/23/blogging-in-your-first-language.html
 ---
 
 In 2008 I wrote my [first](http://akoskm.blogspot.rs/2008/08/tha-realy-first-post.html) blog post ever, in English. I choose English because I wanted to perfect my writing skills and wanted to reach out to as many people as I can while giving them something useful and informative. These are still between my motives but recently I realized that there might be an audience that I have been ignoring so far.
