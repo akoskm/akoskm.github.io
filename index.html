@@ -29,21 +29,23 @@ excerpt: akoskm.com - Full-Stack development
   <p>I blog occasionally on web development, tips, tricks, and practices.</p>
   <p>Latest articles:</p>
   {% for post in site.posts %}
-    <div class="post-header">
-      <span class="post-title">
-        <h3>
-        {% if post.type == "post"%}
-          <a href="{{ post.url }}">
-        {% endif %}
-        {% if post.type == "3rdparty"%}
-          <a href="{{ post.redirect }}">
-        {% endif %}
-            {{ post.title }}
-          </a>
-        </h3>
-      </span>
-      <span class="post-date">{{ post.date | date: "%-d %B, %Y" }}</small>
-    </div>
+    {% if post.featured %}
+      <div class="post-header">
+        <span class="post-title">
+          <h3>
+          {% if post.type == "post"%}
+            <a href="{{ post.url }}">
+          {% endif %}
+          {% if post.type == "3rdparty"%}
+            <a href="{{ post.redirect }}">
+          {% endif %}
+              {{ post.title }}
+            </a>
+          </h3>
+        </span>
+        <span class="post-date">{{ post.date | date: "%-d %B, %Y" }}</small>
+      </div>
+    {% endif %}
   {% endfor %}
 </section>
 <section class="contact">
