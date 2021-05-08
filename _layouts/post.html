@@ -13,7 +13,7 @@ layout: default
     {{ page.date | date: "%-d %B, %Y" }} ~ {% include read_time.html %}
   </span>
   <span>
-    <a href="{{ root_url }}{{ post.url }}#disqus_thread"></a>
+    <a href="{{ root_url }}{{ post.url }}#disqus_thread">Comments</a>
   </span>
 </div>
 
@@ -49,6 +49,5 @@ layout: default
       })();
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  <script id="dsq-count-scr" src="//akoskm.disqus.com/count.js" async></script>
 {% endif %}
 <script src="/assets/js/prism.js"></script>
