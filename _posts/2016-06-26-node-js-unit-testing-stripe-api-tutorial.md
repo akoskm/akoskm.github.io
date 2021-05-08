@@ -3,6 +3,8 @@ title: Unit Testing Node.js apps and Stripe API integration
 layout: post
 type: post
 date: 2016-07-01 00:00:01
+redirect_from:
+ - /2016/07/01/node-js-unit-testing-stripe-api-tutorial.html
 ---
 
 _This tutorial appeared in <a href='http://nodeweekly.com/issues/145'>node weekly</a>._

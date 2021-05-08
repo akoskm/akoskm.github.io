@@ -3,6 +3,8 @@ title: Use React Context to DRY up your components
 layout: post
 type: post
 date: 2019-09-03 00:00:01
+redirect_from:
+ - /2019/09/03/react-usecontext-practical-example.html
 ---
 
 ## aka. How to reduce plumbing in React apps?

@@ -6,6 +6,8 @@ date: 2020-01-07 00:00:01
 featured: yes
 hero: /assets/posts/images/2020-01-07/pexels-panumas-nikhomkhai-1148820.jpg
 hero_credit: Photo by panumas nikhomkhai from Pexels
+redirect_from:
+ - /2020/01/07/heroku-custom-domain-ssl-certificate.html
 ---
 
 Got a Heroku app and want to make it public with some fancy domain with HTTPS enabled?
