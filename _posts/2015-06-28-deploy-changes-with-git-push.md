@@ -6,6 +6,12 @@ redirect_from:
  - /2015/06/28/deploy-changes-with-git-push.html
 ---
 
+> *2021 Update:*
+>
+> *Most cloud providers now have this as a built-in feature.*
+>
+> *Please visit your platform’s documentation for more info. If you're not sure what to do, leave a comment below.*
+
 Automated deployments are great, simply because you can spend more time developing your app and less time following tedious, repetitive tasks.
 
 They also minimize the human factor of the whole processes, so it's more predictable, reliable and error-free.
