@@ -5,6 +5,7 @@ type: post
 featured: true
 date: 2021-04-28 00:00:01
 hero: /assets/posts/images/apollo-client-react-typescript/pexels-spacex-23769.jpg
+redirect_to: https://akoskm.com/apollo-client-react-typescript-example
 ---
 
 In this tutorial, we’ll find out how we can use Apollo Client with React and TypeScript to power our front-end apps.
