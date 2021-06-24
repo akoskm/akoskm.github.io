@@ -6,6 +6,7 @@ date: 2020-01-22 00:00:01
 featured: yes
 hero: /assets/posts/images/2020-01-22/pexels-christina-morillo-1181263.jpg
 hero_credit: Photo by Christina Morillo from Pexels
+redirect_to: https://akoskm.com/mocha-to-jest-migration
 redirect_from:
  - /2020/01/22/mocha-jest-react-testing.html
  - /blog/mocha-jest-react-testing/

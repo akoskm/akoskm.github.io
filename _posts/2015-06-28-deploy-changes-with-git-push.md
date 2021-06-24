@@ -2,6 +2,7 @@
 title: Git Hooks - Deploying with git push
 layout: post
 type: post
+redirect_to: https://akoskm.com/deploy-changes-with-git-push
 redirect_from:
  - /2015/06/28/deploy-changes-with-git-push.html
 ---

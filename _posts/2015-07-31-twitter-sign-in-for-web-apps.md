@@ -2,6 +2,7 @@
 title: Implementing Twitter Sign-In for Web Apps
 layout: post
 type: post
+redirect_to: https://akoskm.com/twitter-sign-in-for-web-apps
 redirect_from:
  - /2015/07/31/twitter-sign-in-for-web-apps.html
 ---

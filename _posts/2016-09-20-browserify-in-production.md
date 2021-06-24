@@ -3,6 +3,7 @@ title: Browserify for development and production
 layout: post
 type: post
 date: 2016-09-20 00:00:01
+redirect_to: https://akoskm.com/browserify-in-production
 redirect_from:
  - /2016/09/20/browserify-in-production.html
 ---

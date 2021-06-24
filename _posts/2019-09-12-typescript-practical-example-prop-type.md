@@ -5,6 +5,7 @@ type: post
 date: 2019-09-12 00:00:01
 featured: yes
 excerpt: A practical guide to replacing React PropTypes with TypeScript.
+redirect_to: https://akoskm.com/typescript-practical-example-prop-type
 redirect_from:
  - /2019/09/12/typescript-practical-example-prop-type.html
 ---

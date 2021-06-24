@@ -3,6 +3,7 @@ title: Unit Testing Node.js apps and Stripe API integration
 layout: post
 type: post
 date: 2016-07-01 00:00:01
+redirect_to: https://akoskm.com/node-js-unit-testing-stripe-api-tutorial
 redirect_from:
  - /2016/07/01/node-js-unit-testing-stripe-api-tutorial.html
 ---

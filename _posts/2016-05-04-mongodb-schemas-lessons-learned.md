@@ -3,6 +3,7 @@ title: MongoDB Schemas&#58; Lessons Learned at 10log
 layout: post
 type: post
 date: 2016-05-04 12:00:00
+redirect_to: https://akoskm.com/mongodb-schemas-lessons-learned
 redirect_from:
  - /2016/05/04/mongodb-schemas-lessons-learned.html
 ---

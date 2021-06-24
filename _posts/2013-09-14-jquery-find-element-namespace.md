@@ -2,6 +2,7 @@
 title: $.find and XML namespaces
 layout: post
 type: post
+redirect_to: https://akoskm.com/jquery-find-element-namespace
 redirect_from:
  - /2013/09/14/jquery-find-element-namespace.html
 ---

@@ -3,6 +3,7 @@ title: Blogging in your first language
 layout: post
 type: post
 date: 2016-06-23 00:00:01
+redirect_to: https://akoskm.com/blogging-in-your-first-language
 redirect_from:
  - /2016/06/23/blogging-in-your-first-language.html
 ---
