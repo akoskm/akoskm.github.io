@@ -6,7 +6,7 @@ featured: true
 date: 2020-02-06 00:00:01
 hero: /assets/posts/images/2020-02-05/pexels-startup-stock-photos-212286.jpg
 hero_credit: Photo by Startup Stock Photos from Pexels
-redirect_to: https://akoskm.com
+redirect_to: https://akoskm.com/testing-implementation-details
 redirect_from:
  - /2020/02/06/the-cost-of-testing-implementation-details.html
 ---
